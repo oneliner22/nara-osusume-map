@@ -52,7 +52,7 @@
    "approx": false,
    "desc": "「ぽこぴーの回覧板」奈良公演の会場（2026年12月27日・大ホール、18:00開演）。JR奈良駅西口のすぐ隣にあり、近鉄奈良駅からも徒歩圏。",
    "address": "奈良県奈良市三条宮前町７−１",
-   "url": "http://www.nara100.com/",
+   "url": "https://www.nara100.com/",
    "place_id": "ChIJi0CpvTE6AWARLNktIchDaT0",
    "sources": [
     {
@@ -102,7 +102,7 @@
    "mark": true,
    "place_id": "ChIJYWCMvZY5AWARVnREV_OsbPk",
    "address": "日本、奈良県奈良市",
-   "url": "https://www3.pref.nara.jp/park/",
+   "url": "https://www.pref.nara.lg.jp/site/park/index.html",
    "hours": [
     "月曜日: 24 時間営業",
     "火曜日: 24 時間営業",
@@ -217,7 +217,7 @@
    ],
    "place_id": "ChIJs-w9sog5AWARk0WDN0cPgxE",
    "address": "日本、〒630-8213 奈良県奈良市登大路町４８",
-   "url": "http://www.kohfukuji.com/",
+   "url": "https://www.kohfukuji.com/",
    "hours": [
     "月曜日: 9時00分～17時00分",
     "火曜日: 9時00分～17時00分",
@@ -249,7 +249,7 @@
    ],
    "place_id": "ChIJs1cUZII5AWAR1tQY7zIobrg",
    "address": "日本、〒630-8213 奈良県奈良市元林院町１４",
-   "url": "https://narashikanko.or.jp/spot/nature/sarusawaike/",
+   "url": "https://narashikanko.or.jp/spot/detail_10110.html",
    "hours": [
     "月曜日: 24 時間営業",
     "火曜日: 24 時間営業",
@@ -281,7 +281,7 @@
    ],
    "place_id": "ChIJjVRjzbs5AWAR8QYRWah8aB8",
    "address": "日本、〒630-8211 奈良県奈良市雑司町",
-   "url": "http://www3.pref.nara.jp/park/item/2585.htm",
+   "url": "https://www.pref.nara.lg.jp/site/park/2585.html",
    "hours": [
     "月曜日: 9時00分～17時00分",
     "火曜日: 9時00分～17時00分",
@@ -350,7 +350,7 @@
   },
   {
    "slug": "jun-kissa-jinroku",
-   "name": "純喫茶ジンロク",
+   "name": "純喫茶シンロク",
    "area": "park",
    "cat": "カフェ・喫茶",
    "lat": 34.69866,
@@ -492,7 +492,7 @@
    ],
    "place_id": "ChIJ3XYIepA5AWAR-uzxmllSqgg",
    "address": "日本、〒630-8211 奈良県奈良市雑司町４０６−１",
-   "url": "http://www.todaiji.or.jp/contents/guidance/guidance6.html",
+   "url": "https://www.todaiji.or.jp/information/nigatsudo/",
    "hours": [
     "月曜日: 24 時間営業",
     "火曜日: 24 時間営業",
@@ -552,7 +552,7 @@
    ],
    "place_id": "ChIJ8aoIssE5AWARKKcTFb09QF4",
    "address": "日本、〒630-8212 奈良県奈良市春日野町１６０",
-   "url": "http://www.kasugataisha.or.jp/guidance/wakamiya.html",
+   "url": "https://www.kasugataisha.or.jp/guidance/wakamiya/",
    "hours": [
     "月曜日: 6時00分～18時00分",
     "火曜日: 6時00分～18時00分",
@@ -580,7 +580,7 @@
    ],
    "place_id": "ChIJ1SwfUqc5AWARa2CWsEIQp9M",
    "address": "日本、〒630-8212 奈良県奈良市春日野町１６０−７",
-   "url": "http://kasugataisha.or.jp/",
+   "url": "https://www.kasugataisha.or.jp/",
    "hours": [
     "月曜日: 7時00分～17時00分",
     "火曜日: 7時00分～17時00分",
@@ -636,7 +636,7 @@
    ],
    "place_id": "ChIJc31a-Y85AWARo70kM5pXEVo",
    "address": "日本、〒630-8208 奈良県奈良市水門町７４",
-   "url": "http://www.isuien.or.jp/",
+   "url": "https://www.isuien.or.jp/",
    "hours": [
     "月曜日: 9時30分～16時00分",
     "火曜日: 定休日",
@@ -776,7 +776,7 @@
    ],
    "place_id": "ChIJNxIgMV05AWARNszQses3kvA",
    "address": "日本、〒630-8365 奈良県奈良市下御門町４ eリュエル 1F",
-   "url": "http://oimo.co.jp/",
+   "url": "https://oimo.co.jp/",
    "hours": [
     "月曜日: 11時00分～18時00分",
     "火曜日: 定休日",
@@ -835,7 +835,7 @@
    ],
    "place_id": "ChIJczTSTIo5AWAR0JnR7tsoeLY",
    "address": "日本、〒630-8333 奈良県奈良市中新屋町５",
-   "url": "http://naramachi-nigiwainoie.jp/",
+   "url": "https://naramachi-nigiwainoie.jp/",
    "hours": [
     "月曜日: 9時00分～17時00分",
     "火曜日: 9時00分～17時00分",
@@ -891,7 +891,7 @@
    ],
    "place_id": "ChIJ0cq9cos5AWAR4rsmNfYqyBg",
    "address": "日本、〒630-8384 奈良県奈良市芝新屋町１２",
-   "url": "http://gango-ji.com//?utm_source=google&utm_medium=maps&utm_id=googlemybusiness",
+   "url": "https://gango-ji.com/",
    "hours": [
     "月曜日: 定休日",
     "火曜日: 定休日",
@@ -1067,7 +1067,7 @@
    ],
    "place_id": "ChIJ7_AZCok5AWARL0B1fjyE65I",
    "address": "日本、〒630-8374 奈良県奈良市今御門町３０−１",
-   "url": "http://xb532169.xbiz.jp/hiraso/shop/shop-nara/",
+   "url": "https://hiraso.jp/shop/shop-nara/",
    "hours": [
     "月曜日: 定休日",
     "火曜日: 11時30分～20時00分",
@@ -1095,7 +1095,7 @@
    ],
    "place_id": "ChIJJUXz2Iw5AWARwwdxxi6ME58",
    "address": "日本、〒630-8381 奈良県奈良市福智院町３１",
-   "url": "http://fukuden-nara.com/",
+   "url": "https://fukuden-nara.com/",
    "hours": [
     "月曜日: 12時00分～14時00分, 17時00分～22時00分",
     "火曜日: 12時00分～14時00分, 17時00分～22時00分",
@@ -1123,7 +1123,7 @@
    ],
    "place_id": "ChIJsz2VzYs5AWARB-tg31-wRDU",
    "address": "日本、〒630-8333 奈良県奈良市中新屋町２６",
-   "url": "http://naramachi-hiyori.jp/",
+   "url": "https://naramachi-hiyori.jp/",
    "hours": [
     "月曜日: 定休日",
     "火曜日: 定休日",
@@ -1151,7 +1151,7 @@
    ],
    "place_id": "ChIJZwrjUYo5AWARz6-pcshav74",
    "address": "日本、〒630-8334 奈良県奈良市西新屋町１４−３",
-   "url": "http://naramachi.co.jp/",
+   "url": "https://naramachi.co.jp/",
    "hours": [
     "月曜日: 10時00分～16時00分",
     "火曜日: 定休日",
@@ -1179,7 +1179,7 @@
    ],
    "place_id": "ChIJX03eTYo5AWARZYTXbP0X8gY",
    "address": "日本、〒630-8334 奈良県奈良市西新屋町１４",
-   "url": "https://narashikanko.or.jp/spot/temple/koshindo/"
+   "url": "https://narashikanko.or.jp/spot/detail_10033.html"
   },
   {
    "slug": "juu-wa-in",
@@ -1226,7 +1226,7 @@
    ],
    "place_id": "ChIJwRQbB4o5AWARxtFUPehWCuo",
    "address": "日本、〒630-8338 奈良県奈良市陰陽町７",
-   "url": "http://karakuri-omochakan.jimdofree.com/",
+   "url": "https://karakuri-omochakan.jimdofree.com/",
    "hours": [
     "月曜日: 9時00分～17時00分",
     "火曜日: 9時00分～17時00分",
@@ -1258,7 +1258,7 @@
    ],
    "place_id": "ChIJmUBIpJI5AWARZgZzuHzWMuU",
    "address": "日本、〒630-8301 奈良県奈良市高畑町",
-   "url": "https://narashikanko.or.jp/spot/structure/ukimido/",
+   "url": "https://narashikanko.or.jp/spot/detail_10105.html",
    "hours": [
     "月曜日: 24 時間営業",
     "火曜日: 24 時間営業",
@@ -1334,7 +1334,7 @@
    ],
    "place_id": "ChIJLZeIa4g5AWARHLA9QuwrJjg",
    "address": "日本、〒630-8217 奈良県奈良市橋本町８",
-   "url": "http://www.drinkdrank.com/",
+   "url": "https://www.drinkdrank.com/",
    "hours": [
     "月曜日: 11時00分～18時00分",
     "火曜日: 11時00分～18時00分",
@@ -1378,7 +1378,7 @@
    ],
    "place_id": "ChIJmzwHEog5AWARiML9vXtSFso",
    "address": "日本、〒630-8217 奈良県奈良市橋本町２９",
-   "url": "http://www.nakatanidou.jp/",
+   "url": "https://nakatanidou.jp/",
    "hours": [
     "月曜日: 10時00分～18時00分",
     "火曜日: 定休日",
@@ -1498,7 +1498,7 @@
    ],
    "place_id": "ChIJUzfEPfg7AWAR1kMegGc8lMM",
    "address": "日本、〒630-8228 奈良県奈良市上三条町４−１",
-   "url": "https://twitter.com/daibutsu_15",
+   "url": "https://x.com/daibutsu_15",
    "hours": [
     "月曜日: 11時00分～19時00分",
     "火曜日: 11時00分～19時00分",
@@ -1688,7 +1688,6 @@
    ],
    "place_id": "ChIJJ9jsbco7AWAR8aM5zvHCYVI",
    "address": "日本、〒630-8114 奈良県奈良市芝辻町４丁目６−１０",
-   "url": "http://sugino-oden.net/",
    "hours": [
     "月曜日: 定休日",
     "火曜日: 17時00分～23時00分",
@@ -1744,7 +1743,7 @@
    ],
    "place_id": "ChIJSSsVjoc5AWARe9eOlnBjaJQ",
    "address": "日本、〒630-8215 奈良県奈良市東向中町２４−１",
-   "url": "http://manshoudou.com/",
+   "url": "https://www.manshoudou.com/",
    "hours": [
     "月曜日: 10時00分～18時00分",
     "火曜日: 10時00分～18時00分",
@@ -2140,7 +2139,6 @@
    ],
    "place_id": "ChIJl37s4C46AWARKA4UMMblJ68",
    "address": "日本、〒630-8244 奈良県奈良市三条町４８０",
-   "url": "http://www.hiraso.jp/store/other/nara-sanjo.html",
    "hours": [
     "月曜日: 9時30分～19時30分",
     "火曜日: 9時30分～19時30分",
@@ -2368,7 +2366,7 @@
    ],
    "place_id": "ChIJ6fd4BwQ7AWARLtqlT3g4xlc",
    "address": "日本、〒630-8032 奈良県奈良市五条町１３−４６",
-   "url": "http://www.toshodaiji.jp/",
+   "url": "https://www.toshodaiji.jp/",
    "hours": [
     "月曜日: 8時30分～16時30分",
     "火曜日: 8時30分～16時30分",
@@ -2440,7 +2438,7 @@
    ],
    "place_id": "ChIJT4_DYfUvAWAR_NviFfadTOk",
    "address": "日本、〒636-0115 奈良県生駒郡斑鳩町法隆寺山内１−１−１",
-   "url": "http://www.horyuji.or.jp/",
+   "url": "https://www.horyuji.or.jp/",
    "hours": [
     "月曜日: 8時00分～16時30分",
     "火曜日: 8時00分～16時30分",
@@ -2468,7 +2466,7 @@
    ],
    "place_id": "ChIJW33GSlElAWARdzwVH1E18g4",
    "address": "日本、〒636-0102 奈良県生駒郡斑鳩町岡本１８７３",
-   "url": "http://www.horyuji.or.jp/hokiji/",
+   "url": "https://www.horyuji.or.jp/hokiji/",
    "hours": [
     "月曜日: 8時30分～16時30分",
     "火曜日: 8時30分～16時30分",
@@ -2535,7 +2533,7 @@
    "mark": true,
    "place_id": "ChIJLUvnQHEmAWARPu_L2MrW_3U",
    "address": "日本、〒636-0832 奈良県生駒郡三郷町信貴山西１１９０−２０",
-   "url": "http://www.bungyjapan.com/kaiun/",
+   "url": "https://www.bungyjapan.com/kaiun/",
    "hours": [
     "月曜日: 9時00分～17時00分",
     "火曜日: 9時00分～17時00分",
@@ -2595,7 +2593,7 @@
    ],
    "place_id": "ChIJwxlUGFm1BmARMDEA7p7q_W4",
    "address": "日本、〒633-0112 奈良県桜井市初瀬７３１−１ 長谷寺本堂",
-   "url": "http://www.hasedera.or.jp/",
+   "url": "https://www.hasedera.or.jp/",
    "hours": [
     "月曜日: 8時30分～17時00分",
     "火曜日: 8時30分～17時00分",
@@ -2623,7 +2621,7 @@
    ],
    "place_id": "ChIJN2IXPx6yBmARPX-dIreS19Q",
    "address": "日本、〒633-0421 奈良県宇陀市室生７８",
-   "url": "http://www.murouji.or.jp/",
+   "url": "https://www.murouji.or.jp/",
    "hours": [
     "月曜日: 8時30分～17時00分",
     "火曜日: 8時30分～17時00分",
@@ -2686,7 +2684,7 @@
    ],
    "place_id": "ChIJzVoChH3MBmARIHPBABiiSLs",
    "address": "日本、〒634-0111 奈良県高市郡明日香村岡",
-   "url": "https://asukamura.com/sightseeing/517/",
+   "url": "https://asukamura.com/sightseeing/asuka-kyu-ato/",
    "hours": [
     "月曜日: 24 時間営業",
     "火曜日: 24 時間営業",
@@ -2833,7 +2831,7 @@
    ],
    "place_id": "ChIJ7T6E49vMBmARYL6yhpT6Gqc",
    "address": "日本、〒634-0063 奈良県橿原市久米町",
-   "url": "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=C1P9&merchantid=seo-maps-Japan-C1P9&sourceid=aw-cen&utm_medium=seo%20maps&utm_source=google%20Maps&utm_campaign=seo%20maps"
+   "url": "https://all.accor.com/hotel/C1P9/index.en.shtml"
   },
   {
    "slug": "nouson-resutoran-yume-shi-chaya",
@@ -2852,7 +2850,7 @@
    ],
    "place_id": "ChIJZ9pkv3nMBmARQGtEJdjAy2s",
    "address": "日本、〒634-0112 奈良県高市郡明日香村島庄１５４−３ １５４−３",
-   "url": "http://asukadeasobo.jp/shop/yumeichi",
+   "url": "https://www.asukadeasobo.jp/visit/yumeichi/",
    "hours": [
     "月曜日: 11時00分～16時00分",
     "火曜日: 11時00分～16時00分",
@@ -2879,8 +2877,7 @@
     }
    ],
    "place_id": "ChIJefcu2XvMBmAR-qybkEKidec",
-   "address": "日本、〒634-0112 奈良県高市郡明日香村島庄４２−１",
-   "url": "http://mariglass.net/"
+   "address": "日本、〒634-0112 奈良県高市郡明日香村島庄４２−１"
   },
   {
    "slug": "tachibana-tera",
@@ -2899,7 +2896,6 @@
    ],
    "place_id": "ChIJcbwv3WLMBmARpQEv5ZD-tT4",
    "address": "日本、〒634-0142 奈良県高市郡明日香村橘５３２",
-   "url": "https://tachibanadera-asuka.jimdo.com/",
    "hours": [
     "月曜日: 9時00分～17時00分",
     "火曜日: 9時00分～17時00分",
@@ -2927,7 +2923,6 @@
    ],
    "place_id": "ChIJY9eKD33MBmARBjLntwUOnOw",
    "address": "日本、〒634-0111 奈良県高市郡明日香村岡５５−４",
-   "url": "https://coffee3po.exblog.jp/",
    "hours": [
     "月曜日: 11時00分～16時00分",
     "火曜日: 11時00分～16時00分",
@@ -2955,7 +2950,7 @@
    ],
    "place_id": "ChIJT4sJsoXMBmARr7fKdNjtky8",
    "address": "日本、〒634-0103 奈良県高市郡明日香村飛鳥６９４",
-   "url": "https://instagram.com/asuka_mimoza_zakka",
+   "url": "https://www.instagram.com/asuka_mimoza_zakka",
    "hours": [
     "月曜日: 定休日",
     "火曜日: 定休日",
@@ -3196,7 +3191,7 @@
    ],
    "place_id": "ChIJHWX5ZUHABmAR6o87i9GON1M",
    "address": "日本、〒638-0431 奈良県吉野郡天川村洞川６７５−５６",
-   "url": "https://twitter.com/dorogawakawauo?s=21"
+   "url": "https://x.com/dorogawakawauo"
   },
   {
    "slug": "amakawa-sonritsu-shiryoukan",
@@ -3368,7 +3363,7 @@
    ],
    "place_id": "ChIJxbdRieu-BmAR7KJwfXziPsM",
    "address": "日本、〒639-3553 奈良県吉野郡川上村宮の平（迫１３７４−１",
-   "url": "http://www.genryuu.or.jp/",
+   "url": "https://genryuu.or.jp/main/",
    "hours": [
     "月曜日: 9時00分～17時00分",
     "火曜日: 9時00分～17時00分",
@@ -3396,7 +3391,7 @@
    ],
    "place_id": "ChIJsRhTu_3HBmARmeY0a0Kxtfg",
    "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山７９",
-   "url": "http://www.yokb315.co.jp/ropeway.php"
+   "url": "https://www.yokb315.co.jp/ropeway.php"
   },
   {
    "slug": "hanami-tei",
@@ -3545,7 +3540,7 @@
    ],
    "place_id": "ChIJD4HKQjbGBmARSBQj1oHbnoI",
    "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山５４５",
-   "url": "http://nakasyun.com/",
+   "url": "https://nakasyun.com/",
    "hours": [
     "月曜日: 10時00分～17時00分",
     "火曜日: 10時00分～17時00分",
@@ -3592,7 +3587,7 @@
    ],
    "place_id": "ChIJu_8SBSTGBmARCzeaXIwRWSA",
    "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山５６１−１",
-   "url": "http://www.yoshinokuzu.co.jp/",
+   "url": "https://www.yoshinokuzu.co.jp/",
    "hours": [
     "月曜日: 11時00分～16時00分",
     "火曜日: 11時00分～16時00分",
@@ -3620,7 +3615,7 @@
    ],
    "place_id": "ChIJIdHM7zXGBmAR3WCOlfVrS-o",
    "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山５７９",
-   "url": "http://www.yoshimizu-shrine.com/",
+   "url": "https://www.yoshimizu-shrine.com/",
    "hours": [
     "月曜日: 9時00分～16時30分",
     "火曜日: 9時00分～16時30分",
@@ -3732,7 +3727,7 @@
    ],
    "place_id": "ChIJcb4qDjbGBmAR_H1lvMzWK5U",
    "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山５５１",
-   "url": "http://www.yoshinoyama-tofu.jp/",
+   "url": "https://yoshinoyama-tofu.jp/",
    "hours": [
     "月曜日: 9時30分～17時00分",
     "火曜日: 定休日",

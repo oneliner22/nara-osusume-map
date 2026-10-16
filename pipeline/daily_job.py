@@ -53,7 +53,8 @@ AREA_PALETTE = ["#5c8f3f", "#c2543f", "#3f6fa8", "#a8623f", "#6f3fa8", "#3fa89b"
 client = genai.Client(
     vertexai=True, project=os.environ.get("GCP_PROJECT"),
     location=os.environ.get("VERTEX_LOCATION", "global"),
-    http_options=genai.types.HttpOptions(retry_options=genai.types.HttpRetryOptions(
+    # timeout (ms): 応答が返らず無期限に固まることがある (2026-10 奈良版バックフィルで発生) ので打ち切って再試行させる
+    http_options=genai.types.HttpOptions(timeout=180_000, retry_options=genai.types.HttpRetryOptions(
         attempts=8, initial_delay=2, max_delay=60, exp_base=2, jitter=1,
         http_status_codes=[429, 500, 502, 503, 504])))
 # モデルIDの正本は pipeline/models.json (版上げはそこだけ書き換えてイメージを再ビルド)
@@ -133,6 +134,21 @@ def log(*a):
     print(*(redact(x) for x in a), flush=True)
 
 
+def _generate_with_transport_retry(model, contents, config, attempts=3):
+    """SDK のリトライは HTTP ステータスのみが対象で、接続断 (RemoteProtocolError 等) や
+    タイムアウトでは即例外になる (2026-10 奈良版バックフィルがこれで落ちた)。数回だけ再試行する。"""
+    import time
+    import httpx
+    for i in range(attempts):
+        try:
+            return client.models.generate_content(model=model, contents=contents, config=config)
+        except httpx.TransportError as e:
+            if i == attempts - 1:
+                raise
+            log(f"WARN: Gemini 通信エラー {type(e).__name__} -> 再試行 {i + 1}/{attempts - 1}")
+            time.sleep(5 * (i + 1))
+
+
 def gen_json(model, schema, parts):
     """構造化出力つき Gemini 呼び出し。parts は str / (bytes, mime) の混在リスト。"""
     contents = []
@@ -145,7 +161,7 @@ def gen_json(model, schema, parts):
               "temperature": 0}
     with _gemini_slots:
         try:
-            res = client.models.generate_content(model=model, contents=contents, config=config)
+            res = _generate_with_transport_retry(model, contents, config)
         except genai.errors.ClientError as e:
             if e.code != 429 or model != MODEL_JUDGE or not MODEL_JUDGE_FALLBACK:
                 raise
@@ -185,7 +201,59 @@ def official_url(place):
         return None   # javascript: 等のスキームは href に入れない
     if any(host == d or host.endswith("." + d) for d in URL_BLOCKED_DOMAINS):
         return None
-    return u
+    if u not in _URL_SAFE_CACHE:
+        _URL_SAFE_CACHE[u] = safe_url(u)
+    return _URL_SAFE_CACHE[u]
+
+
+_URL_SAFE_CACHE = {}
+# フィッシング・失効ドメインの再取得 (パーキング/ギャンブル/売却) でよく出る語。title だけを見る
+# (本文は通販サイトの「お支払い」「クレジットカード」等で誤検知が多い)
+_URL_BAD_TITLE = re.compile(
+    r"casino|カジノ|slot|スロット|bitcoin|crypto|仮想通貨|出会い|アダルト|porn|"
+    r"for sale|domain|ドメイン|parked|ログイン|login|sign in|verify|認証", re.I)
+_SLD2 = ("co.jp", "or.jp", "ne.jp", "ac.jp", "go.jp", "lg.jp", "gr.jp", "ed.jp", "ad.jp")
+
+
+def _site(host):
+    """登録ドメイン相当 (www.kohfukuji.com → kohfukuji.com / www.pref.nara.lg.jp → nara.lg.jp)。"""
+    labels = host.lower().split(".")
+    n = 3 if ".".join(labels[-2:]) in _SLD2 else 2
+    return ".".join(labels[-n:])
+
+
+def safe_url(u):
+    """公式サイトURLとして載せてよいか実際に取得して確かめ、載せてよい最終URLを返す (ダメなら None)。
+    - 取得できない / 4xx・5xx → None (失効ドメインは第三者に再取得されフィッシングに転用され得る)
+    - 別サイト (登録ドメイン違い) へリダイレクト → None (SNS の twitter→x は許容)
+    - パスワード入力欄・パーキング/ギャンブル系 title → None
+    TLS 検証失敗も None (中間証明書不足の正規サイトも落ちるが、安全側に倒す)"""
+    from urllib.parse import urlparse
+    sns = ("twitter.com", "x.com", "instagram.com", "facebook.com")
+    try:
+        r = requests.get(u, timeout=15, allow_redirects=True,
+                         headers={"User-Agent": "Mozilla/5.0 (compatible; spots-map-linkcheck)"})
+    except Exception as e:
+        log("url drop (取得失敗):", u, type(e).__name__)
+        return None
+    final = r.url
+    h0, h1 = urlparse(u).hostname or "", urlparse(final).hostname or ""
+    if r.status_code >= 400:
+        log("url drop (HTTP", r.status_code, "):", u)
+        return None
+    if _site(h0) != _site(h1) and not (_site(h0) in sns and _site(h1) in sns):
+        log("url drop (別サイトへリダイレクト):", u, "->", final)
+        return None
+    html = r.text[:300000] if "html" in r.headers.get("content-type", "") else ""
+    m = re.search(r"<title[^>]*>(.*?)</title>", html, re.S | re.I)
+    title = m.group(1) if m else ""
+    if _URL_BAD_TITLE.search(title) and _site(h1) not in sns:
+        log("url drop (不審なtitle):", u, title[:80])
+        return None
+    if re.search(r"<input[^>]+type=[\"']?password", html, re.I) and _site(h1) not in sns:
+        log("url drop (パスワード入力欄):", u)
+        return None
+    return re.sub(r"[?&]utm_[^&#]*", "", final).rstrip("?&")
 
 
 def clean_area_name(name):
@@ -252,6 +320,41 @@ def _ingest(mcp, args):
     return dataset
 
 
+SQL_PAGE = 100  # run_sql は出力の文字数上限があり、本文の長い投稿が多い区画を一括で引くと
+                # JSON ではなく切り詰めた文字列が返る (2026-10 奈良版バックフィルで発生) ためページングする
+
+
+def _dataset_rows(mcp, dataset, ref_cond):
+    rows_all, offset, page = [], 0, SQL_PAGE
+    while True:
+        # media_urls は ingest 時期によって NULL の区画があるため、同一IDの別区画から補完する
+        rows = mcp.call("run_sql", {"max_rows": page, "query":
+            "SELECT t.id, t.created_at, t.conversation_id, t.author_id, t.author_name, t.author_followers, "
+            "t.text, COALESCE(t.media_urls, mm.mu) media_urls, t.like_count, t.reply_count "
+            "FROM tweets t LEFT JOIN (SELECT id, arg_max(media_urls, ingested_at) mu "
+            "FROM tweets WHERE media_urls IS NOT NULL GROUP BY id) mm ON mm.id = t.id "
+            f"WHERE t.dataset='{dataset}' {ref_cond}"
+            f"ORDER BY t.created_at DESC, t.id LIMIT {page} OFFSET {offset}"})
+        if isinstance(rows, str):
+            try:
+                rows = json.loads(rows)
+            except ValueError:
+                rows = None
+        if not isinstance(rows, (dict, list)) or (isinstance(rows, dict) and rows.get("error")):
+            if page > 10:   # 出力上限に当たったとみなしてページを細かくして引き直す
+                page //= 2
+                continue
+            raise RuntimeError(f"run_sql の結果を解釈できない ({dataset} offset {offset}): {str(rows)[:200]}")
+        got = rows.get("rows", []) if isinstance(rows, dict) else rows
+        if got and isinstance(got[0], list):  # 列配列形式への保険
+            cols = rows.get("columns", [])
+            got = [dict(zip(cols, r)) for r in got]
+        rows_all += got
+        if len(got) < page:
+            return rows_all
+        offset += page
+
+
 def fetch_posts(mcp, ledger, query, max_posts=200, include_refs=False, since=None):
     """query を ingest し、台帳未処理の投稿を返す。include_refs=True で reply/引用も含む。
 
@@ -288,19 +391,7 @@ def fetch_posts(mcp, ledger, query, max_posts=200, include_refs=False, since=Non
     ref_cond = "" if include_refs else "AND t.ref_type IS NULL "
     posts, seen = [], set()
     for dataset in datasets:
-        # media_urls は ingest 時期によって NULL の区画があるため、同一IDの別区画から補完する
-        rows = mcp.call("run_sql", {"max_rows": 500, "query":
-            "SELECT t.id, t.created_at, t.conversation_id, t.author_id, t.author_name, t.author_followers, "
-            "t.text, COALESCE(t.media_urls, mm.mu) media_urls, t.like_count, t.reply_count "
-            "FROM tweets t LEFT JOIN (SELECT id, arg_max(media_urls, ingested_at) mu "
-            "FROM tweets WHERE media_urls IS NOT NULL GROUP BY id) mm ON mm.id = t.id "
-            f"WHERE t.dataset='{dataset}' {ref_cond}"
-            "ORDER BY t.created_at DESC"})
-        got = rows.get("rows", rows) if isinstance(rows, dict) else rows
-        if got and isinstance(got[0], list):  # 列配列形式への保険
-            cols = rows.get("columns", [])
-            got = [dict(zip(cols, r)) for r in got]
-        for p in got or []:
+        for p in _dataset_rows(mcp, dataset, ref_cond):
             if str(p["id"]) not in seen:
                 seen.add(str(p["id"]))
                 posts.append(p)
@@ -329,16 +420,35 @@ def watch_official(mcp, ledger, rh):
     q = " OR ".join(f"from:{a}" for a in accounts)
     posts = fetch_posts(mcp, ledger, f"({q})" if len(accounts) > 1 else q,
                         max_posts=50, include_refs=True)
-    for p in posts:
-        j = gen_json(MODEL_EXTRACT, ASK_SCHEMA, [
+    done = [0]
+
+    def judge(p):
+        try:
+            return _judge(p)
+        except Exception as e:   # 1件の失敗でジョブを落とさない (シードではない扱い)
+            log("official judge skip:", p.get("id"), repr(e))
+            return {}
+        finally:
+            done[0] += 1
+            if done[0] % 50 == 0:
+                log(f"official judged {done[0]}/{len(posts)}")
+
+    def _judge(p):
+        return gen_json(MODEL_EXTRACT, ASK_SCHEMA, [
             "以下はぽこピー(ぽんぽこ・ピーナッツくん)公式アカウントのX投稿です。"
             "奈良公演「ぽこピーの回覧板」(2026年12月27日・なら100年会館)に関連して、ファンにおすすめスポット・グルメ等の"
             "情報提供を呼びかけたり質問したりする投稿(そのreplyや引用RTにおすすめ情報が"
             "集まりそうな投稿)かを判定してください。\n"
             f"投稿: {p.get('text', '')}"])
+
+    # バックフィルでは公式の半年分 (数百件) を判定するため並列化 (Gemini 同時数は gen_json 側で制限)
+    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+        verdicts = list(pool.map(judge, posts))
+    for p, j in zip(posts, verdicts):
         if j.get("is_seed"):
             add_seed(ledger, str(p["id"]), "official_ask", p.get("author_name", ""),
                      str(p.get("created_at", ""))[:10] or TODAY, rh.get("seed_ttl_days", 35))
+    log(f"official posts judged: {len(posts)}")
     return posts
 
 
