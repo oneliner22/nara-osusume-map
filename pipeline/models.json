@@ -1,0 +1,6 @@
+{
+  "extract": "gemini-3.8-flash",
+  "judge": "gemini-3.8-flash",
+  "judge_fallback": "gemini-3.8-flash",
+  "note": "Gemini モデルIDの正本はここだけ。daily_job / pending_resolver / backfill_places / tools/polish_yt_spots が読む。環境変数 MODEL_EXTRACT / MODEL_JUDGE / MODEL_JUDGE_FALLBACK で上書き可。変更後は deploy.sh でイメージを再ビルドすること"
+}

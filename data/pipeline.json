@@ -1,0 +1,57 @@
+{
+  "gcp_project": {
+    "display_name": "salmon-chan",
+    "project_id": "central-bulwark-427114-j7"
+  },
+  "cloud_run": {
+    "region": "asia-northeast1",
+    "job": "nara-spots-daily",
+    "schedule": "毎朝7:13 JST (Cloud Scheduler: nara-spots-daily-trigger)"
+  },
+  "event": {
+    "name": "ぽこぴーの回覧板 in 奈良",
+    "date": "2026-12-27",
+    "venue": "なら100年会館 大ホール"
+  },
+  "until": "2026-12-27",
+  "until_note": "更新終了日。これを過ぎると日次ジョブ・pending整理ジョブは何もせず終了する (FORCE_RUN=1 で無視)。終了後は Cloud Scheduler の nara-spots-*-trigger を削除してよい",
+  "x_query": "回覧板 (奈良 OR 奈良公園 OR ならまち OR 奈良駅 OR 橿原 OR 吉野 OR 明日香 OR 天理 OR 生駒) -is:retweet",
+  "url_blocked_domains": [
+    "japoncompany.business",
+    "hitosara.com"
+  ],
+  "url_blocked_domains_note": "Places の websiteUri がこのドメイン (サブドメイン含む) なら公式サイトとみなさず spot.url を付けない (第三者のディレクトリ系サイト)",
+  "xdev_dataset": "pocopea-nara",
+  "schedule": "daily",
+  "models": {
+    "note": "モデルIDは pipeline/models.json が正本 (ここには持たない)"
+  },
+  "bbox": {
+    "lat_min": 33.75,
+    "lat_max": 34.88,
+    "lng_min": 135.5,
+    "lng_max": 136.35,
+    "note": "奈良県 + 約10kmマージン (大阪市中心部・京都市は含まない)。県外分は spot に out_of_pref: true を付与"
+  },
+  "gates": {
+    "places_match_required": true,
+    "business_status_required": "OPERATIONAL",
+    "author_bot_check": "2段構え: 投稿単体+著者メタで判定し、曖昧な場合のみ from: 検索で直近ポストを確認。判定は ledger.authors にキャッシュ",
+    "daily_new_spot_cap": 300,
+    "cap_behavior": "超過日は入稿を全停止し GitHub Issue を起票（部分反映しない）"
+  },
+  "geocode_fallback": "Nominatim (Places で引けない場合のみ。approx: true を付与)",
+  "self_continuation": {
+    "max_roots_per_run": 15,
+    "max_rounds": 3,
+    "note": "二段階目: 一段階目で適格(候補あり・著者fan)となった投稿について、本人の続き投稿(リプ・自己引用RT)を同run内で収穫し通常の分類・判定に合流させる。本人リプは conversation_id 検索で一括、引用の引用は続き投稿を新起点に最大 max_rounds 回反復。日をまたぐ監視はしない"
+  },
+  "reply_harvest": {
+    "official_accounts": [
+      "ponpokoka"
+    ],
+    "seed_ttl_days": 35,
+    "max_active_seeds": 25,
+    "note": "公式の「おすすめ教えて」投稿のみをシードとして、conversation_id/url 検索で reply・引用RTを収穫し通常パイプラインに合流させる"
+  }
+}

@@ -1,0 +1,3765 @@
+{
+ "areas": [
+  {
+   "id": "park",
+   "name": "奈良公園・東大寺・春日大社",
+   "color": "#c2543f"
+  },
+  {
+   "id": "naramachi",
+   "name": "ならまち・猿沢池",
+   "color": "#e0489a"
+  },
+  {
+   "id": "city",
+   "name": "奈良駅周辺・きたまち",
+   "color": "#e8913f"
+  },
+  {
+   "id": "west",
+   "name": "西ノ京・斑鳩・生駒",
+   "color": "#3f7fd6"
+  },
+  {
+   "id": "east",
+   "name": "天理・桜井・宇陀・柳生",
+   "color": "#2f9e7d"
+  },
+  {
+   "id": "asuka",
+   "name": "明日香・橿原・葛城",
+   "color": "#b07d2a"
+  },
+  {
+   "id": "yoshino",
+   "name": "吉野・奈良南部",
+   "color": "#7b5cd6"
+  },
+  {
+   "id": "other",
+   "name": "県外（大阪・京都・三重寄り）",
+   "color": "#8a7350"
+  }
+ ],
+ "spots": [
+  {
+   "slug": "nara-100nen-kaikan",
+   "name": "なら100年会館（回覧板 in 奈良 会場）",
+   "area": "city",
+   "cat": "会場",
+   "lat": 34.68057,
+   "lng": 135.81683,
+   "approx": false,
+   "desc": "「ぽこぴーの回覧板」奈良公演の会場（2026年12月27日・大ホール、18:00開演）。JR奈良駅西口のすぐ隣にあり、近鉄奈良駅からも徒歩圏。",
+   "address": "奈良県奈良市三条宮前町７−１",
+   "url": "http://www.nara100.com/",
+   "place_id": "ChIJi0CpvTE6AWARLNktIchDaT0",
+   "sources": [
+    {
+     "type": "x",
+     "url": "https://x.com/ponpokoka/status/2031704199483019571",
+     "author": "ponpokoka",
+     "date": "2026-03-11",
+     "quote": "回覧板2026 追加開催決定‼️ 今年はこの5か所だっ！！！ 4月福島！！ 6月大分！！ 8月石川！！ 10月愛媛！！ 12月奈良！！"
+    }
+   ]
+  },
+  {
+   "slug": "nara-kouen",
+   "name": "奈良公園",
+   "area": "park",
+   "cat": "自然",
+   "lat": 34.68505,
+   "lng": 135.84301,
+   "approx": false,
+   "desc": "国の天然記念物である野生の鹿が多く生息する広大な公園。複数の動画で鹿せんべいを購入しての餌やり体験や、鹿との触れ合い・撮影を楽しむ様子が紹介されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    },
+    {
+     "type": "youtube",
+     "id": "G5e1LqoiZjc"
+    },
+    {
+     "type": "youtube",
+     "id": "03KMuAV4ZJM"
+    },
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    },
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    },
+    {
+     "type": "youtube",
+     "id": "PLKr7oD-Td8"
+    }
+   ],
+   "mark": true,
+   "place_id": "ChIJYWCMvZY5AWARVnREV_OsbPk",
+   "address": "日本、奈良県奈良市",
+   "url": "https://www3.pref.nara.jp/park/",
+   "hours": [
+    "月曜日: 24 時間営業",
+    "火曜日: 24 時間営業",
+    "水曜日: 24 時間営業",
+    "木曜日: 24 時間営業",
+    "金曜日: 24 時間営業",
+    "土曜日: 24 時間営業",
+    "日曜日: 24 時間営業"
+   ]
+  },
+  {
+   "slug": "toudaiji",
+   "name": "東大寺",
+   "area": "park",
+   "cat": "観光",
+   "lat": 34.68899,
+   "lng": 135.83982,
+   "approx": false,
+   "desc": "世界最大級の木造建築である大仏殿や「奈良の大仏」として名高い盧舎那仏で知られる世界遺産。南大門の金剛力士像や柱くぐり体験など、圧倒的なスケールが見どころとして推されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "G5e1LqoiZjc"
+    },
+    {
+     "type": "youtube",
+     "id": "03KMuAV4ZJM"
+    },
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    },
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    },
+    {
+     "type": "youtube",
+     "id": "6Ibb5Bzq_8I"
+    }
+   ],
+   "place_id": "ChIJ3XYIepA5AWARjzzVnT-skPg",
+   "address": "日本、〒630-8587 奈良県奈良市雑司町４０６−１",
+   "url": "https://www.todaiji.or.jp/",
+   "hours": [
+    "月曜日: 7時30分～17時30分",
+    "火曜日: 7時30分～17時30分",
+    "水曜日: 7時30分～17時30分",
+    "木曜日: 7時30分～17時30分",
+    "金曜日: 7時30分～17時30分",
+    "土曜日: 7時30分～17時30分",
+    "日曜日: 7時30分～17時30分"
+   ]
+  },
+  {
+   "slug": "tou-no-chaya",
+   "name": "塔の茶屋",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.67698,
+   "lng": 135.82769,
+   "approx": false,
+   "desc": "興福寺五重塔の近くにある、奈良の伝統的な郷土料理「茶がゆ」が味わえる老舗茶店。緑茶の風味が爽やかな茶がゆ弁当や、とろけるわらび餅が人気を集める。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "G5e1LqoiZjc"
+    },
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJp4kbpiA6AWARXrBNtGk5NQ4",
+   "address": "日本、〒630-8341 奈良県奈良市南城戸町１８",
+   "hours": [
+    "月曜日: 11時30分～15時00分",
+    "火曜日: 定休日",
+    "水曜日: 11時30分～15時00分",
+    "木曜日: 11時30分～15時00分",
+    "金曜日: 11時30分～15時00分",
+    "土曜日: 11時30分～15時00分",
+    "日曜日: 11時30分～15時00分"
+   ]
+  },
+  {
+   "slug": "koufukuji",
+   "name": "興福寺",
+   "area": "park",
+   "cat": "観光",
+   "lat": 34.68323,
+   "lng": 135.83116,
+   "approx": false,
+   "desc": "五重塔や再建された中金堂が立ち並ぶ世界遺産の法相宗大本山。国宝館に安置されている美しい阿修羅像をはじめとする、国宝仏像の数々が高く評価されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "G5e1LqoiZjc"
+    },
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    },
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    },
+    {
+     "type": "youtube",
+     "id": "6Ibb5Bzq_8I"
+    }
+   ],
+   "place_id": "ChIJs-w9sog5AWARk0WDN0cPgxE",
+   "address": "日本、〒630-8213 奈良県奈良市登大路町４８",
+   "url": "http://www.kohfukuji.com/",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "sarusawa-ike",
+   "name": "猿沢池",
+   "area": "naramachi",
+   "cat": "自然",
+   "lat": 34.68129,
+   "lng": 135.83079,
+   "approx": false,
+   "desc": "興福寺の五重塔を水面に映す風光明媚な池。定番のフォトスポットであるとともに、ほとりのベンチでテイクアウトドリンクを飲みながらのんびり過ごす憩いの場として親しまれている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "03KMuAV4ZJM"
+    },
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJs1cUZII5AWAR1tQY7zIobrg",
+   "address": "日本、〒630-8213 奈良県奈良市元林院町１４",
+   "url": "https://narashikanko.or.jp/spot/nature/sarusawaike/",
+   "hours": [
+    "月曜日: 24 時間営業",
+    "火曜日: 24 時間営業",
+    "水曜日: 24 時間営業",
+    "木曜日: 24 時間営業",
+    "金曜日: 24 時間営業",
+    "土曜日: 24 時間営業",
+    "日曜日: 24 時間営業"
+   ]
+  },
+  {
+   "slug": "wakakusa-yama",
+   "name": "若草山",
+   "area": "park",
+   "cat": "自然",
+   "lat": 34.69001,
+   "lng": 135.85389,
+   "approx": false,
+   "desc": "芝生に覆われたなだらかな山で、山頂や中腹から奈良の街並みを一望できる絶景スポット。夕日を眺めながら人懐っこい鹿たちと触れ合えるチルな時間が魅力。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "03KMuAV4ZJM"
+    },
+    {
+     "type": "youtube",
+     "id": "1I_e0HsNK-o"
+    }
+   ],
+   "place_id": "ChIJjVRjzbs5AWAR8QYRWah8aB8",
+   "address": "日本、〒630-8211 奈良県奈良市雑司町",
+   "url": "http://www3.pref.nara.jp/park/item/2585.htm",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "teppanyaki-wa-nagomi",
+   "name": "鉄板焼 和-Nagomi-",
+   "area": "park",
+   "cat": "グルメ",
+   "lat": 34.68368,
+   "lng": 135.83922,
+   "approx": false,
+   "desc": "神戸牛や山形牛のステーキを提供する鉄板焼き店。奈良の地酒やゆず酒とともに、極上の肉寿司やシャトーブリアン、フィレステーキを堪能できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "03KMuAV4ZJM"
+    }
+   ],
+   "place_id": "ChIJkauut-U5AWARrZWHfvRbL0g",
+   "address": "日本、〒630-8212 奈良県奈良市春日野町１６ 内 夢風ひろば",
+   "url": "https://arc-grp.jp/en/dining/nagomi-en/",
+   "hours": [
+    "月曜日: 11時30分～19時00分",
+    "火曜日: 11時30分～19時00分",
+    "水曜日: 11時30分～19時00分",
+    "木曜日: 11時30分～19時00分",
+    "金曜日: 11時30分～19時00分",
+    "土曜日: 11時00分～19時00分",
+    "日曜日: 11時00分～19時00分"
+   ]
+  },
+  {
+   "slug": "uemura-bokujou",
+   "name": "植村牧場",
+   "area": "city",
+   "cat": "観光",
+   "lat": 34.69986,
+   "lng": 135.83542,
+   "approx": false,
+   "desc": "奈良監獄ミュージアム近くにある歴史ある牧場。可愛い牛たちを間近で見学でき、搾りたての新鮮な牛乳で作る濃厚なソフトクリームが味わえる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "1I_e0HsNK-o"
+    }
+   ],
+   "place_id": "ChIJ5zapS3o5AWARmeNa3CslL-g",
+   "address": "日本、〒630-8102 奈良県奈良市般若寺町１６８",
+   "url": "https://www.uemura-bokujyo.co.jp/",
+   "hours": [
+    "月曜日: 11時00分～15時00分",
+    "火曜日: 11時00分～15時00分",
+    "水曜日: 定休日",
+    "木曜日: 11時00分～15時00分",
+    "金曜日: 11時00分～15時00分",
+    "土曜日: 11時00分～15時00分",
+    "日曜日: 11時00分～15時00分"
+   ]
+  },
+  {
+   "slug": "jun-kissa-jinroku",
+   "name": "純喫茶ジンロク",
+   "area": "park",
+   "cat": "カフェ・喫茶",
+   "lat": 34.69866,
+   "lng": 135.83712,
+   "approx": false,
+   "desc": "レトロな佇まいと新しさが共存する純喫茶。人気の「OSHIMA DONUTS」のふわふわドーナツや濃厚な抹茶ラテ、カフェラテなどが楽しめる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "1I_e0HsNK-o"
+    }
+   ],
+   "place_id": "ChIJOQG1UQA5AWARsnzB-F5CTUU",
+   "address": "日本、〒630-8102 奈良県奈良市般若寺町２３９−１７",
+   "url": "https://shinroku-cafe.com/",
+   "hours": [
+    "月曜日: 11時00分～17時00分",
+    "火曜日: 11時00分～17時00分",
+    "水曜日: 11時00分～17時00分",
+    "木曜日: 11時00分～17時00分",
+    "金曜日: 11時00分～17時00分",
+    "土曜日: 11時00分～17時00分",
+    "日曜日: 11時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "mirokuterasu",
+   "name": "ミロクテラス",
+   "area": "naramachi",
+   "cat": "カフェ・喫茶",
+   "lat": 34.68072,
+   "lng": 135.83317,
+   "approx": false,
+   "desc": "奈良公園の南端に位置するホテル併設のカフェ＆バー。テラス席から自然を望みながら、大和茶を使ったバスクチーズケーキやオレを楽しめる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJOWdn7yQ5AWARpX-ZOuq8NbE",
+   "address": "日本、〒630-8301 奈良県奈良市高畑町１１１６−６",
+   "url": "https://www.thesharehotels.com/miroku/",
+   "hours": [
+    "月曜日: 11時00分～17時00分, 19時00分～22時00分",
+    "火曜日: 11時00分～17時00分, 19時00分～22時00分",
+    "水曜日: 11時00分～17時00分, 19時00分～22時00分",
+    "木曜日: 11時00分～17時00分, 19時00分～22時00分",
+    "金曜日: 11時00分～17時00分, 19時00分～22時00分",
+    "土曜日: 11時00分～17時00分, 19時00分～22時00分",
+    "日曜日: 11時00分～17時00分, 19時00分～22時00分"
+   ]
+  },
+  {
+   "slug": "shourai",
+   "name": "松籟",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.6814,
+   "lng": 135.8307,
+   "approx": true,
+   "desc": "猿沢池のほとりにある隠れ家的な居酒屋。名物の飛鳥鍋をはじめ、牡蠣の奈良漬とクリームチーズなどお酒が進む絶品料理が揃っている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ]
+  },
+  {
+   "slug": "asaoka-miyage-tokoro",
+   "name": "あさおか土産処",
+   "area": "city",
+   "cat": "雑貨・土産",
+   "lat": 34.68218,
+   "lng": 135.82113,
+   "approx": false,
+   "desc": "大正13年創業の老舗お土産店。奈良の定番土産が豊富に揃い、県産小麦を使用した大判どら焼き「みかさ」などが購入できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJE0pl9C46AWARRu9v8ZK2zE0",
+   "address": "日本、〒630-8246 奈良県奈良市油阪地方町７",
+   "hours": [
+    "月曜日: 10時00分～20時30分",
+    "火曜日: 10時00分～20時30分",
+    "水曜日: 10時00分～20時30分",
+    "木曜日: 10時00分～20時30分",
+    "金曜日: 10時00分～20時30分",
+    "土曜日: 10時00分～20時30分",
+    "日曜日: 10時00分～20時30分"
+   ]
+  },
+  {
+   "slug": "shika-saru-kitsune-birujingu",
+   "name": "鹿猿狐ビルヂング",
+   "area": "naramachi",
+   "cat": "雑貨・土産",
+   "lat": 34.68122,
+   "lng": 135.82989,
+   "approx": false,
+   "desc": "中川政七商店が手がける複合商業施設。上質なショップやカフェ、レストランのほか、オリジナルガイドブック作りなどの体験も楽しめる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJeXv0e0U5AWARmTYzDaYu__g",
+   "address": "日本、〒630-8221 奈良県奈良市元林院町２２ 鹿猿狐ビルヂング",
+   "url": "https://www.nakagawa-masashichi.jp/shop/pages/shikasarukitsune.aspx",
+   "hours": [
+    "月曜日: 10時00分～19時00分",
+    "火曜日: 10時00分～19時00分",
+    "水曜日: 10時00分～19時00分",
+    "木曜日: 10時00分～19時00分",
+    "金曜日: 10時00分～19時00分",
+    "土曜日: 10時00分～19時00分",
+    "日曜日: 10時00分～19時00分"
+   ]
+  },
+  {
+   "slug": "toudaiji-nigatsu-dou",
+   "name": "東大寺 二月堂",
+   "area": "park",
+   "cat": "観光",
+   "lat": 34.68927,
+   "lng": 135.84424,
+   "approx": false,
+   "desc": "伝統行事「お水取り」で有名な東大寺のお堂。舞台から見渡す奈良市街の眺望が素晴らしく、特に夕暮れ時の絶景スポットとして紹介されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJ3XYIepA5AWAR-uzxmllSqgg",
+   "address": "日本、〒630-8211 奈良県奈良市雑司町４０６−１",
+   "url": "http://www.todaiji.or.jp/contents/guidance/guidance6.html",
+   "hours": [
+    "月曜日: 24 時間営業",
+    "火曜日: 24 時間営業",
+    "水曜日: 24 時間営業",
+    "木曜日: 24 時間営業",
+    "金曜日: 24 時間営業",
+    "土曜日: 24 時間営業",
+    "日曜日: 24 時間営業"
+   ]
+  },
+  {
+   "slug": "kasugataisha",
+   "name": "春日大社",
+   "area": "park",
+   "cat": "観光",
+   "lat": 34.68155,
+   "lng": 135.84847,
+   "approx": false,
+   "desc": "全国の春日神社の総本社である世界遺産。朱塗りの社殿と参道に並ぶ無数の灯篭が幻想的で、野生の鹿が佇む神聖な雰囲気が大きな魅力である。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    },
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    }
+   ],
+   "place_id": "ChIJ1Wqwa8A5AWARlpXjgoPnl0w",
+   "address": "日本、〒630-8212 奈良県奈良市春日野町１６０",
+   "url": "https://www.kasugataisha.or.jp/",
+   "hours": [
+    "月曜日: 7時00分～17時00分",
+    "火曜日: 7時00分～17時00分",
+    "水曜日: 7時00分～17時00分",
+    "木曜日: 7時00分～17時00分",
+    "金曜日: 7時00分～17時00分",
+    "土曜日: 7時00分～17時00分",
+    "日曜日: 7時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "fuufu-taikoku-sha",
+   "name": "夫婦大国社",
+   "area": "park",
+   "cat": "観光",
+   "lat": 34.67984,
+   "lng": 135.84913,
+   "approx": false,
+   "desc": "春日大社の境内にある、日本で唯一夫婦の大国様を祀る摂社。夫婦円満や良縁・縁結びのご利益があるパワースポットとして広く知られている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJ8aoIssE5AWARKKcTFb09QF4",
+   "address": "日本、〒630-8212 奈良県奈良市春日野町１６０",
+   "url": "http://www.kasugataisha.or.jp/guidance/wakamiya.html",
+   "hours": [
+    "月曜日: 6時00分～18時00分",
+    "火曜日: 6時00分～18時00分",
+    "水曜日: 6時00分～18時00分",
+    "木曜日: 6時00分～18時00分",
+    "金曜日: 6時00分～18時00分",
+    "土曜日: 6時00分～18時00分",
+    "日曜日: 6時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "fujinami-yuki-ya",
+   "name": "藤波之屋",
+   "area": "park",
+   "cat": "観光",
+   "lat": 34.68171,
+   "lng": 135.84832,
+   "approx": false,
+   "desc": "春日大社境内にある江戸時代の神職の詰所。暗室内に無数の灯籠が灯され、春日大社の伝統行事「万灯籠」の幽玄な世界観を通年体感できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJ1SwfUqc5AWARa2CWsEIQp9M",
+   "address": "日本、〒630-8212 奈良県奈良市春日野町１６０−７",
+   "url": "http://kasugataisha.or.jp/",
+   "hours": [
+    "月曜日: 7時00分～17時00分",
+    "火曜日: 7時00分～17時00分",
+    "水曜日: 7時00分～17時00分",
+    "木曜日: 7時00分～17時00分",
+    "金曜日: 7時00分～17時00分",
+    "土曜日: 7時00分～17時00分",
+    "日曜日: 7時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "shiga-naoya-kyuukyo",
+   "name": "志賀直哉旧居",
+   "area": "naramachi",
+   "cat": "観光",
+   "lat": 34.67803,
+   "lng": 135.84361,
+   "approx": false,
+   "desc": "文豪・志賀直哉が自ら設計に関わり暮らした邸宅。和洋折衷のモダンな建築美が特徴で、書斎や開放的なサンルームなどを見学することができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJtU9Coes5AWAR6A72OBxm1m4",
+   "address": "日本、〒630-8301 奈良県奈良市高畑町１２３７−２",
+   "url": "http://www.naragakuen.jp/sgnoy/",
+   "hours": [
+    "月曜日: 9時30分～16時30分",
+    "火曜日: 9時30分～16時30分",
+    "水曜日: 9時30分～16時30分",
+    "木曜日: 9時30分～16時30分",
+    "金曜日: 9時30分～16時30分",
+    "土曜日: 9時30分～16時30分",
+    "日曜日: 9時30分～16時30分"
+   ]
+  },
+  {
+   "slug": "isui-sono",
+   "name": "依水園",
+   "area": "park",
+   "cat": "自然",
+   "lat": 34.68604,
+   "lng": 135.83718,
+   "approx": false,
+   "desc": "国の名勝に指定されている池泉回遊式の日本庭園。江戸時代前期と明治時代という異なる時代に造られた、趣の違う2つの庭園の散策を楽しめる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    }
+   ],
+   "place_id": "ChIJc31a-Y85AWARo70kM5pXEVo",
+   "address": "日本、〒630-8208 奈良県奈良市水門町７４",
+   "url": "http://www.isuien.or.jp/",
+   "hours": [
+    "月曜日: 9時30分～16時00分",
+    "火曜日: 定休日",
+    "水曜日: 9時30分～16時00分",
+    "木曜日: 9時30分～16時00分",
+    "金曜日: 9時30分～16時00分",
+    "土曜日: 9時30分～16時00分",
+    "日曜日: 9時30分～16時00分"
+   ]
+  },
+  {
+   "slug": "nara-kokuritsu-hakubutsukan",
+   "name": "奈良国立博物館",
+   "area": "park",
+   "cat": "観光",
+   "lat": 34.68313,
+   "lng": 135.83831,
+   "approx": false,
+   "desc": "仏教美術のコレクションで国内随一の規模を誇る国立博物館。国宝や重要文化財をはじめとする優れた名品を鑑賞できる文化スポットとなっている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    }
+   ],
+   "place_id": "ChIJ0St27JE5AWAR7acBmY9MU4Y",
+   "address": "日本、〒630-8213 奈良県奈良市登大路町５０",
+   "url": "https://www.narahaku.go.jp/",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 9時30分～17時00分",
+    "水曜日: 9時30分～17時00分",
+    "木曜日: 9時30分～17時00分",
+    "金曜日: 9時30分～17時00分",
+    "土曜日: 9時30分～17時00分",
+    "日曜日: 9時30分～17時00分"
+   ]
+  },
+  {
+   "slug": "cherubo-bianko",
+   "name": "チェルボ ビアンコ",
+   "area": "naramachi",
+   "cat": "カフェ・喫茶",
+   "lat": 34.6773,
+   "lng": 135.82908,
+   "approx": false,
+   "desc": "ならまちに店を構えるピザとジェラートの専門店。奈良県産のレモンを使用した、さっぱりとした味わいのジェラートが好評を博している。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "X1acJiRiCxw"
+    }
+   ],
+   "place_id": "ChIJ6a7SXfU5AWARPoimJFJa2e8",
+   "address": "日本、〒630-8336 奈良県奈良市高御門町７",
+   "url": "https://www.cervobianco.net/",
+   "hours": [
+    "月曜日: 11時00分～16時30分",
+    "火曜日: 11時00分～16時30分",
+    "水曜日: 11時00分～16時30分",
+    "木曜日: 定休日",
+    "金曜日: 11時00分～16時30分",
+    "土曜日: 11時00分～16時30分",
+    "日曜日: 11時00分～16時30分"
+   ]
+  },
+  {
+   "slug": "nara-kougei-kan",
+   "name": "なら工藝館",
+   "area": "naramachi",
+   "cat": "観光",
+   "lat": 34.67873,
+   "lng": 135.82824,
+   "approx": false,
+   "desc": "奈良の伝統工芸品が展示されている施設。職人の技が光る作品を無料で見学できるほか、お土産選びにも便利なショップコーナーも併設されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    }
+   ],
+   "place_id": "ChIJrfoo4Yk5AWAREqFqq4QKBAU",
+   "address": "日本、〒630-8346 奈良県奈良市阿字万字町1番地の1−１−２ なら工藝館",
+   "url": "https://nara-kogeikan.city.nara.nara.jp/",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 10時00分～18時00分",
+    "水曜日: 10時00分～18時00分",
+    "木曜日: 10時00分～18時00分",
+    "金曜日: 10時00分～18時00分",
+    "土曜日: 10時00分～18時00分",
+    "日曜日: 10時00分～17時30分"
+   ]
+  },
+  {
+   "slug": "rojiura-noonigiri-ya-san-kazuo-ni-ho",
+   "name": "路地裏のおにぎり屋さん 一穂二穂",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.67864,
+   "lng": 135.82877,
+   "approx": false,
+   "desc": "路地裏に佇む隠れ家的なおにぎり専門店。注文を受けてから握られる種類豊富なおにぎりを、店内のイートインスペースでじっくり堪能できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    }
+   ],
+   "place_id": "ChIJzVwmDrs5AWARI6gNZ7uT63E",
+   "address": "日本、〒630-8365 奈良県奈良市下御門町４ eリュエル 1階",
+   "url": "https://www.instagram.com/IPPONIHO_ONIGIRI/",
+   "hours": [
+    "月曜日: 11時00分～17時00分",
+    "火曜日: 定休日",
+    "水曜日: 定休日",
+    "木曜日: 11時00分～17時00分",
+    "金曜日: 11時00分～17時00分",
+    "土曜日: 11時00分～17時00分",
+    "日曜日: 10時30分～17時00分"
+   ]
+  },
+  {
+   "slug": "yaki-imo-senmonten-ishin-kura",
+   "name": "焼き芋専門店 維新蔵",
+   "area": "naramachi",
+   "cat": "カフェ・喫茶",
+   "lat": 34.67866,
+   "lng": 135.82892,
+   "approx": false,
+   "desc": "100日間熟成させたさつまいもを使用する焼き芋専門店。素材の甘みを引き出した、しっとり甘い「丸ごとスイートポテト」などが人気を集める。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    }
+   ],
+   "place_id": "ChIJNxIgMV05AWARNszQses3kvA",
+   "address": "日本、〒630-8365 奈良県奈良市下御門町４ eリュエル 1F",
+   "url": "http://oimo.co.jp/",
+   "hours": [
+    "月曜日: 11時00分～18時00分",
+    "火曜日: 定休日",
+    "水曜日: 11時00分～18時00分",
+    "木曜日: 11時00分～18時00分",
+    "金曜日: 11時00分～18時00分",
+    "土曜日: 11時00分～18時00分",
+    "日曜日: 11時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "okanishi-seinikuten",
+   "name": "おかにし精肉店",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.67974,
+   "lng": 135.82907,
+   "approx": false,
+   "desc": "下御門商店街にある行列のできる人気店。お肉の旨味がぎっしり詰まった、揚げたてサクサクの食感が魅力のミンチカツが名物として推されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    }
+   ],
+   "place_id": "ChIJZSuVx4k5AWARFN9S960tVu0",
+   "address": "日本、〒630-8371 奈良県奈良市光明院町６",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 定休日",
+    "水曜日: 定休日",
+    "木曜日: 定休日",
+    "金曜日: 11時00分～17時00分",
+    "土曜日: 11時00分～17時00分",
+    "日曜日: 11時00分～16時00分"
+   ]
+  },
+  {
+   "slug": "narachou-nigiwaino-ie",
+   "name": "奈良町にぎわいの家",
+   "area": "naramachi",
+   "cat": "観光",
+   "lat": 34.67724,
+   "lng": 135.83039,
+   "approx": false,
+   "desc": "築100年の伝統的な町家を活用した文化施設。茶室や通り庭などの見学に加え、風情ある空間で気軽なお抹茶体験を楽しむこともできる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    },
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJczTSTIo5AWAR0JnR7tsoeLY",
+   "address": "日本、〒630-8333 奈良県奈良市中新屋町５",
+   "url": "http://naramachi-nigiwainoie.jp/",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 定休日",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "naramachifukin-yoshida-kaya",
+   "name": "ならまちふきん 吉田蚊帳",
+   "area": "naramachi",
+   "cat": "雑貨・土産",
+   "lat": 34.67708,
+   "lng": 135.83083,
+   "approx": false,
+   "desc": "奈良特産の蚊帳生地製品を扱う老舗。豊富なカラーバリエーションが揃う機能的な「ならまちふきん」など、お土産に最適な品を購入できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    }
+   ],
+   "place_id": "ChIJqfJAr4s5AWARq8HbSDhmip8",
+   "address": "日本、〒630-8384 奈良県奈良市芝新屋町１",
+   "url": "https://naramachi.com/",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 定休日",
+    "水曜日: 10時00分～18時00分",
+    "木曜日: 10時00分～18時00分",
+    "金曜日: 10時00分～18時00分",
+    "土曜日: 10時00分～18時00分",
+    "日曜日: 10時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "gangou-tera-tou-ato",
+   "name": "元興寺 塔跡",
+   "area": "naramachi",
+   "cat": "観光",
+   "lat": 34.67654,
+   "lng": 135.83161,
+   "approx": false,
+   "desc": "かつて五重塔が立っていた元興寺旧境内の史跡。ボランティアガイドによる案内が行われており、歴史ある場所の由緒を深く学ぶことができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    }
+   ],
+   "place_id": "ChIJ0cq9cos5AWAR4rsmNfYqyBg",
+   "address": "日本、〒630-8384 奈良県奈良市芝新屋町１２",
+   "url": "http://gango-ji.com//?utm_source=google&utm_medium=maps&utm_id=googlemybusiness",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 定休日",
+    "水曜日: 定休日",
+    "木曜日: 定休日",
+    "金曜日: 定休日",
+    "土曜日: 10時00分～17時00分",
+    "日曜日: 10時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "naramachi-koushi-no-ie",
+   "name": "ならまち 格子の家",
+   "area": "naramachi",
+   "cat": "レトロ",
+   "lat": 34.67501,
+   "lng": 135.83074,
+   "approx": false,
+   "desc": "ならまちの伝統的な町家構造を再現した無料見学施設。箱階段や美しい中庭など、限られた空間を有効活用する昔の生活の知恵を体感できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    },
+    {
+     "type": "youtube",
+     "id": "G5e1LqoiZjc"
+    },
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJazaMJYs5AWARFWZYGvf5im4",
+   "address": "日本、〒630-8332 奈良県奈良市元興寺町４４",
+   "url": "https://www.city.nara.lg.jp/site/shisetsu/6242.html",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "yoshino-kuzu-sakura",
+   "name": "吉野葛 佐久良",
+   "area": "naramachi",
+   "cat": "カフェ・喫茶",
+   "lat": 34.67761,
+   "lng": 135.82907,
+   "approx": false,
+   "desc": "築160年以上の町家を利用した甘味処。注文を受けてから作る透明感ある出来立ての葛きりや葛もちが、絶品の味わいとして評判を集めている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    }
+   ],
+   "place_id": "ChIJMdtXPYo5AWARDZlwJZj8wME",
+   "address": "日本、〒630-8336 奈良県奈良市高御門町２",
+   "url": "http://www.nizuka.com/yoshinokuzu.htm",
+   "hours": [
+    "月曜日: 10時00分～17時00分",
+    "火曜日: 10時00分～17時00分",
+    "水曜日: 定休日",
+    "木曜日: 定休日",
+    "金曜日: 10時00分～17時00分",
+    "土曜日: 10時00分～17時00分",
+    "日曜日: 10時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "guriru-talo",
+   "name": "グリルTALO",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.677,
+   "lng": 135.82937,
+   "approx": false,
+   "desc": "ならまちで親しまれる人気洋食店。国産100%ハンバーグに、季節の野菜スープや新鮮なサラダが付いたグリルセットが好評を博している。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "2mOaojXgZLI"
+    }
+   ],
+   "place_id": "ChIJMXtd_oI5AWARMHQl9vgKM0w",
+   "address": "日本、〒630-8336 奈良県奈良市高御門町１３",
+   "url": "https://www.instagram.com/grille_talo/",
+   "hours": [
+    "月曜日: 11時00分～14時30分, 17時00分～20時00分",
+    "火曜日: 11時00分～14時30分, 17時00分～20時00分",
+    "水曜日: 11時00分～14時30分, 17時00分～20時00分",
+    "木曜日: 定休日",
+    "金曜日: 11時00分～14時30分, 17時00分～20時00分",
+    "土曜日: 11時00分～14時30分, 17時00分～20時00分",
+    "日曜日: 11時00分～14時30分, 17時00分～20時00分"
+   ]
+  },
+  {
+   "slug": "men-ya-eguchi",
+   "name": "麺屋 えぐち",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.66854,
+   "lng": 135.83314,
+   "approx": false,
+   "desc": "大阪の名店出身の店主によるラーメン店。魚介の旨味がしっかり効いた、あっさり醤油スープの中華そばが多くの人気を集めている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "2mOaojXgZLI"
+    }
+   ],
+   "place_id": "ChIJr7A7JvDkAGARZnkkV_GUu6k",
+   "address": "日本、〒630-8303 奈良県奈良市南紀寺町１丁目２２３−１ 101",
+   "url": "https://www.instagram.com/menyaeguchi/",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 定休日",
+    "水曜日: 11時00分～16時00分",
+    "木曜日: 11時00分～16時00分",
+    "金曜日: 11時00分～16時00分",
+    "土曜日: 11時00分～16時00分",
+    "日曜日: 11時00分～16時00分"
+   ]
+  },
+  {
+   "slug": "kashi-sha",
+   "name": "樫舎",
+   "area": "naramachi",
+   "cat": "カフェ・喫茶",
+   "lat": 34.67856,
+   "lng": 135.83059,
+   "approx": false,
+   "desc": "ならまちにある名高い和菓子店。丹波大納言小豆を使った贅沢なおぜんざいや、季節の生菓子をお茶とともにじっくり堪能できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "G5e1LqoiZjc"
+    }
+   ],
+   "place_id": "ChIJ3XEO1Is5AWARG3c2rqzMWMA",
+   "address": "日本、〒630-8392 奈良県奈良市中院町２２−３",
+   "url": "http://www.kasiya.jp/wagasidukuri/index.html",
+   "hours": [
+    "月曜日: 9時00分～18時00分",
+    "火曜日: 9時00分～18時00分",
+    "水曜日: 9時00分～18時00分",
+    "木曜日: 9時00分～18時00分",
+    "金曜日: 9時00分～18時00分",
+    "土曜日: 9時00分～18時00分",
+    "日曜日: 9時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "hirasou-nara-mise",
+   "name": "平宗 奈良店",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.68011,
+   "lng": 135.83046,
+   "approx": false,
+   "desc": "奈良の郷土料理「柿の葉寿司」の老舗。サバやサケなどを柿の葉で包んだ伝統の押し寿司を、風情あふれる店内でゆっくりと味わえる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "G5e1LqoiZjc"
+    }
+   ],
+   "place_id": "ChIJ7_AZCok5AWARL0B1fjyE65I",
+   "address": "日本、〒630-8374 奈良県奈良市今御門町３０−１",
+   "url": "http://xb532169.xbiz.jp/hiraso/shop/shop-nara/",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 11時30分～20時00分",
+    "水曜日: 11時30分～20時00分",
+    "木曜日: 11時30分～20時00分",
+    "金曜日: 11時30分～20時00分",
+    "土曜日: 11時30分～20時00分",
+    "日曜日: 11時30分～20時00分"
+   ]
+  },
+  {
+   "slug": "fuku-den",
+   "name": "冨久傳",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.6771,
+   "lng": 135.83502,
+   "approx": false,
+   "desc": "築100年以上の町家を改装した落ち着きある和の名店。大和牛のしゃぶしゃぶをはじめとする、上質なランチコースの数々が楽しめる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJJUXz2Iw5AWARwwdxxi6ME58",
+   "address": "日本、〒630-8381 奈良県奈良市福智院町３１",
+   "url": "http://fukuden-nara.com/",
+   "hours": [
+    "月曜日: 12時00分～14時00分, 17時00分～22時00分",
+    "火曜日: 12時00分～14時00分, 17時00分～22時00分",
+    "水曜日: 12時00分～14時00分, 17時00分～22時00分",
+    "木曜日: 12時00分～14時00分, 17時00分～22時00分",
+    "金曜日: 12時00分～14時00分, 17時00分～22時00分",
+    "土曜日: 12時00分～14時00分, 17時00分～22時00分",
+    "日曜日: 12時00分～14時00分, 17時00分～22時00分"
+   ]
+  },
+  {
+   "slug": "jun-sai-hiyori",
+   "name": "旬彩 ひより",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.6782,
+   "lng": 135.83057,
+   "approx": false,
+   "desc": "奈良の旬食材を堪能できる和食店。大和野菜を使った彩り豊かな前菜や、鉄板で焼き上げる大和牛のステーキが評判を呼んでいる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJsz2VzYs5AWARB-tg31-wRDU",
+   "address": "日本、〒630-8333 奈良県奈良市中新屋町２６",
+   "url": "http://naramachi-hiyori.jp/",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 定休日",
+    "水曜日: 11時30分～14時30分, 17時30分～21時30分",
+    "木曜日: 11時30分～14時30分, 17時30分～21時30分",
+    "金曜日: 11時30分～14時30分, 17時30分～21時30分",
+    "土曜日: 11時30分～14時30分, 17時30分～21時30分",
+    "日曜日: 11時30分～14時30分, 17時30分～21時30分"
+   ]
+  },
+  {
+   "slug": "narachou-shiryoukan",
+   "name": "奈良町資料館",
+   "area": "naramachi",
+   "cat": "観光",
+   "lat": 34.67697,
+   "lng": 135.83015,
+   "approx": false,
+   "desc": "江戸時代から昭和初期にかけての民具や看板を展示する民間博物館。厄除けの「身代わり申」のお守りでも広く親しまれている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJZwrjUYo5AWARz6-pcshav74",
+   "address": "日本、〒630-8334 奈良県奈良市西新屋町１４−３",
+   "url": "http://naramachi.co.jp/",
+   "hours": [
+    "月曜日: 10時00分～16時00分",
+    "火曜日: 定休日",
+    "水曜日: 定休日",
+    "木曜日: 定休日",
+    "金曜日: 10時00分～16時00分",
+    "土曜日: 10時00分～16時00分",
+    "日曜日: 10時00分～16時00分"
+   ]
+  },
+  {
+   "slug": "koushin-dou",
+   "name": "庚申堂",
+   "area": "naramachi",
+   "cat": "観光",
+   "lat": 34.67654,
+   "lng": 135.82985,
+   "approx": false,
+   "desc": "ならまちの庚申信仰の中心地。軒先や堂内にずらりと吊るされた赤い「身代わり申」が印象的な、風情あふれる祈願所である。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJX03eTYo5AWARZYTXbP0X8gY",
+   "address": "日本、〒630-8334 奈良県奈良市西新屋町１４",
+   "url": "https://narashikanko.or.jp/spot/temple/koshindo/"
+  },
+  {
+   "slug": "juu-wa-in",
+   "name": "十輪院",
+   "area": "naramachi",
+   "cat": "観光",
+   "lat": 34.67616,
+   "lng": 135.83323,
+   "approx": false,
+   "desc": "ならまち南部にある真言宗の寺院。国宝に指定されている本堂や石仏、境内に佇むユニークな河童の像などが見どころとなっている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJN390pIw5AWAR44ZFj--FK9o",
+   "address": "日本、〒630-8312 奈良県奈良市十輪院町２７",
+   "url": "https://www.jurin-in.com/",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 8時00分～17時00分",
+    "水曜日: 8時00分～17時00分",
+    "木曜日: 8時00分～17時00分",
+    "金曜日: 8時00分～17時00分",
+    "土曜日: 8時00分～17時00分",
+    "日曜日: 8時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "naramachi-karakuriomocha-kan",
+   "name": "ならまち からくりおもちゃ館",
+   "area": "naramachi",
+   "cat": "体験",
+   "lat": 34.67728,
+   "lng": 135.82813,
+   "approx": false,
+   "desc": "大正時代の町家を利用した体験型施設。江戸時代から受け継がれる伝統的なからくり玩具を、実際に手にとって体験しながら遊べる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJwRQbB4o5AWARxtFUPehWCuo",
+   "address": "日本、〒630-8338 奈良県奈良市陰陽町７",
+   "url": "http://karakuri-omochakan.jimdofree.com/",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 定休日",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "fu-ken-dou",
+   "name": "浮見堂",
+   "area": "naramachi",
+   "cat": "観光",
+   "lat": 34.68012,
+   "lng": 135.83864,
+   "approx": false,
+   "desc": "奈良公園・鷺池に浮かぶ檜皮葺きの八角堂。水面に映る風情ある姿が美しく、複数の動画で定番の散策・撮影スポットとして紹介されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    },
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    }
+   ],
+   "place_id": "ChIJmUBIpJI5AWARZgZzuHzWMuU",
+   "address": "日本、〒630-8301 奈良県奈良市高畑町",
+   "url": "https://narashikanko.or.jp/spot/structure/ukimido/",
+   "hours": [
+    "月曜日: 24 時間営業",
+    "火曜日: 24 時間営業",
+    "水曜日: 24 時間営業",
+    "木曜日: 24 時間営業",
+    "金曜日: 24 時間営業",
+    "土曜日: 24 時間営業",
+    "日曜日: 24 時間営業"
+   ]
+  },
+  {
+   "slug": "naramachi",
+   "name": "ならまち",
+   "area": "naramachi",
+   "cat": "レトロ",
+   "lat": 34.67833,
+   "lng": 135.83,
+   "approx": true,
+   "desc": "昔ながらの風情ある町家の景観が色濃く残る歴史地区。格子戸の連なる美しい町並みをのんびりと散策して楽しむことができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    }
+   ]
+  },
+  {
+   "slug": "gangou-tera",
+   "name": "元興寺",
+   "area": "naramachi",
+   "cat": "観光",
+   "lat": 34.67781,
+   "lng": 135.83145,
+   "approx": false,
+   "desc": "飛鳥時代にルーツを持つ世界遺産の名刹。日本最古の瓦が残る行基葺きの屋根など、悠久の歴史を今に感じられる見どころが紹介されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    },
+    {
+     "type": "youtube",
+     "id": "6Ibb5Bzq_8I"
+    }
+   ],
+   "place_id": "ChIJX1ebvos5AWAR3SkIMOj72Cg",
+   "address": "日本、〒630-8392 奈良県奈良市中院町１１",
+   "url": "https://gangoji-tera.or.jp/",
+   "hours": [
+    "月曜日: 9時00分～16時30分",
+    "火曜日: 9時00分～16時30分",
+    "水曜日: 9時00分～16時30分",
+    "木曜日: 9時00分～16時30分",
+    "金曜日: 9時00分～16時30分",
+    "土曜日: 9時00分～16時30分",
+    "日曜日: 9時00分～16時30分"
+   ]
+  },
+  {
+   "slug": "dorinku-doranku",
+   "name": "ドリンク ドランク",
+   "area": "park",
+   "cat": "カフェ・喫茶",
+   "lat": 34.68182,
+   "lng": 135.82934,
+   "approx": false,
+   "desc": "ならまち近くにある人気のスムージー専門店。動画では季節限定で提供される濃厚な柿のスムージーの美味しさが紹介されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "X1acJiRiCxw"
+    }
+   ],
+   "place_id": "ChIJLZeIa4g5AWARHLA9QuwrJjg",
+   "address": "日本、〒630-8217 奈良県奈良市橋本町８",
+   "url": "http://www.drinkdrank.com/",
+   "hours": [
+    "月曜日: 11時00分～18時00分",
+    "火曜日: 11時00分～18時00分",
+    "水曜日: 11時00分～18時00分",
+    "木曜日: 11時00分～18時00分",
+    "金曜日: 11時00分～18時00分",
+    "土曜日: 11時00分～18時00分",
+    "日曜日: 11時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "nakatani-dou",
+   "name": "中谷堂",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.68194,
+   "lng": 135.8289,
+   "approx": false,
+   "desc": "迫力ある高速餅つきの実演で全国的にも有名な老舗和菓子店。つきたてで非常に柔らかく、よもぎの風味豊かな温かいよもぎ餅が複数の動画で絶賛されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "X1acJiRiCxw"
+    },
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    },
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    },
+    {
+     "type": "youtube",
+     "id": "03KMuAV4ZJM"
+    },
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJmzwHEog5AWARiML9vXtSFso",
+   "address": "日本、〒630-8217 奈良県奈良市橋本町２９",
+   "url": "http://www.nakatanidou.jp/",
+   "hours": [
+    "月曜日: 10時00分～18時00分",
+    "火曜日: 定休日",
+    "水曜日: 10時00分～18時00分",
+    "木曜日: 10時00分～18時00分",
+    "金曜日: 10時00分～18時00分",
+    "土曜日: 10時00分～18時00分",
+    "日曜日: 10時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "sakana-man-shouten-mochiidono-honten",
+   "name": "魚万商店 もちいどの本店",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.68069,
+   "lng": 135.8291,
+   "approx": false,
+   "desc": "もちいどのセンター街にある1901年創業の老舗かまぼこ・さつま揚げ店。名物の「バターポテト」や「わか草コーン」など、揚げたての練り物のテイクアウトが人気を集めている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "X1acJiRiCxw"
+    },
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    },
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    }
+   ],
+   "place_id": "ChIJsUbyNYg5AWARYaDyNj_fILM",
+   "address": "日本、〒630-8222 奈良県奈良市餅飯殿町１６",
+   "url": "https://www.uoman.jp/",
+   "hours": [
+    "月曜日: 10時00分～18時00分",
+    "火曜日: 10時00分～18時00分",
+    "水曜日: 10時00分～18時00分",
+    "木曜日: 10時00分～18時00分",
+    "金曜日: 10時00分～18時00分",
+    "土曜日: 10時00分～18時00分",
+    "日曜日: 10時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "rokumeikoohiifakutorii",
+   "name": "ロクメイコーヒーファクトリー",
+   "area": "city",
+   "cat": "カフェ・喫茶",
+   "lat": 34.68222,
+   "lng": 135.79224,
+   "approx": false,
+   "desc": "大きな焙煎機を備えたスペシャルティコーヒー専門店。こだわりの「ロクメイブレンド」を味わいながら、ゆったりとした贅沢な時間を過ごすことができる空間。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "X1acJiRiCxw"
+    }
+   ],
+   "place_id": "ChIJz72a9aYkAWAR_H2pT-EZ3e8",
+   "address": "日本、〒630-8013 奈良県奈良市三条大路４丁目１−２０",
+   "url": "https://rokumei.coffee/f/shop-factory",
+   "hours": [
+    "月曜日: 9時00分～18時00分",
+    "火曜日: 定休日",
+    "水曜日: 9時00分～18時00分",
+    "木曜日: 9時00分～18時00分",
+    "金曜日: 9時00分～18時00分",
+    "土曜日: 9時00分～18時00分",
+    "日曜日: 9時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "shatoodooru-honten",
+   "name": "シャトードール 本店",
+   "area": "city",
+   "cat": "カフェ・喫茶",
+   "lat": 34.68303,
+   "lng": 135.82761,
+   "approx": false,
+   "desc": "創業50年を誇る老舗ベーカリー。2階の喫茶店で楽しめるリーズナブルなモーニングセットや、各種パンのテイクアウトが紹介されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    }
+   ],
+   "place_id": "ChIJd0ouHyg6AWAR4PFYm7enSqY",
+   "address": "日本、〒630-8226 奈良県奈良市小西町３９",
+   "url": "https://www.chateau-dor-nara.com/",
+   "hours": [
+    "月曜日: 7時00分～21時00分",
+    "火曜日: 7時00分～21時00分",
+    "水曜日: 7時00分～21時00分",
+    "木曜日: 7時00分～21時00分",
+    "金曜日: 7時00分～21時00分",
+    "土曜日: 7時00分～21時00分",
+    "日曜日: 7時00分～21時00分"
+   ]
+  },
+  {
+   "slug": "daibutsu-ichigo",
+   "name": "大仏いちご",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.68188,
+   "lng": 135.82651,
+   "approx": false,
+   "desc": "大きないちごを使った大福が名物のお店。鹿のクッキーが添えられた「BIGいちご大福」や、ジューシーないちごジュースが人気を集めている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    }
+   ],
+   "place_id": "ChIJUzfEPfg7AWAR1kMegGc8lMM",
+   "address": "日本、〒630-8228 奈良県奈良市上三条町４−１",
+   "url": "https://twitter.com/daibutsu_15",
+   "hours": [
+    "月曜日: 11時00分～19時00分",
+    "火曜日: 11時00分～19時00分",
+    "水曜日: 11時00分～19時00分",
+    "木曜日: 11時00分～19時00分",
+    "金曜日: 11時00分～19時00分",
+    "土曜日: 11時00分～19時00分",
+    "日曜日: 11時00分～19時00分"
+   ]
+  },
+  {
+   "slug": "wakakusa-karee-honpo",
+   "name": "若草カレー本舗",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.68077,
+   "lng": 135.829,
+   "approx": false,
+   "desc": "ほうれん草やスパイス、野菜をふんだんに使ったヘルシーカレー専門店。オムあいがけカレーや焼き若草カレー、クラフトビールとのペアリングが推されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    },
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    }
+   ],
+   "place_id": "ChIJqUsBN4g5AWAR-bu6NYi-wlU",
+   "address": "日本、〒630-8222 奈良県奈良市餅飯殿町３８−１ 若草カレー本舗",
+   "url": "https://www.wakakusacurry.jp/",
+   "hours": [
+    "月曜日: 11時30分～20時00分",
+    "火曜日: 11時30分～20時00分",
+    "水曜日: 11時30分～15時00分",
+    "木曜日: 11時30分～20時00分",
+    "金曜日: 11時30分～20時00分",
+    "土曜日: 11時30分～20時00分",
+    "日曜日: 11時30分～20時00分"
+   ]
+  },
+  {
+   "slug": "maedano-doonatsu",
+   "name": "まえだのドーナツ",
+   "area": "city",
+   "cat": "カフェ・喫茶",
+   "lat": 34.68325,
+   "lng": 135.82835,
+   "approx": false,
+   "desc": "体に優しい手作りドーナツのお店。「ココナッツミルキー」や「きび糖きなこ」など、素朴で優しい甘さの手作りドーナツが種類豊富に揃っている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    }
+   ],
+   "place_id": "ChIJzyYM84c5AWAR1WN51WIjF28",
+   "address": "日本、〒630-8226 奈良県奈良市小西町８−１ ラフィーヌ東洋ビル 1階",
+   "url": "https://maeda-donut.com/",
+   "hours": [
+    "月曜日: 10時00分～19時00分",
+    "火曜日: 定休日",
+    "水曜日: 10時00分～19時00分",
+    "木曜日: 10時00分～19時00分",
+    "金曜日: 10時00分～19時00分",
+    "土曜日: 10時00分～19時00分",
+    "日曜日: 10時00分～19時00分"
+   ]
+  },
+  {
+   "slug": "kurokettoguran",
+   "name": "クロケットグラン",
+   "area": "naramachi",
+   "cat": "グルメ",
+   "lat": 34.68137,
+   "lng": 135.82752,
+   "approx": false,
+   "desc": "テイクアウトも可能なコロッケバー。注文後に揚げてくれるスタイルで、お肉の旨味がぎっしり詰まった「牛すじコロッケ」を楽しむことができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "mM5E0OhRBO0"
+    }
+   ],
+   "place_id": "ChIJxSkKIAA7AWARKXrN6vO1KmA",
+   "address": "日本、〒630-8224 奈良県奈良市角振町５",
+   "url": "https://lp.swpg.jp/grn",
+   "hours": [
+    "月曜日: 16時00分～0時00分",
+    "火曜日: 16時00分～0時00分",
+    "水曜日: 16時00分～0時00分",
+    "木曜日: 定休日",
+    "金曜日: 16時00分～0時00分",
+    "土曜日: 12時00分～0時00分",
+    "日曜日: 12時00分～22時00分"
+   ]
+  },
+  {
+   "slug": "kaki-no-ha-sushi-honpo-tanaka-nara-honten",
+   "name": "柿の葉すし本舗たなか なら本店",
+   "area": "park",
+   "cat": "グルメ",
+   "lat": 34.68401,
+   "lng": 135.82902,
+   "approx": false,
+   "desc": "明治創業という歴史を誇る柿の葉すしの老舗。鯛やサバなどの伝統的な柿の葉すしを手軽にテイクアウトして、その味わいを堪能することができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    }
+   ],
+   "place_id": "ChIJDQdiloc5AWARUa8gcEII5JM",
+   "address": "日本、〒630-8215 奈良県奈良市東向中町５−２",
+   "url": "https://www.kakinohasushi.co.jp/shop/nara/",
+   "hours": [
+    "月曜日: 9時00分～19時00分",
+    "火曜日: 9時00分～19時00分",
+    "水曜日: 9時00分～19時00分",
+    "木曜日: 9時00分～19時00分",
+    "金曜日: 9時00分～19時00分",
+    "土曜日: 9時00分～19時00分",
+    "日曜日: 9時00分～19時00分"
+   ]
+  },
+  {
+   "slug": "tako-yaki-hachibee-nara-kouen-nara-sanjou-toori",
+   "name": "たこ焼き 八兵衛 奈良公園奈良三条通店",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.6821,
+   "lng": 135.82786,
+   "approx": false,
+   "desc": "三条通りにあるたこ焼き専門店。真っ白な自家製マヨネーズがたっぷり乗った名物「マヨだく」たこ焼きは、ビールにもよく合うおすすめの逸品。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    }
+   ],
+   "place_id": "ChIJH60F7VQ7AWARFWXpTYiM9LM",
+   "address": "日本、〒630-8224 奈良県奈良市角振町３９−１",
+   "hours": [
+    "月曜日: 10時30分～19時00分",
+    "火曜日: 10時30分～19時00分",
+    "水曜日: 定休日",
+    "木曜日: 10時30分～19時00分",
+    "金曜日: 10時30分～19時00分",
+    "土曜日: 10時30分～19時00分",
+    "日曜日: 10時30分～19時00分"
+   ]
+  },
+  {
+   "slug": "suupaahoteru-nara-shin-oomiya-ekimae",
+   "name": "スーパーホテル奈良・新大宮駅前",
+   "area": "city",
+   "cat": "宿",
+   "lat": 34.68597,
+   "lng": 135.81173,
+   "approx": false,
+   "desc": "新大宮駅前にある利便性の高いホテル。無料のウェルカムバーが用意されているほか、朝食ビュッフェでは柿の葉すしを楽しむことができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    }
+   ],
+   "place_id": "ChIJJVG3qcs7AWARkn10B16DKzQ",
+   "address": "日本、〒630-8114 奈良県奈良市芝辻町４丁目２−７",
+   "url": "https://www.superhotel.co.jp/s_hotels/nara/"
+  },
+  {
+   "slug": "kushi-ten-kaa",
+   "name": "串天 カー",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.68583,
+   "lng": 135.80962,
+   "approx": false,
+   "desc": "旬の魚介や野菜を使った串天やおでんを提供する居酒屋。看板名物となっている「あじ豚のしゃぶしゃぶ」や、こだわりの地酒が人気を集めている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    }
+   ],
+   "place_id": "ChIJJ9jsbco7AWAR8aM5zvHCYVI",
+   "address": "日本、〒630-8114 奈良県奈良市芝辻町４丁目６−１０",
+   "url": "http://sugino-oden.net/",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 17時00分～23時00分",
+    "水曜日: 17時00分～23時00分",
+    "木曜日: 17時00分～23時00分",
+    "金曜日: 17時00分～23時00分",
+    "土曜日: 17時00分～23時00分",
+    "日曜日: 定休日"
+   ]
+  },
+  {
+   "slug": "tenri-sutaminaraamen-nara-higashimuki-shoutengai",
+   "name": "天理スタミナラーメン 奈良東向商店街店",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.6839,
+   "lng": 135.82858,
+   "approx": false,
+   "desc": "奈良ご当地グルメの天理ラーメンが味わえるお店。炒め白菜と豚肉がたっぷり入った旨辛スタミナラーメンや焼きそばが好評を博している。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    }
+   ],
+   "place_id": "ChIJHUnKQgA5AWARW3Myw6iFs2k",
+   "address": "日本、〒630-8215 奈良県奈良市東向中町２５−１",
+   "url": "https://www.tensuta.jp/",
+   "hours": [
+    "月曜日: 11時00分～22時00分",
+    "火曜日: 11時00分～22時00分",
+    "水曜日: 11時00分～22時00分",
+    "木曜日: 11時00分～22時00分",
+    "金曜日: 11時00分～22時00分",
+    "土曜日: 11時00分～22時00分",
+    "日曜日: 11時00分～22時00分"
+   ]
+  },
+  {
+   "slug": "o-kashi-tsukasa-man-kachi-dou",
+   "name": "御菓子司 萬勝堂",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.68379,
+   "lng": 135.82867,
+   "approx": false,
+   "desc": "東向商店街にある老舗の和菓子店。つきたてのお餅で作られる、香ばしい焦がし醤油のみたらしだんごが美味しいと動画で紹介されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    }
+   ],
+   "place_id": "ChIJSSsVjoc5AWARe9eOlnBjaJQ",
+   "address": "日本、〒630-8215 奈良県奈良市東向中町２４−１",
+   "url": "http://manshoudou.com/",
+   "hours": [
+    "月曜日: 10時00分～18時00分",
+    "火曜日: 10時00分～18時00分",
+    "水曜日: 10時00分～18時00分",
+    "木曜日: 10時00分～18時00分",
+    "金曜日: 10時00分～18時00分",
+    "土曜日: 10時00分～18時00分",
+    "日曜日: 10時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "mahoroba-daibutsu-purin-honpo-kintetsunara-eki-m",
+   "name": "まほろば大仏プリン本舗 近鉄奈良駅店",
+   "area": "city",
+   "cat": "雑貨・土産",
+   "lat": 34.68407,
+   "lng": 135.82767,
+   "approx": false,
+   "desc": "近鉄奈良駅構内にある奈良名物「大仏プリン」の販売店。少し硬めの食感と濃厚なコクが特徴的な、定番のカスタードプリンが人気を集める。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "FcIrkyEhEvg"
+    }
+   ],
+   "place_id": "ChIJVVUV0yk6AWARALa3fM4o634",
+   "address": "日本、〒630-8225 奈良県奈良市東向中町２９",
+   "url": "https://daibutsu-purin.com/#1",
+   "hours": [
+    "月曜日: 11時00分～18時00分",
+    "火曜日: 11時00分～18時00分",
+    "水曜日: 11時00分～18時00分",
+    "木曜日: 11時00分～18時00分",
+    "金曜日: 11時00分～18時00分",
+    "土曜日: 11時00分～19時00分",
+    "日曜日: 11時00分～19時00分"
+   ]
+  },
+  {
+   "slug": "nara-omotenashi-shokudou",
+   "name": "奈良 オモテナシ食堂",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.68171,
+   "lng": 135.82779,
+   "approx": false,
+   "desc": "体に優しい手作り定食が人気の食事処。大きな切り身が入った贅沢な鯛めし膳や、心安らぐおばんざいの数々をじっくりと楽しむことができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "2mOaojXgZLI"
+    }
+   ],
+   "place_id": "ChIJbTANtAM7AWARzQU5DATsExs",
+   "address": "日本、〒630-8223 奈良県奈良市角振新屋町６−３ １Ｆ",
+   "url": "https://www.instagram.com/nara_omotenashi/",
+   "hours": [
+    "月曜日: 11時00分～15時00分",
+    "火曜日: 11時00分～15時00分",
+    "水曜日: 11時00分～15時00分, 17時00分～22時00分",
+    "木曜日: 11時00分～15時00分, 17時00分～22時00分",
+    "金曜日: 11時00分～15時00分, 17時00分～22時00分",
+    "土曜日: 11時00分～15時00分, 17時00分～22時00分",
+    "日曜日: 11時00分～15時00分, 17時00分～22時00分"
+   ]
+  },
+  {
+   "slug": "gohanno-kan",
+   "name": "ごはんの間",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.68592,
+   "lng": 135.82896,
+   "approx": false,
+   "desc": "花芝通り沿いにある昼限定営業の定食店。日替わり定食で味わえるサクサクでジューシーなメンチカツが看板メニューとして人気を集める。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "2mOaojXgZLI"
+    }
+   ],
+   "place_id": "ChIJEcLYQYc5AWARP7BgQc_xdhY",
+   "address": "日本、〒630-8266 奈良県奈良市花芝町２６",
+   "hours": [
+    "月曜日: 11時00分～14時00分",
+    "火曜日: 11時00分～14時00分",
+    "水曜日: 11時00分～14時00分",
+    "木曜日: 11時00分～14時00分",
+    "金曜日: 定休日",
+    "土曜日: 11時00分～14時00分",
+    "日曜日: 11時00分～14時00分"
+   ]
+  },
+  {
+   "slug": "marukatsu-honten",
+   "name": "まるかつ 本店",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.65883,
+   "lng": 135.81985,
+   "approx": false,
+   "desc": "常に行列ができる人気のとんかつ専門店。サクサク食感のロースカツのほか、エビがゴロゴロと贅沢に入ったクリームコロッケが絶品の一品。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "2mOaojXgZLI"
+    }
+   ],
+   "place_id": "ChIJm1T0BQU6AWARveYzrNaFavc",
+   "address": "日本、〒630-8441 奈良県奈良市神殿町６６７−１",
+   "url": "https://marukatsu912.com/",
+   "hours": [
+    "月曜日: 11時00分～22時00分",
+    "火曜日: 11時00分～22時00分",
+    "水曜日: 11時00分～22時00分",
+    "木曜日: 11時00分～22時00分",
+    "金曜日: 11時00分～22時00分",
+    "土曜日: 11時00分～22時00分",
+    "日曜日: 11時00分～22時00分"
+   ]
+  },
+  {
+   "slug": "yoshikawa-tei",
+   "name": "吉川亭",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.6865,
+   "lng": 135.82905,
+   "approx": false,
+   "desc": "昭和56年創業のレトロな佇まいが魅力の老舗洋食店。肉汁がたっぷりと溢れ出す、ジューシーな手作りのハンバーグセットを心ゆくまで味わえる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "2mOaojXgZLI"
+    }
+   ],
+   "place_id": "ChIJ_wl4SIc5AWARQgvt1Rz3nyk",
+   "address": "日本、〒630-8266 奈良県奈良市花芝町１７ サンふくむらびる",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 11時30分～14時00分",
+    "水曜日: 11時30分～14時00分",
+    "木曜日: 11時30分～14時00分",
+    "金曜日: 11時30分～14時00分",
+    "土曜日: 11時30分～14時00分",
+    "日曜日: 11時30分～14時00分"
+   ]
+  },
+  {
+   "slug": "yamato-iori-honten",
+   "name": "やまと庵 本店",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.68179,
+   "lng": 135.82122,
+   "approx": false,
+   "desc": "奈良県産の食材を豊富に用いた和食居酒屋。ブランド豚「やまとポーク」のロースカツをはじめ、釜飯や三輪素麺、多彩な地酒などを幅広く提供する。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "2mOaojXgZLI"
+    },
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJJ3cE-i46AWARZNM88wgSwXo",
+   "address": "日本、〒630-8244 奈良県奈良市三条町４９５−１",
+   "url": "https://yamatoan-honten.gorp.jp/",
+   "hours": [
+    "月曜日: 11時30分～15時00分, 17時00分～23時30分",
+    "火曜日: 11時30分～15時00分, 17時00分～23時30分",
+    "水曜日: 11時30分～15時00分, 17時00分～23時30分",
+    "木曜日: 11時30分～15時00分, 17時00分～23時30分",
+    "金曜日: 11時30分～15時00分, 17時00分～23時30分",
+    "土曜日: 11時30分～15時00分, 17時00分～23時30分",
+    "日曜日: 11時30分～15時00分, 17時00分～23時30分"
+   ]
+  },
+  {
+   "slug": "sanbaado",
+   "name": "サンバード",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.68692,
+   "lng": 135.82915,
+   "approx": false,
+   "desc": "創作オムライスが好評の専門店。ふわとろ食感の卵を使った煮込みハンバーグオムライスや、レモンバターしょうゆなど個性的なメニューが揃う。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "2mOaojXgZLI"
+    },
+    {
+     "type": "youtube",
+     "id": "1I_e0HsNK-o"
+    }
+   ],
+   "place_id": "ChIJcd2QaYQ7AWARfJQfXuj09nk",
+   "address": "日本、〒630-8264 奈良県奈良市鍋屋町２−１ City Homes 奈良 201 女子大前",
+   "hours": [
+    "月曜日: 11時30分～15時00分",
+    "火曜日: 11時30分～15時00分",
+    "水曜日: 定休日",
+    "木曜日: 定休日",
+    "金曜日: 11時30分～15時00分",
+    "土曜日: 11時30分～15時30分, 17時00分～20時30分",
+    "日曜日: 11時30分～15時30分, 17時00分～20時30分"
+   ]
+  },
+  {
+   "slug": "wagyuu-sujikaree-naramoto-mise",
+   "name": "和牛スジカレー 奈良本店",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.6819,
+   "lng": 135.82881,
+   "approx": false,
+   "desc": "ステーキ店が手がける本格的なカレー専門店。じっくりと時間をかけて煮込んだ牛スジカレーと、ふわふわに仕上げたオムレツの相性が抜群の一皿。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "2mOaojXgZLI"
+    }
+   ],
+   "place_id": "ChIJu08iDog5AWAR6tsfhYvs6jM",
+   "address": "春日三条通り, 館2F, 28 橋本町 奈良市 奈良県 630-8217 日本",
+   "url": "https://www.instagram.com/nara_sanjyocurry/",
+   "hours": [
+    "月曜日: 11時00分～14時30分",
+    "火曜日: 11時00分～14時30分",
+    "水曜日: 11時00分～14時30分",
+    "木曜日: 11時00分～14時30分",
+    "金曜日: 11時00分～14時30分",
+    "土曜日: 11時00分～15時00分",
+    "日曜日: 11時00分～15時00分"
+   ]
+  },
+  {
+   "slug": "nara-kangoku-myuujiamu",
+   "name": "奈良監獄ミュージアム",
+   "area": "city",
+   "cat": "観光",
+   "lat": 34.69945,
+   "lng": 135.83347,
+   "approx": false,
+   "desc": "明治建築である旧奈良少年刑務所を保存・公開する文化施設。歴史を感じさせる重厚な煉瓦建築を見学できるほか、施設内にはカフェも併設。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "1I_e0HsNK-o"
+    }
+   ],
+   "place_id": "ChIJtfNz9ns5AWAR8Xdoj-x6poE",
+   "address": "日本、〒630-8102 奈良県奈良市般若寺町１８",
+   "url": "https://hoshinoresorts.com/nara-prison-museum/ja/?utm_source=google&utm_medium=mybusiness",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "suki-yaki-to-ushi-mabushi-momoshiki-hanare",
+   "name": "すき焼きと牛まぶし ももしき はなれ",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.6847,
+   "lng": 135.82886,
+   "approx": false,
+   "desc": "近鉄奈良駅の近くに店を構える大和牛のすき焼き・牛まぶし専門店。落ち着きある個室空間にて、A4ランク大和牛の極上コースをゆったりと堪能できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "1I_e0HsNK-o"
+    }
+   ],
+   "place_id": "ChIJwTgsUAA5AWARqjfTo-YQG7k",
+   "address": "日本、〒630-8214 奈良県奈良市東向北町２９",
+   "url": "https://www.fujin-nara.com/brands/momoshiki/shops/nara-hanare/?utm_source=google&utm_medium=map",
+   "hours": [
+    "月曜日: 11時00分～22時00分",
+    "火曜日: 11時00分～22時00分",
+    "水曜日: 11時00分～22時00分",
+    "木曜日: 11時00分～22時00分",
+    "金曜日: 11時00分～22時00分",
+    "土曜日: 11時00分～22時00分",
+    "日曜日: 11時00分～22時00分"
+   ]
+  },
+  {
+   "slug": "otenkipaaraa",
+   "name": "オテンキパーラー",
+   "area": "city",
+   "cat": "カフェ・喫茶",
+   "lat": 34.68372,
+   "lng": 135.82633,
+   "approx": false,
+   "desc": "屋上遊園地を思わせるレトロで可愛らしい雰囲気のカフェ。お土産としても高い人気を誇るレモンケーキ「週末シトロン」が動画内で紹介されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJNehx7907AWARm8sDc03WGas",
+   "address": "日本、〒630-8241 奈良県奈良市高天町４６−１ 変なホテル 1F",
+   "hours": [
+    "月曜日: 7時00分～17時00分",
+    "火曜日: 7時00分～17時00分",
+    "水曜日: 7時00分～17時00分",
+    "木曜日: 7時00分～17時00分",
+    "金曜日: 7時00分～17時00分",
+    "土曜日: 7時00分～17時00分",
+    "日曜日: 7時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "rokumeikoohii-koto-nara",
+   "name": "ロクメイコーヒー コト ナラ",
+   "area": "city",
+   "cat": "カフェ・喫茶",
+   "lat": 34.68363,
+   "lng": 135.82746,
+   "approx": false,
+   "desc": "近鉄奈良駅の近くに位置するスペシャルティコーヒーの名店。こだわりの自家焙煎コーヒーとともに、県産小麦を使った焼きたてクロワッサンを味わえる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJA9K3Lyg6AWAROyOL6VqJ46Q",
+   "address": "日本、〒630-8225 奈良県奈良市西御門町３１",
+   "url": "https://rokumei.coffee/",
+   "hours": [
+    "月曜日: 8時00分～18時00分",
+    "火曜日: 8時00分～18時00分",
+    "水曜日: 8時00分～18時00分",
+    "木曜日: 8時00分～18時00分",
+    "金曜日: 8時00分～18時00分",
+    "土曜日: 8時00分～18時00分",
+    "日曜日: 8時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "mahoroba-daibutsu-purin-jr-naraeki-mise",
+   "name": "まほろば大仏プリン JR奈良駅店",
+   "area": "city",
+   "cat": "グルメ",
+   "lat": 34.68099,
+   "lng": 135.81904,
+   "approx": false,
+   "desc": "JR奈良駅の構内に位置する人気のプリン専門店。県産茶葉ならではの心地よいほろ苦さと甘みが絶妙に調和した「大和茶プリン」などが紹介されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJ3_zZJC46AWAR-IYhIpEO-Rk",
+   "address": "日本、〒630-8122 奈良県奈良市三条本町１−１",
+   "url": "https://daibutsu-purin.com/",
+   "hours": [
+    "月曜日: 10時00分～21時00分",
+    "火曜日: 10時00分～21時00分",
+    "水曜日: 10時00分～21時00分",
+    "木曜日: 10時00分～21時00分",
+    "金曜日: 10時00分～21時00分",
+    "土曜日: 10時00分～21時00分",
+    "日曜日: 10時00分～21時00分"
+   ]
+  },
+  {
+   "slug": "hirasou-sanjou-mise",
+   "name": "平宗 三条通店",
+   "area": "city",
+   "cat": "雑貨・土産",
+   "lat": 34.68189,
+   "lng": 135.82192,
+   "approx": false,
+   "desc": "三条通り沿いに店を構える柿の葉ずしの名店。サバやサケ、穴子といった多彩なネタが取り揃えられており、奈良旅行のお土産や食事の場として最適。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJl37s4C46AWARKA4UMMblJ68",
+   "address": "日本、〒630-8244 奈良県奈良市三条町４８０",
+   "url": "http://www.hiraso.jp/store/other/nara-sanjo.html",
+   "hours": [
+    "月曜日: 9時30分～19時30分",
+    "火曜日: 9時30分～19時30分",
+    "水曜日: 9時30分～19時30分",
+    "木曜日: 9時30分～19時30分",
+    "金曜日: 9時30分～19時30分",
+    "土曜日: 9時30分～19時30分",
+    "日曜日: 9時30分～19時30分"
+   ]
+  },
+  {
+   "slug": "jr-naraeki-kyuueki-sha",
+   "name": "JR奈良駅旧駅舎",
+   "area": "city",
+   "cat": "レトロ",
+   "lat": 34.68172,
+   "lng": 135.81982,
+   "approx": false,
+   "desc": "1934年に完成した趣深い近代和風建築。現在は観光案内所として広く活用されており、歴史ある建物の見学やおみくじ体験などを楽しめるスポット。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJrwbSQS46AWARVx3-tmOJPTg",
+   "address": "日本、〒630-8122 奈良県奈良市三条本町１−１",
+   "hours": [
+    "月曜日: 9時00分～21時00分",
+    "火曜日: 9時00分～21時00分",
+    "水曜日: 9時00分～21時00分",
+    "木曜日: 9時00分～21時00分",
+    "金曜日: 9時00分～21時00分",
+    "土曜日: 9時00分～21時00分",
+    "日曜日: 9時00分～21時00分"
+   ]
+  },
+  {
+   "slug": "daiwaroinettohoteru-nara",
+   "name": "ダイワロイネットホテル奈良",
+   "area": "city",
+   "cat": "宿",
+   "lat": 34.68029,
+   "lng": 135.81765,
+   "approx": false,
+   "desc": "JR奈良駅から徒歩約3分の場所に位置する快適なビジネスホテル。館内には宿泊者専用の大浴場が完備されており、旅の疲れをしっかりと癒やせる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    }
+   ],
+   "place_id": "ChIJa-iYPAA7AWARZckv1fH2uY8",
+   "address": "日本、〒630-8122 奈良県奈良市三条本町１１−１２",
+   "url": "https://www.daiwaroynet.jp/nara/"
+  },
+  {
+   "slug": "nara-kingyo-myuujiamu",
+   "name": "奈良金魚ミュージアム",
+   "area": "city",
+   "cat": "観光",
+   "lat": 34.68519,
+   "lng": 135.80219,
+   "approx": false,
+   "desc": "商業施設ミ・ナーラ内にある日本最大級の金魚アクアリウム。優美に泳ぐ金魚と光や鏡の演出が美しく織りなす、幻想的なアート空間が広がる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    }
+   ],
+   "place_id": "ChIJg09Po4Q7AWARSko3JnhdXyc",
+   "address": "日本、〒630-8012 奈良県奈良市二条大路南１丁目３−１ ミ・ナーラ ４F",
+   "url": "https://kingyomuseum.com/",
+   "hours": [
+    "月曜日: 10時00分～17時30分",
+    "火曜日: 10時00分～17時30分",
+    "水曜日: 10時00分～17時30分",
+    "木曜日: 10時00分～17時30分",
+    "金曜日: 10時00分～17時30分",
+    "土曜日: 10時00分～17時30分",
+    "日曜日: 10時00分～17時30分"
+   ]
+  },
+  {
+   "slug": "nara-kyuuseki",
+   "name": "平城宮跡",
+   "area": "city",
+   "cat": "観光",
+   "lat": 34.68651,
+   "lng": 135.79425,
+   "approx": false,
+   "desc": "奈良時代の都の中心であった世界遺産の宮殿跡。広大な敷地に復元された朱雀門や第一次大極殿がそびえ立ち、かつての都の壮大さを伝えている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    }
+   ],
+   "place_id": "ChIJFZVuxKM7AWARd4rzIg38E70",
+   "address": "日本、〒630-8012 奈良県奈良市二条大路南３丁目５−１",
+   "url": "https://www.heijo-park.jp/",
+   "hours": [
+    "月曜日: 24 時間営業",
+    "火曜日: 24 時間営業",
+    "水曜日: 24 時間営業",
+    "木曜日: 24 時間営業",
+    "金曜日: 24 時間営業",
+    "土曜日: 24 時間営業",
+    "日曜日: 24 時間営業"
+   ]
+  },
+  {
+   "slug": "higashimuki-shoutengai",
+   "name": "東向商店街",
+   "area": "city",
+   "cat": "雑貨・土産",
+   "lat": 34.68319,
+   "lng": 135.82875,
+   "approx": false,
+   "desc": "近鉄奈良駅直結の活気あふれるアーケード商店街。お土産屋や飲食店、和菓子店などが軒を連ねており、駅前での散策や買い物に最適なエリア。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    }
+   ],
+   "place_id": "ChIJqeAb74c5AWARy6nxiIGqLnc",
+   "address": "日本、奈良県奈良市 東向商店街"
+  },
+  {
+   "slug": "kintetsu-nara-sentokun",
+   "name": "近鉄奈良駅 せんとくん像",
+   "area": "city",
+   "cat": "観光",
+   "lat": 34.6843,
+   "lng": 135.8278,
+   "approx": true,
+   "desc": "近鉄奈良駅の東改札口付近に立つ奈良県公式キャラクター「せんとくん」の像。駅前での待ち合わせ場所や記念撮影の定番スポットとして親しまれる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "TDY4tE3Vsdg"
+    }
+   ],
+   "mark": true
+  },
+  {
+   "slug": "tamausagi-honten",
+   "name": "たまうさぎ 本店",
+   "area": "west",
+   "cat": "グルメ",
+   "lat": 34.68197,
+   "lng": 135.78223,
+   "approx": false,
+   "desc": "注文ごとに仕上げる香ばしいきな粉ともっちりした団子が人気の、地元で愛される名物きなこだんご専門店。素朴で風味豊かな味わいが特徴。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJW8teRQ47AWARX5NqDW72bgI",
+   "address": "日本、〒630-8023 奈良県奈良市尼辻西町６−４ Espoir 尼ヶ辻",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 定休日",
+    "水曜日: 9時00分～18時00分",
+    "木曜日: 9時00分～18時00分",
+    "金曜日: 9時00分～18時00分",
+    "土曜日: 9時00分～18時00分",
+    "日曜日: 9時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "okuda-seinikuten",
+   "name": "奥田精肉店",
+   "area": "west",
+   "cat": "グルメ",
+   "lat": 34.60846,
+   "lng": 135.73459,
+   "approx": false,
+   "desc": "法隆寺参道沿いにある精肉店。食べ歩きに最適なサクサクでジューシーな手作りコロッケが名物で、参拝途中の立ち寄りスポットとして親しまれる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "GcIzj9hg68o"
+    }
+   ],
+   "place_id": "ChIJX6prnvQvAWARiG6MODkfBuI",
+   "address": "日本、〒636-0113 奈良県生駒郡斑鳩町法隆寺南１丁目６−２５",
+   "url": "https://www.instagram.com/okuda.seinikuten?igsh=MW03bWUzeGpydGswcA==",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 9時00分～18時00分",
+    "水曜日: 9時00分～18時00分",
+    "木曜日: 9時00分～18時00分",
+    "金曜日: 9時00分～18時00分",
+    "土曜日: 9時00分～18時00分",
+    "日曜日: 9時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "tou-shoudai-tera",
+   "name": "唐招提寺",
+   "area": "west",
+   "cat": "観光",
+   "lat": 34.67556,
+   "lng": 135.78483,
+   "approx": false,
+   "desc": "鑑真和上によって創建された世界遺産の寺院。複数の動画で紹介され、国宝の金堂や講堂、緑豊かな御廟など奈良時代の貴重な歴史遺産が見どころ。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    },
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    },
+    {
+     "type": "youtube",
+     "id": "6Ibb5Bzq_8I"
+    }
+   ],
+   "place_id": "ChIJ6fd4BwQ7AWARLtqlT3g4xlc",
+   "address": "日本、〒630-8032 奈良県奈良市五条町１３−４６",
+   "url": "http://www.toshodaiji.jp/",
+   "hours": [
+    "月曜日: 8時30分～16時30分",
+    "火曜日: 8時30分～16時30分",
+    "水曜日: 8時30分～16時30分",
+    "木曜日: 8時30分～16時30分",
+    "金曜日: 8時30分～16時30分",
+    "土曜日: 8時30分～16時30分",
+    "日曜日: 8時30分～16時30分"
+   ]
+  },
+  {
+   "slug": "yakushiji",
+   "name": "薬師寺",
+   "area": "west",
+   "cat": "観光",
+   "lat": 34.66859,
+   "lng": 135.7843,
+   "approx": false,
+   "desc": "法相宗の大本山で世界遺産の名刹。創建当時から現存する国宝の東塔や薬師三尊像、お写経体験などが多くの動画でおすすめとして紹介されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    },
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    },
+    {
+     "type": "youtube",
+     "id": "6Ibb5Bzq_8I"
+    }
+   ],
+   "place_id": "ChIJn3rdOfw6AWARJwWCcfoiD4c",
+   "address": "日本、〒630-8563 奈良県奈良市西ノ京町４５７",
+   "url": "https://yakushiji.or.jp/",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "houryuuji",
+   "name": "法隆寺",
+   "area": "west",
+   "cat": "観光",
+   "lat": 34.61472,
+   "lng": 135.73418,
+   "approx": false,
+   "desc": "聖徳太子ゆかりの日本初の世界遺産寺院。五重塔や金堂など世界最古の木造建築群や夢殿をはじめとする数多くの国宝が見どころとして広く推されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "eqdz-5BDtFg"
+    },
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    },
+    {
+     "type": "youtube",
+     "id": "6Ibb5Bzq_8I"
+    }
+   ],
+   "place_id": "ChIJT4_DYfUvAWAR_NviFfadTOk",
+   "address": "日本、〒636-0115 奈良県生駒郡斑鳩町法隆寺山内１−１−１",
+   "url": "http://www.horyuji.or.jp/",
+   "hours": [
+    "月曜日: 8時00分～16時30分",
+    "火曜日: 8時00分～16時30分",
+    "水曜日: 8時00分～16時30分",
+    "木曜日: 8時00分～16時30分",
+    "金曜日: 8時00分～16時30分",
+    "土曜日: 8時00分～16時30分",
+    "日曜日: 8時00分～16時30分"
+   ]
+  },
+  {
+   "slug": "houki-tera",
+   "name": "法起寺",
+   "area": "west",
+   "cat": "観光",
+   "lat": 34.62293,
+   "lng": 135.74619,
+   "approx": false,
+   "desc": "法隆寺地域の仏教建造物として世界遺産に登録された寺院。現存する日本最古の三重塔があり、秋に咲くコスモスとの美しい景観でも広く知られている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "6Ibb5Bzq_8I"
+    }
+   ],
+   "place_id": "ChIJW33GSlElAWARdzwVH1E18g4",
+   "address": "日本、〒636-0102 奈良県生駒郡斑鳩町岡本１８７３",
+   "url": "http://www.horyuji.or.jp/hokiji/",
+   "hours": [
+    "月曜日: 8時30分～16時30分",
+    "火曜日: 8時30分～16時30分",
+    "水曜日: 8時30分～16時30分",
+    "木曜日: 8時30分～16時30分",
+    "金曜日: 8時30分～16時30分",
+    "土曜日: 8時30分～16時30分",
+    "日曜日: 8時30分～16時30分"
+   ]
+  },
+  {
+   "slug": "kokonimo-saidaiji",
+   "name": "ココニモ SAIDAIJI",
+   "area": "west",
+   "cat": "観光",
+   "lat": 34.6928,
+   "lng": 135.78285,
+   "approx": false,
+   "desc": "大和西大寺駅南口に位置する芝生広場を備えた商業施設。動画内ではクイズミッションを繰り広げるスポットとして登場した。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "TDY4tE3Vsdg"
+    }
+   ],
+   "mark": true,
+   "place_id": "ChIJp-DjMrQ7AWARdOOar-2z0e0",
+   "address": "日本、〒631-0824 奈良県奈良市西大寺南町５−番5",
+   "url": "https://www.kintetsu-re.co.jp/coconimo-saidaiji/"
+  },
+  {
+   "slug": "yamadagawa",
+   "name": "山田川",
+   "area": "other",
+   "cat": "自然",
+   "lat": 34.7375,
+   "lng": 135.7822,
+   "approx": true,
+   "desc": "山田川駅近くを流れるのどかな一級河川。電車の待ち時間に川を眺めながらゆったりとしたひとときを過ごせる場所として動画で紹介されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "TDY4tE3Vsdg"
+    }
+   ],
+   "mark": true,
+   "out_of_pref": true
+  },
+  {
+   "slug": "shigisan-kaiunbashi-bungee",
+   "name": "信貴山 開運橋（バンジージャンプ）",
+   "area": "west",
+   "cat": "体験",
+   "lat": 34.60692,
+   "lng": 135.67063,
+   "approx": false,
+   "desc": "信貴山朝護孫子寺の参道に架かる赤い吊り橋（国の登録有形文化財）。ここから高さ約30mを飛び降りるバンジージャンプができ、動画では高所恐怖症による挑戦の舞台となった。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "pVc8aRoLKGA"
+    }
+   ],
+   "mark": true,
+   "place_id": "ChIJLUvnQHEmAWARPu_L2MrW_3U",
+   "address": "日本、〒636-0832 奈良県生駒郡三郷町信貴山西１１９０−２０",
+   "url": "http://www.bungyjapan.com/kaiun/",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "ayaka-raamen-honten",
+   "name": "彩華ラーメン 本店",
+   "area": "east",
+   "cat": "グルメ",
+   "lat": 34.5955,
+   "lng": 135.8115,
+   "approx": false,
+   "desc": "天理ラーメンの元祖として知られる有名店。秘伝の自家製醤油ダレとニンニクが効いたスープに、たっぷりの白菜がのったパンチのあるスタミナラーメンが名物。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "X1acJiRiCxw"
+    },
+    {
+     "type": "youtube",
+     "id": "2mOaojXgZLI"
+    }
+   ],
+   "place_id": "ChIJe0HxCj8xAWARkr_EYEYXCFg",
+   "address": "日本、〒632-0076 奈良県天理市岩室町９１",
+   "url": "https://www.saikaramen.com/shop/honten/",
+   "hours": [
+    "月曜日: 11時00分～0時00分",
+    "火曜日: 11時00分～0時00分",
+    "水曜日: 11時00分～0時00分",
+    "木曜日: 11時00分～0時00分",
+    "金曜日: 11時00分～0時00分",
+    "土曜日: 11時00分～0時00分",
+    "日曜日: 11時00分～0時00分"
+   ]
+  },
+  {
+   "slug": "hase-tera",
+   "name": "長谷寺",
+   "area": "east",
+   "cat": "観光",
+   "lat": 34.53589,
+   "lng": 135.90679,
+   "approx": false,
+   "desc": "「花の御寺」として知られ四季折々の花が美しい寺院。仁王門から本堂へと続く399段の登廊や、舞台造りの本堂などが大きな見どころとなっている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "6Ibb5Bzq_8I"
+    }
+   ],
+   "place_id": "ChIJwxlUGFm1BmARMDEA7p7q_W4",
+   "address": "日本、〒633-0112 奈良県桜井市初瀬７３１−１ 長谷寺本堂",
+   "url": "http://www.hasedera.or.jp/",
+   "hours": [
+    "月曜日: 8時30分～17時00分",
+    "火曜日: 8時30分～17時00分",
+    "水曜日: 8時30分～17時00分",
+    "木曜日: 8時30分～17時00分",
+    "金曜日: 8時30分～17時00分",
+    "土曜日: 8時30分～17時00分",
+    "日曜日: 8時30分～17時00分"
+   ]
+  },
+  {
+   "slug": "murou-tera",
+   "name": "室生寺",
+   "area": "east",
+   "cat": "観光",
+   "lat": 34.53774,
+   "lng": 136.04064,
+   "approx": false,
+   "desc": "「女人高野」とも呼ばれる山深い寺院。平安時代の本堂や金堂、屋外に立つ五重塔として日本最小を誇る塔など、貴重な文化財が見どころ。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "6Ibb5Bzq_8I"
+    }
+   ],
+   "place_id": "ChIJN2IXPx6yBmARPX-dIreS19Q",
+   "address": "日本、〒633-0421 奈良県宇陀市室生７８",
+   "url": "http://www.murouji.or.jp/",
+   "hours": [
+    "月曜日: 8時30分～17時00分",
+    "火曜日: 8時30分～17時00分",
+    "水曜日: 8時30分～17時00分",
+    "木曜日: 8時30分～17時00分",
+    "金曜日: 8時30分～17時00分",
+    "土曜日: 8時30分～17時00分",
+    "日曜日: 8時30分～17時00分"
+   ]
+  },
+  {
+   "slug": "asuka-tera",
+   "name": "飛鳥寺",
+   "area": "asuka",
+   "cat": "観光",
+   "lat": 34.47868,
+   "lng": 135.82017,
+   "approx": false,
+   "desc": "蘇我馬子によって創建された日本最古の本格的仏教寺院。日本最古の仏像「飛鳥大仏」の拝観や鐘突きの体験など、複数の動画で飛鳥観光の定番として紹介。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    },
+    {
+     "type": "youtube",
+     "id": "Gn5VRD3oNWU"
+    },
+    {
+     "type": "youtube",
+     "id": "6Ibb5Bzq_8I"
+    }
+   ],
+   "place_id": "ChIJI7XgjpfNBmARIGvmVMC4TtM",
+   "address": "日本、〒634-0103 奈良県高市郡明日香村飛鳥６８２",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "asuka-kyuuseki",
+   "name": "飛鳥宮跡",
+   "area": "asuka",
+   "cat": "観光",
+   "lat": 34.47338,
+   "lng": 135.82111,
+   "approx": false,
+   "desc": "大化の改新（乙巳の変）の舞台となった飛鳥時代の宮殿遺跡群。園内では復元された石敷きや井戸などの遺構を見学することができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    }
+   ],
+   "place_id": "ChIJzVoChH3MBmARIHPBABiiSLs",
+   "address": "日本、〒634-0111 奈良県高市郡明日香村岡",
+   "url": "https://asukamura.com/sightseeing/517/",
+   "hours": [
+    "月曜日: 24 時間営業",
+    "火曜日: 24 時間営業",
+    "水曜日: 24 時間営業",
+    "木曜日: 24 時間営業",
+    "金曜日: 24 時間営業",
+    "土曜日: 24 時間営業",
+    "日曜日: 24 時間営業"
+   ]
+  },
+  {
+   "slug": "ishi-butai-kofun",
+   "name": "石舞台古墳",
+   "area": "asuka",
+   "cat": "観光",
+   "lat": 34.46685,
+   "lng": 135.82615,
+   "approx": false,
+   "desc": "蘇我馬子の墓と伝えられる日本最大級の横穴式石室を持つ巨石古墳。巨大な天井石の内部に入って圧倒的なスケール感を体感可能。複数の動画で紹介。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    },
+    {
+     "type": "youtube",
+     "id": "Gn5VRD3oNWU"
+    },
+    {
+     "type": "youtube",
+     "id": "wpnTFET2WEo"
+    }
+   ],
+   "place_id": "ChIJ0TPuh3fMBmARY7dPT_cNWfQ",
+   "address": "日本、〒634-0112 奈良県高市郡明日香村島庄２５４",
+   "url": "https://asukamura.com/",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "naraken-ritsu-manyou-bunka-kan",
+   "name": "奈良県立万葉文化館",
+   "area": "asuka",
+   "cat": "観光",
+   "lat": 34.4774,
+   "lng": 135.82297,
+   "approx": false,
+   "desc": "万葉集を中心とした古代文化を学べるミュージアム。リアルな人形や映像展示を通して、当時の人々の暮らしや文化を分かりやすく体感できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    },
+    {
+     "type": "youtube",
+     "id": "wpnTFET2WEo"
+    }
+   ],
+   "place_id": "ChIJbZh9xobMBmARGm0Wli34kWw",
+   "address": "日本、〒634-0103 奈良県高市郡明日香村飛鳥１０",
+   "url": "https://www.pref.nara.lg.jp/manyo/",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 10時00分～17時30分",
+    "水曜日: 10時00分～17時30分",
+    "木曜日: 10時00分～17時30分",
+    "金曜日: 10時00分～17時30分",
+    "土曜日: 10時00分～17時30分",
+    "日曜日: 10時00分～17時30分"
+   ]
+  },
+  {
+   "slug": "fujiwara-kyuuseki",
+   "name": "藤原宮跡",
+   "area": "asuka",
+   "cat": "観光",
+   "lat": 34.50095,
+   "lng": 135.80741,
+   "approx": false,
+   "desc": "日本初の本格的都城・藤原京の宮殿跡。広大な敷地には季節の花々が咲き誇り、ARアプリで当時の大極殿などを再現しながら散策できる名所。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    },
+    {
+     "type": "youtube",
+     "id": "wpnTFET2WEo"
+    }
+   ],
+   "place_id": "ChIJu_VYqbTMBmARCi22i41TXx8",
+   "address": "日本、〒634-0072 奈良県橿原市醍醐町",
+   "url": "https://www.city.kashihara.nara.jp/soshiki/1058/gyomu/3/2/3/1/3872.html",
+   "hours": [
+    "月曜日: 24 時間営業",
+    "火曜日: 24 時間営業",
+    "水曜日: 24 時間営業",
+    "木曜日: 24 時間営業",
+    "金曜日: 24 時間営業",
+    "土曜日: 24 時間営業",
+    "日曜日: 24 時間営業"
+   ]
+  },
+  {
+   "slug": "asukanimasu-jinja",
+   "name": "飛鳥坐神社",
+   "area": "asuka",
+   "cat": "観光",
+   "lat": 34.47971,
+   "lng": 135.82273,
+   "approx": false,
+   "desc": "古代より飛鳥の地に鎮座する神社。子宝や縁結びのご利益があるパワースポットとして知られ、のどかな風景の中に静かに佇んでいる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "KuKGt_EsXzU"
+    }
+   ],
+   "place_id": "ChIJh110bITMBmAR8MH1uhyPeEk",
+   "address": "日本、〒634-0103 奈良県高市郡明日香村飛鳥７０８",
+   "url": "http://asukaniimasujinja.jp/"
+  },
+  {
+   "slug": "gurandomerukyuuru-nara-kashihara",
+   "name": "グランドメルキュール奈良橿原",
+   "area": "asuka",
+   "cat": "宿",
+   "lat": 34.48472,
+   "lng": 135.7952,
+   "approx": false,
+   "desc": "橿原神宮前駅の近くに位置するホテル。明日香村観光を楽しむ際の便利な滞在拠点として、旅行者に広く利用されている宿泊施設。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "Gn5VRD3oNWU"
+    }
+   ],
+   "place_id": "ChIJ7T6E49vMBmARYL6yhpT6Gqc",
+   "address": "日本、〒634-0063 奈良県橿原市久米町",
+   "url": "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=C1P9&merchantid=seo-maps-Japan-C1P9&sourceid=aw-cen&utm_medium=seo%20maps&utm_source=google%20Maps&utm_campaign=seo%20maps"
+  },
+  {
+   "slug": "nouson-resutoran-yume-shi-chaya",
+   "name": "農村レストラン 夢市茶屋",
+   "area": "asuka",
+   "cat": "グルメ",
+   "lat": 34.46721,
+   "lng": 135.8246,
+   "approx": false,
+   "desc": "石舞台古墳のすぐ近くにあるレストラン。美しい景色を望むテラス席を備えており、古代米を使った「古代米御膳」などを味わえる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "Gn5VRD3oNWU"
+    }
+   ],
+   "place_id": "ChIJZ9pkv3nMBmARQGtEJdjAy2s",
+   "address": "日本、〒634-0112 奈良県高市郡明日香村島庄１５４−３ １５４−３",
+   "url": "http://asukadeasobo.jp/shop/yumeichi",
+   "hours": [
+    "月曜日: 11時00分～16時00分",
+    "火曜日: 11時00分～16時00分",
+    "水曜日: 11時00分～16時00分",
+    "木曜日: 11時00分～16時00分",
+    "金曜日: 11時00分～16時00分",
+    "土曜日: 11時00分～17時00分",
+    "日曜日: 11時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "garasu-koubou-marigurasu",
+   "name": "ガラス工房 マリグラス",
+   "area": "asuka",
+   "cat": "雑貨・土産",
+   "lat": 34.46837,
+   "lng": 135.823,
+   "approx": false,
+   "desc": "明日香村に位置するガラス工房。窓辺に飾られた美しいガラス作品や、カラフルな箸置きをはじめとする手作り小物が店内に並んでいる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "Gn5VRD3oNWU"
+    }
+   ],
+   "place_id": "ChIJefcu2XvMBmAR-qybkEKidec",
+   "address": "日本、〒634-0112 奈良県高市郡明日香村島庄４２−１",
+   "url": "http://mariglass.net/"
+  },
+  {
+   "slug": "tachibana-tera",
+   "name": "橘寺",
+   "area": "asuka",
+   "cat": "観光",
+   "lat": 34.47011,
+   "lng": 135.81743,
+   "approx": false,
+   "desc": "聖徳太子誕生の地と伝わる寺院。往生院の天井一面に描かれた、色鮮やかで美しい天井画をじっくりと鑑賞することができる名所。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "Gn5VRD3oNWU"
+    }
+   ],
+   "place_id": "ChIJcbwv3WLMBmARpQEv5ZD-tT4",
+   "address": "日本、〒634-0142 奈良県高市郡明日香村橘５３２",
+   "url": "https://tachibanadera-asuka.jimdo.com/",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "koohii-sanpo",
+   "name": "珈琲 さんぽ",
+   "area": "asuka",
+   "cat": "カフェ・喫茶",
+   "lat": 34.47149,
+   "lng": 135.82036,
+   "approx": false,
+   "desc": "田園風景の中に佇む古民家カフェ。窓の外にいるヤギを眺めながら、自家焙煎のこだわりコーヒーをゆったりと味わうことができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "Gn5VRD3oNWU"
+    }
+   ],
+   "place_id": "ChIJY9eKD33MBmARBjLntwUOnOw",
+   "address": "日本、〒634-0111 奈良県高市郡明日香村岡５５−４",
+   "url": "https://coffee3po.exblog.jp/",
+   "hours": [
+    "月曜日: 11時00分～16時00分",
+    "火曜日: 11時00分～16時00分",
+    "水曜日: 11時00分～16時00分",
+    "木曜日: 定休日",
+    "金曜日: 定休日",
+    "土曜日: 11時00分～16時00分",
+    "日曜日: 11時00分～16時00分"
+   ]
+  },
+  {
+   "slug": "mimoza-zakkaten",
+   "name": "ミモザ雑貨店",
+   "area": "asuka",
+   "cat": "雑貨・土産",
+   "lat": 34.47961,
+   "lng": 135.82055,
+   "approx": false,
+   "desc": "古民家を改装したセレクトショップ。国内外のアンティークや作家ものの器、アクセサリーなどのお土産の品々が豊富に揃っている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "Gn5VRD3oNWU"
+    }
+   ],
+   "place_id": "ChIJT4sJsoXMBmARr7fKdNjtky8",
+   "address": "日本、〒634-0103 奈良県高市郡明日香村飛鳥６９４",
+   "url": "https://instagram.com/asuka_mimoza_zakka",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 定休日",
+    "水曜日: 12時00分～16時30分",
+    "木曜日: 12時00分～16時30分",
+    "金曜日: 定休日",
+    "土曜日: 12時00分～16時30分",
+    "日曜日: 12時00分～16時30分"
+   ]
+  },
+  {
+   "slug": "asuka-yume-no-rakuichi",
+   "name": "あすか夢の楽市",
+   "area": "asuka",
+   "cat": "雑貨・土産",
+   "lat": 34.48127,
+   "lng": 135.8178,
+   "approx": false,
+   "desc": "明日香村の新鮮な農産物や特産品が豊富に並ぶ直売所。地元で作られた「采女豆腐」をはじめとする品々を購入することができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "Gn5VRD3oNWU"
+    }
+   ],
+   "place_id": "ChIJVVVpG5DMBmARZR_VUCsFW6g",
+   "address": "日本、〒634-0103 奈良県高市郡明日香村飛鳥225−２",
+   "url": "https://www.facebook.com/asukayumenorakuichi/",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "ine-fuchi-tanada",
+   "name": "稲淵棚田",
+   "area": "asuka",
+   "cat": "自然",
+   "lat": 34.45329,
+   "lng": 135.82353,
+   "approx": false,
+   "desc": "約300枚もの棚田が広がる、明日香村を代表する名所。美しい日本の原風景をゆったりと望むことができる絶景スポットである。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "wpnTFET2WEo"
+    }
+   ],
+   "place_id": "ChIJfW_HVQDNBmARkIGzuzgGiQs",
+   "address": "日本、〒634-0123 奈良県高市郡明日香村稲渕１１２４−１"
+  },
+  {
+   "slug": "oka-tera",
+   "name": "岡寺",
+   "area": "asuka",
+   "cat": "観光",
+   "lat": 34.47179,
+   "lng": 135.82837,
+   "approx": false,
+   "desc": "日本最初の厄除け霊場とされる古刹。日本最大の塑像である本尊・如意輪観音菩薩像を、間近でじっくりと拝観することができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "wpnTFET2WEo"
+    }
+   ],
+   "place_id": "ChIJ1duwUIfLBmARWWIzApAJ-II",
+   "address": "日本、〒634-0111 奈良県高市郡明日香村岡８０６",
+   "hours": [
+    "月曜日: 8時30分～17時00分",
+    "火曜日: 8時30分～17時00分",
+    "水曜日: 8時30分～17時00分",
+    "木曜日: 8時30分～17時00分",
+    "金曜日: 8時30分～17時00分",
+    "土曜日: 8時30分～17時00分",
+    "日曜日: 8時30分～17時00分"
+   ]
+  },
+  {
+   "slug": "karion",
+   "name": "カリオン",
+   "area": "asuka",
+   "cat": "カフェ・喫茶",
+   "lat": 34.47758,
+   "lng": 135.82301,
+   "approx": false,
+   "desc": "奈良県立万葉文化館内にあるカフェ。明日香村の朝採れ野菜をたっぷりと使った「明日香野菜カレー」が人気メニューとなっている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "wpnTFET2WEo"
+    }
+   ],
+   "place_id": "ChIJ4VieISzNBmARuS9jQ96gg1I",
+   "address": "日本、〒634-0103 奈良県高市郡明日香村飛鳥１０",
+   "url": "https://r.goope.jp/curryon-asuka/",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 10時00分～17時30分",
+    "水曜日: 10時00分～17時30分",
+    "木曜日: 10時00分～17時30分",
+    "金曜日: 10時00分～17時30分",
+    "土曜日: 10時00分～17時30分",
+    "日曜日: 10時00分～17時30分"
+   ]
+  },
+  {
+   "slug": "mizuho",
+   "name": "ミズホ",
+   "area": "asuka",
+   "cat": "雑貨・土産",
+   "lat": 34.52607,
+   "lng": 135.81021,
+   "approx": false,
+   "desc": "360年以上続く伝統的なお酢の醸造元。吉野杉の木桶で静置発酵させた、口当たりがまろやかなお酢を試飲や購入によって楽しめる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "wpnTFET2WEo"
+    }
+   ],
+   "place_id": "ChIJyxdtaGszAWARwAm-TCiNTXA",
+   "address": "日本、〒634-0009 奈良県橿原市中町２６７",
+   "url": "https://www.mizuhosu.co.jp/",
+   "hours": [
+    "月曜日: 8時00分～17時00分",
+    "火曜日: 8時00分～17時00分",
+    "水曜日: 8時00分～17時00分",
+    "木曜日: 8時00分～17時00分",
+    "金曜日: 8時00分～17時00分",
+    "土曜日: 定休日",
+    "日曜日: 定休日"
+   ]
+  },
+  {
+   "slug": "yakou",
+   "name": "八向",
+   "area": "asuka",
+   "cat": "グルメ",
+   "lat": 34.51214,
+   "lng": 135.79162,
+   "approx": false,
+   "desc": "大和牛や大和肉鶏、倭鴨といった奈良のブランド肉を使用した石焼きや鴨蕎麦など、多彩な創作和食を心ゆくまで堪能できるお店。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "wpnTFET2WEo"
+    }
+   ],
+   "place_id": "ChIJ40mRRCAzAWARCS5v18NFudk",
+   "address": "日本、〒634-0804 奈良県橿原市内膳町１丁目３−５",
+   "url": "https://www.cafe-polkadot.com/yako",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 17時00分～23時00分",
+    "水曜日: 17時00分～23時00分",
+    "木曜日: 17時00分～23時00分",
+    "金曜日: 17時00分～23時00分",
+    "土曜日: 17時00分～23時00分",
+    "日曜日: 定休日"
+   ]
+  },
+  {
+   "slug": "touma-tera",
+   "name": "當麻寺",
+   "area": "asuka",
+   "cat": "観光",
+   "lat": 34.51608,
+   "lng": 135.69494,
+   "approx": false,
+   "desc": "中将姫伝説や當麻曼荼羅で知られる歴史ある寺院。東西に並び立つ白鳳・天平様式の二基の三重塔があり、大きな見どころとなっている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "6Ibb5Bzq_8I"
+    }
+   ],
+   "place_id": "ChIJt2smZRgsAWARBk1n0YviXEc",
+   "address": "日本、〒639-0276 奈良県葛城市當麻１２６３",
+   "url": "http://www.taimadera.or.jp/",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "godai-matsu-shounyuudou",
+   "name": "五代松鍾乳洞",
+   "area": "yoshino",
+   "cat": "観光",
+   "lat": 34.26514,
+   "lng": 135.89513,
+   "approx": false,
+   "desc": "モノレールで急斜面を登った先にある昭和8年発見の鍾乳洞。ひんやりとした洞内では、数万年かけて形成された石柱などの見学を楽しめる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "cCzmXQVM-eM"
+    }
+   ],
+   "place_id": "ChIJF31VsWPBBmARHXYo59b1TR0",
+   "address": "日本、〒638-0431 奈良県吉野郡天川村洞川６８６−１３９",
+   "url": "https://www.instagram.com/dorogawa_zaisanku/",
+   "hours": [
+    "月曜日: 9時30分～11時30分, 13時30分～15時50分",
+    "火曜日: 9時30分～11時30分, 13時30分～15時50分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 定休日",
+    "金曜日: 9時30分～11時30分, 13時30分～15時50分",
+    "土曜日: 9時00分～11時30分, 13時30分～15時50分",
+    "日曜日: 9時30分～15時50分"
+   ]
+  },
+  {
+   "slug": "doukawa-sakana-sentaa",
+   "name": "洞川魚センター",
+   "area": "yoshino",
+   "cat": "グルメ",
+   "lat": 34.27195,
+   "lng": 135.88163,
+   "approx": false,
+   "desc": "川魚のつかみ取り体験ができる施設。自分で獲った新鮮なアユやイワナを、その場で塩焼きにして美味しく味わうことができるスポット。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "cCzmXQVM-eM"
+    }
+   ],
+   "place_id": "ChIJHWX5ZUHABmAR6o87i9GON1M",
+   "address": "日本、〒638-0431 奈良県吉野郡天川村洞川６７５−５６",
+   "url": "https://twitter.com/dorogawakawauo?s=21"
+  },
+  {
+   "slug": "amakawa-sonritsu-shiryoukan",
+   "name": "天川村立資料館",
+   "area": "yoshino",
+   "cat": "観光",
+   "lat": 34.27032,
+   "lng": 135.8805,
+   "approx": false,
+   "desc": "天川村の歴史や文化、修験道に関する資料を展示する資料館。大峯山に墜落したB-29のエンジンの一部などの貴重な品も展示されている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "cCzmXQVM-eM"
+    }
+   ],
+   "place_id": "ChIJ-VneMUHABmAR45sW3xw-opc",
+   "address": "日本、〒638-0431 奈良県吉野郡天川村洞川６７４−１",
+   "url": "https://www.vill.tenkawa.nara.jp/tourism/spot/5157/",
+   "hours": [
+    "月曜日: 10時00分～17時00分",
+    "火曜日: 定休日",
+    "水曜日: 10時00分～17時00分",
+    "木曜日: 10時00分～17時00分",
+    "金曜日: 10時00分～17時00分",
+    "土曜日: 10時00分～17時00分",
+    "日曜日: 10時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "doukawa-onsen-sentaa",
+   "name": "洞川温泉センター",
+   "area": "yoshino",
+   "cat": "温泉",
+   "lat": 34.2638,
+   "lng": 135.8808,
+   "approx": true,
+   "desc": "名水「ごろごろ水」の近くにある日帰り温泉施設。木の温もりにあふれた綺麗な館内が特徴で、旅の疲れを心地よく癒やすことができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "cCzmXQVM-eM"
+    }
+   ]
+  },
+  {
+   "slug": "tanise-no-tsuri-hashi",
+   "name": "谷瀬の吊り橋",
+   "area": "yoshino",
+   "cat": "観光",
+   "lat": 34.10134,
+   "lng": 135.76279,
+   "approx": false,
+   "desc": "長さ297m、高さ54mを誇る日本一の生活用吊り橋。高い場所を歩くスリル満点の空中散歩をじっくりと体験できるスポット。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "cCzmXQVM-eM"
+    }
+   ],
+   "place_id": "ChIJeyNmSm_vBmARHDQ4Zup5Qxw",
+   "address": "日本、〒637-1106 奈良県吉野郡十津川村上野地６５−２",
+   "url": "https://www.vill.totsukawa.lg.jp/traveling_guide/",
+   "hours": [
+    "月曜日: 24 時間営業",
+    "火曜日: 24 時間営業",
+    "水曜日: 24 時間営業",
+    "木曜日: 24 時間営業",
+    "金曜日: 24 時間営業",
+    "土曜日: 24 時間営業",
+    "日曜日: 24 時間営業"
+   ]
+  },
+  {
+   "slug": "nozaru",
+   "name": "十津川 野猿（昴の郷）",
+   "area": "yoshino",
+   "cat": "体験",
+   "lat": 33.93805,
+   "lng": 135.7524,
+   "approx": false,
+   "desc": "屋形船のような木箱に乗り込み、自力でロープを手繰り寄せて川を渡る、十津川村に伝わる伝統的な人力渡しを体験できるスポット。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "cCzmXQVM-eM"
+    }
+   ],
+   "place_id": "ChIJq7Z0zTP3BmARQxQ8dNWTKcE",
+   "address": "日本、〒637-1554 奈良県吉野郡十津川村平谷９０９",
+   "hours": [
+    "月曜日: 24 時間営業",
+    "火曜日: 24 時間営業",
+    "水曜日: 24 時間営業",
+    "木曜日: 24 時間営業",
+    "金曜日: 24 時間営業",
+    "土曜日: 24 時間営業",
+    "日曜日: 24 時間営業"
+   ]
+  },
+  {
+   "slug": "ryokan-sansui",
+   "name": "旅館 山水",
+   "area": "yoshino",
+   "cat": "宿",
+   "lat": 33.93356,
+   "lng": 135.74979,
+   "approx": false,
+   "desc": "十津川温泉に佇む温泉旅館。夕食にはすっぽん鍋や鹿肉、猪肉、川魚といった地元の恵みをふんだんに盛り込んだジビエ会席が好評を博す。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "cCzmXQVM-eM"
+    }
+   ],
+   "place_id": "ChIJhdQvoCn4BmARz6Fo20hJgFc",
+   "address": "日本、〒637-1556 奈良県吉野郡十津川村平谷９４６−１",
+   "hours": [
+    "月曜日: 8時00分～22時00分",
+    "火曜日: 8時00分～22時00分",
+    "水曜日: 8時00分～22時00分",
+    "木曜日: 8時00分～22時00分",
+    "金曜日: 8時00分～22時00分",
+    "土曜日: 8時00分～22時00分",
+    "日曜日: 8時00分～22時00分"
+   ]
+  },
+  {
+   "slug": "ue-yuon-izumi-rotenburo",
+   "name": "上湯温泉 露天風呂",
+   "area": "yoshino",
+   "cat": "温泉",
+   "lat": 33.93112,
+   "lng": 135.73265,
+   "approx": false,
+   "desc": "川のすぐ隣に設けられた開放感あふれる源泉掛け流しの露天風呂。すぐそばを流れる清流のせせらぎを聞きながら自然を満喫できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "cCzmXQVM-eM"
+    }
+   ],
+   "place_id": "ChIJTXOANgD5BmARqMHg0TOD5k8",
+   "address": "日本、〒637-1558 奈良県吉野郡十津川村出谷３５０",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 定休日",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "mori-to-mizu-no-genryuu-kan",
+   "name": "森と水の源流館",
+   "area": "yoshino",
+   "cat": "観光",
+   "lat": 34.33402,
+   "lng": 135.95794,
+   "approx": false,
+   "desc": "吉野川源流の自然や歴史、森と水の恵みを学べる体験型施設。川の豊かな生態系や、かつて行われていた筏流しの歴史などを詳しく紹介している。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "cCzmXQVM-eM"
+    }
+   ],
+   "place_id": "ChIJxbdRieu-BmAR7KJwfXziPsM",
+   "address": "日本、〒639-3553 奈良県吉野郡川上村宮の平（迫１３７４−１",
+   "url": "http://www.genryuu.or.jp/",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 定休日",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "yoshino-yama-roopuuei",
+   "name": "吉野山ロープウェイ",
+   "area": "yoshino",
+   "cat": "体験",
+   "lat": 34.37523,
+   "lng": 135.8539,
+   "approx": false,
+   "desc": "千本口駅と吉野山駅を約3分で結ぶ、現存日本最古のロープウェイ。レトロな雰囲気の車窓からは、四季折々の美しい景色を眺められる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJsRhTu_3HBmARmeY0a0Kxtfg",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山７９",
+   "url": "http://www.yokb315.co.jp/ropeway.php"
+  },
+  {
+   "slug": "hanami-tei",
+   "name": "花見亭",
+   "area": "yoshino",
+   "cat": "グルメ",
+   "lat": 34.37225,
+   "lng": 135.8558,
+   "approx": false,
+   "desc": "ロープウェイ吉野山駅のすぐそばにある売店。お米のつぶ感を残して香ばしく焼き上げた五平餅や、みたらし団子が人気を集めている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJIcgAsDrGBmAREtHi7G-qDcY",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山３４６",
+   "url": "http://yoshinoyama-hanamitei.com/",
+   "hours": [
+    "月曜日: 9時00分～16時00分",
+    "火曜日: 9時00分～16時00分",
+    "水曜日: 9時00分～16時00分",
+    "木曜日: 9時00分～16時00分",
+    "金曜日: 9時00分～16時00分",
+    "土曜日: 9時00分～16時00分",
+    "日曜日: 9時00分～16時00分"
+   ]
+  },
+  {
+   "slug": "kaki-no-ha-sushi-hyoutarou",
+   "name": "柿の葉すし ひょうたろう",
+   "area": "yoshino",
+   "cat": "グルメ",
+   "lat": 34.37062,
+   "lng": 135.85778,
+   "approx": false,
+   "desc": "吉野名物である柿の葉寿司の人気店。翌日がいちばん美味しいとされ、絶妙な塩加減と旨味が引き立つ名物の寿司をテイクアウトできる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJBTgr6jDGBmAR3XIrMWIeexw",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山429番地",
+   "url": "https://hyoutaro.com/?utm_source=google&utm_medium=maps",
+   "hours": [
+    "月曜日: 定休日",
+    "火曜日: 9時00分～16時00分",
+    "水曜日: 9時00分～16時00分",
+    "木曜日: 9時00分～16時00分",
+    "金曜日: 9時00分～16時00分",
+    "土曜日: 9時00分～16時00分",
+    "日曜日: 9時00分～16時00分"
+   ]
+  },
+  {
+   "slug": "mitake-tera-dou-torii",
+   "name": "金峯山寺 銅鳥居",
+   "area": "yoshino",
+   "cat": "観光",
+   "lat": 34.37075,
+   "lng": 135.85775,
+   "approx": false,
+   "desc": "吉野山の聖域の入り口に静かに佇む大鳥居。青銅で作られた威厳ある姿が特徴で、国の重要文化財にも指定されている貴重な建造物である。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJW-UDNQDHBmAR3WYTbmRg2LA",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山",
+   "url": "https://www.kinpusen.or.jp/guide/"
+  },
+  {
+   "slug": "yoshino-no-yu",
+   "name": "吉野の湯",
+   "area": "yoshino",
+   "cat": "温泉",
+   "lat": 34.36981,
+   "lng": 135.85841,
+   "approx": false,
+   "desc": "吉野山散策の途中に立ち寄るスポットとして最適な日帰り入浴施設。人工ラジウム温泉が備わり、散策の疲れを心地よく癒やすことができる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJB03uMG3HBmARekYu6pRc2ng",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山４４１",
+   "url": "https://yukawaya.amebaownd.com/",
+   "hours": [
+    "月曜日: 11時00分～15時00分",
+    "火曜日: 11時00分～15時00分",
+    "水曜日: 11時00分～15時00分",
+    "木曜日: 定休日",
+    "金曜日: 11時00分～15時00分",
+    "土曜日: 11時00分～15時00分",
+    "日曜日: 11時00分～15時00分"
+   ]
+  },
+  {
+   "slug": "aoki-saketen",
+   "name": "青木酒店",
+   "area": "yoshino",
+   "cat": "グルメ",
+   "lat": 34.36946,
+   "lng": 135.85866,
+   "approx": false,
+   "desc": "地酒や各種お土産を取り揃える酒処。吉野葛を練り込んだ滑らかな口当たりの「桜の花ソフトクリーム」が名物として人気を博している。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJA4YVAjbGBmARtNAW1LKiW50",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山４４５",
+   "hours": [
+    "月曜日: 9時00分～17時00分",
+    "火曜日: 9時00分～17時00分",
+    "水曜日: 9時00分～17時00分",
+    "木曜日: 9時00分～17時00分",
+    "金曜日: 9時00分～17時00分",
+    "土曜日: 9時00分～17時00分",
+    "日曜日: 9時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "nakai-harukaze-dou",
+   "name": "中井春風堂",
+   "area": "yoshino",
+   "cat": "カフェ・喫茶",
+   "lat": 34.36747,
+   "lng": 135.85986,
+   "approx": false,
+   "desc": "賞味期限わずか10分という出来立ての本葛切りや本葛餅が味わえる名店。絶景が広がるカウンター席で、透明感ある喉越しを堪能できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJD4HKQjbGBmARSBQj1oHbnoI",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山５４５",
+   "url": "http://nakasyun.com/",
+   "hours": [
+    "月曜日: 10時00分～17時00分",
+    "火曜日: 10時00分～17時00分",
+    "水曜日: 定休日",
+    "木曜日: 10時00分～17時00分",
+    "金曜日: 10時00分～17時00分",
+    "土曜日: 10時00分～17時00分",
+    "日曜日: 10時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "yamato-honpo",
+   "name": "大和本舗",
+   "area": "yoshino",
+   "cat": "グルメ",
+   "lat": 34.36741,
+   "lng": 135.85998,
+   "approx": false,
+   "desc": "自家製のちりめん山椒や佃煮を幅広く取り揃える老舗。ぷるぷるとした独特の食感が楽しめる名物の「きな粉葛餅」はお土産として大人気を誇る。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJkScsaDbGBmARsCy0VNa1wU8",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山５４７",
+   "url": "http://www.mjnet.ne.jp/yamato/"
+  },
+  {
+   "slug": "kuzu-no-ganso-yasokichi",
+   "name": "葛の元祖 八十吉",
+   "area": "yoshino",
+   "cat": "カフェ・喫茶",
+   "lat": 34.36609,
+   "lng": 135.86131,
+   "approx": false,
+   "desc": "嘉永4年創業という歴史を誇る葛製造の老舗。黒糖の豊かな甘みと葛餅の食感が絶妙にマッチした、テイクアウト限定の「くずもちラテ」が好評。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJu_8SBSTGBmARCzeaXIwRWSA",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山５６１−１",
+   "url": "http://www.yoshinokuzu.co.jp/",
+   "hours": [
+    "月曜日: 11時00分～16時00分",
+    "火曜日: 11時00分～16時00分",
+    "水曜日: 定休日",
+    "木曜日: 定休日",
+    "金曜日: 11時00分～16時00分",
+    "土曜日: 11時00分～16時00分",
+    "日曜日: 11時00分～16時00分"
+   ]
+  },
+  {
+   "slug": "yoshimizu-jinja",
+   "name": "吉水神社",
+   "area": "yoshino",
+   "cat": "観光",
+   "lat": 34.36724,
+   "lng": 135.86187,
+   "approx": false,
+   "desc": "源義経の潜伏地や後醍醐天皇の皇居となった歴史ある神社。境内からは、かつて豊臣秀吉も絶賛したとされる「一目千本」の壮大な桜のパノラマを一望できる。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJIdHM7zXGBmAR3WCOlfVrS-o",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山５７９",
+   "url": "http://www.yoshimizu-shrine.com/",
+   "hours": [
+    "月曜日: 9時00分～16時30分",
+    "火曜日: 9時00分～16時30分",
+    "水曜日: 9時00分～16時30分",
+    "木曜日: 9時00分～16時30分",
+    "金曜日: 9時00分～16時30分",
+    "土曜日: 9時00分～16時30分",
+    "日曜日: 9時00分～16時30分"
+   ]
+  },
+  {
+   "slug": "ya-teki-iori",
+   "name": "矢的庵",
+   "area": "yoshino",
+   "cat": "グルメ",
+   "lat": 34.36187,
+   "lng": 135.86285,
+   "approx": false,
+   "desc": "吉野山の名水を使って打たれる手打ち蕎麦のお店。サクサクとした食感の餅天が豪快に乗った「餅天のせ仁王そば」などのメニューが人気を集める。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJ89wYOkrGBmARcr19DMWzwEU",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山２２９６−下",
+   "url": "http://www.yamatoan.com/",
+   "hours": [
+    "月曜日: 11時00分～17時00分",
+    "火曜日: 11時00分～17時00分",
+    "水曜日: 11時00分～17時00分",
+    "木曜日: 11時00分～17時00分",
+    "金曜日: 11時00分～17時00分",
+    "土曜日: 11時00分～17時00分",
+    "日曜日: 11時00分～17時00分"
+   ]
+  },
+  {
+   "slug": "mitake-tera",
+   "name": "金峯山寺",
+   "area": "yoshino",
+   "cat": "観光",
+   "lat": 34.36846,
+   "lng": 135.85871,
+   "approx": false,
+   "desc": "吉野山に位置する修験道の総本山。国宝に指定されている本堂の「蔵王堂」は、大規模な木造建築として国内屈指の威容と迫力を誇っている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJ3WXNOzfGBmARHf_m5YNxqFk",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山２４９８",
+   "url": "http://www.kinpusen.or.jp/",
+   "hours": [
+    "月曜日: 8時30分～16時00分",
+    "火曜日: 8時30分～16時00分",
+    "水曜日: 8時30分～16時00分",
+    "木曜日: 8時30分～16時00分",
+    "金曜日: 8時30分～16時00分",
+    "土曜日: 8時30分～16時00分",
+    "日曜日: 8時30分～16時00分"
+   ]
+  },
+  {
+   "slug": "sei-tei",
+   "name": "静亭",
+   "area": "yoshino",
+   "cat": "グルメ",
+   "lat": 34.36477,
+   "lng": 135.86284,
+   "approx": false,
+   "desc": "吉野山の美しい景色を見渡せる食事処。テイクアウトにも対応する名物の柿の葉寿司（鯖・鮭）は、しっかりとした塩気が効いており評判が高い。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJ14HQskvGBmARXFTbRcoc0Bk",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山９５２",
+   "url": "http://www.yosino-sizukatei.sakura.ne.jp/",
+   "hours": [
+    "月曜日: 11時00分～18時00分",
+    "火曜日: 11時00分～18時00分",
+    "水曜日: 11時00分～18時00分",
+    "木曜日: 11時00分～18時00分",
+    "金曜日: 11時00分～18時00分",
+    "土曜日: 11時00分～18時00分",
+    "日曜日: 11時00分～18時00分"
+   ]
+  },
+  {
+   "slug": "toufu-chaya-hayashi",
+   "name": "豆腐茶屋 林",
+   "area": "yoshino",
+   "cat": "グルメ",
+   "lat": 34.36686,
+   "lng": 135.86057,
+   "approx": false,
+   "desc": "吉野山で唯一となる豆腐屋が営むカフェ。ヘルシーな仕上がりの「豆腐豚まん」や、罪悪感なく楽しめる「豆腐ドーナツ」などが人気を集めている。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "h-q9yqH-aoo"
+    }
+   ],
+   "place_id": "ChIJcb4qDjbGBmAR_H1lvMzWK5U",
+   "address": "日本、〒639-3115 奈良県吉野郡吉野町吉野山５５１",
+   "url": "http://www.yoshinoyama-tofu.jp/",
+   "hours": [
+    "月曜日: 9時30分～17時00分",
+    "火曜日: 定休日",
+    "水曜日: 定休日",
+    "木曜日: 9時30分～17時00分",
+    "金曜日: 9時30分～17時00分",
+    "土曜日: 9時30分～16時00分",
+    "日曜日: 9時30分～17時00分"
+   ]
+  },
+  {
+   "slug": "tenkaippin-kamiasamiya",
+   "name": "天下一品 上朝宮店",
+   "area": "other",
+   "cat": "グルメ",
+   "lat": 34.8488,
+   "lng": 135.9866,
+   "approx": true,
+   "desc": "古民家をリノベーションした料亭のような佇まいの店舗。限定の「スタミナ中華そば」や惣菜付きの「旬菜セット」など独自メニューが揃う。滋賀県甲賀市信楽町にあり、奈良市中心部から車で約1時間。",
+   "sources": [
+    {
+     "type": "youtube",
+     "id": "F2sNswWhgCo"
+    }
+   ],
+   "out_of_pref": true,
+   "mark": true
+  }
+ ]
+}

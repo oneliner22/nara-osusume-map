@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<!-- region-spot-map テンプレート (ishikawa-spots / vietnam-spots ベース)
+     このファイルをリポ直下に index.html としてコピーするだけで使う。編集は原則不要。
+     表示内容はすべて data/config.json・data/spots.json・data/videos.json から実行時に読む。
+     特別ハイライト(例: ぽんぽこちゃんねる出典の🍃)は config の mark_emoji / mark_note と
+     spots[].mark / videos[].mark で制御(無指定なら機能ごと非表示)。
+     ブックマーク(グループ分け・動線)は localStorage のみで完結し、サーバ側に何も持たない。 -->
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>エリア別おすすめMAP</title>
+<meta name="description" content="">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+<style>
+:root{
+  --cream:#fbf3e4; --ink:#3a2a1c; --paper:#fffaf0; --line:#e7d8bd;
+  --accent:#e8543f; --accent2:#b07d2a; --shadow:rgba(80,50,20,.18); --star:#e6a817;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Hiragino Maru Gothic ProN","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  color:var(--ink); background:var(--cream);
+  background-image:radial-gradient(var(--line) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--accent)}
+button{font-family:inherit}
+header.hero{ text-align:center; padding:26px 16px 10px; position:relative; }
+.hero h1{ margin:0; font-size:clamp(22px,4.4vw,38px); letter-spacing:.02em;
+  text-shadow:2px 2px 0 #fff, 4px 4px 0 var(--line); }
+.hero .leaf{color:#3a9; }
+.hero p.lead{margin:8px auto 4px; max-width:760px; font-size:14.5px; line-height:1.7; color:#5b4631}
+.hero .meta{font-size:12.5px; color:#8a7350; margin-top:6px}
+/* 「これはなに？」で開く説明。開いた中の「たたむ」で閉じる */
+.about-bar{margin-top:10px}
+.about-btn{border:2px solid var(--line);background:var(--paper);color:#8a7350;border-radius:16px;padding:5px 14px;
+  font-size:13px;font-weight:800;cursor:pointer;box-shadow:2px 2px 0 var(--line);transition:.12s}
+.about-btn:hover{border-color:var(--ink);color:var(--ink)}
+.about-btn[aria-expanded="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.about{max-width:800px;margin:10px auto 0;border:2px dashed var(--line);border-radius:14px;background:var(--paper);
+  padding:10px 16px 12px;animation:pop .16s ease}
+.about[hidden]{display:none}
+.about .meta{margin:8px 0 0}
+.about-close{margin-top:10px;border:none;background:none;color:#8a7350;font-size:12.5px;font-weight:700;cursor:pointer;
+  text-decoration:underline;text-underline-offset:3px}
+.about-close:hover{color:var(--ink)}
+.hero .meta a{font-weight:700; text-decoration:none}
+.hero .meta a:hover{text-decoration:underline}
+.counts{display:inline-flex; gap:14px; margin-top:10px; flex-wrap:wrap; justify-content:center}
+.counts b{font-size:20px; color:var(--accent)}
+.counts span{font-size:11.5px; display:block; color:#8a7350}
+.counts .pill{background:var(--paper); border:2px solid var(--line); border-radius:14px; padding:6px 14px; box-shadow:2px 2px 0 var(--line)}
+.wrap{max-width:1180px; margin:0 auto; padding:8px 14px 60px}
+.controls{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:14px 0; justify-content:center}
+.controls input[type=search]{ border:2px solid var(--line); background:var(--paper); border-radius:20px; padding:8px 14px;
+  font-size:14px; min-width:200px; outline:none; color:var(--ink) }
+.controls.sub{margin:14px 0 4px; gap:6px}
+.controls select, .originbar input, .originbar select{ border:2px solid var(--line); background:var(--paper); border-radius:16px;
+  padding:5px 10px; font-size:12.5px; color:var(--ink); font-family:inherit; max-width:100%; outline:none }
+.controls select:focus, .originbar input:focus{border-color:var(--accent2)}
+.chipfilter{display:flex; flex-wrap:wrap; gap:6px; justify-content:center}
+.cfilter{ border:2px solid var(--line); background:var(--paper); border-radius:16px; padding:4px 11px;
+  font-size:12.5px; cursor:pointer; user-select:none; transition:.12s; white-space:nowrap }
+.cfilter[data-on="1"]{background:var(--ink); color:#fff; border-color:var(--ink)}
+.cfilter .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.cfilter.bmchip[data-on="1"]{background:var(--star); border-color:var(--star); color:#3a2a1c}
+.cfilter.srcchip[data-on="0"]{opacity:.55}
+/* すべてクリア：チップとは別物であることが一目で分かるよう、破線＋アクセント色にする */
+.clearall{ border:2px dashed var(--accent); background:#fff; color:var(--accent); border-radius:16px;
+  padding:4px 13px; font-size:12.5px; font-weight:800; cursor:pointer; user-select:none; white-space:nowrap;
+  transition:.12s; box-shadow:2px 2px 0 rgba(232,84,63,.22); font-family:inherit; line-height:1.45 }
+.clearall .ic{margin-right:4px; font-weight:900}
+.clearall:hover{ background:var(--accent); color:#fff; box-shadow:1px 1px 0 rgba(232,84,63,.4) }
+.clearall[data-idle="1"]{ opacity:.4; cursor:default; box-shadow:none }
+.clearall[data-idle="1"]:hover{ background:#fff; color:var(--accent) }
+/* 近い順の起点バー */
+.originbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;margin:4px 0 6px;
+  font-size:12.5px;color:#5b4631}
+.originbar[hidden]{display:none}
+.originbar b{background:var(--paper);border:2px dashed var(--accent2);border-radius:14px;padding:3px 10px;color:var(--accent2)}
+.originbar button{border:2px solid var(--line);background:var(--paper);border-radius:14px;padding:4px 10px;font-size:12px;
+  cursor:pointer;color:var(--ink)}
+.originbar button:hover{border-color:var(--ink)}
+.originbar input{min-width:170px}
+#map{height:60vh; min-height:380px; border:3px solid var(--ink); border-radius:16px;
+  box-shadow:5px 5px 0 var(--shadow); background:#cfe3d8}
+/* ズームすると自動表示されるスポット名ラベル（タップ判定も兼ねる） */
+.leaflet-tooltip.spot-label{ background:var(--paper); color:var(--ink); border:1.5px solid var(--ink);
+  border-radius:9px; padding:2px 8px; font-family:inherit; font-size:11.5px; font-weight:700; line-height:1.4;
+  white-space:nowrap; box-shadow:1.5px 1.5px 0 var(--shadow) }
+.leaflet-tooltip.spot-label.leaflet-tooltip-top:before{border-top-color:var(--ink)}
+.leaflet-tooltip.spot-label.leaflet-interactive{cursor:pointer}
+.leaflet-tooltip.spot-label .ldot{display:inline-block;width:7px;height:7px;border-radius:50%;
+  margin-right:5px;vertical-align:middle}
+/* 動線の順番マーカー */
+.rt-num{background:none;border:none}
+.rt-num span{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;
+  color:#fff;font-weight:900;font-size:11.5px;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4);cursor:pointer;
+  font-family:inherit}
+/* 縮尺バー: サイトの配色（墨色の線・クリーム地）に合わせる */
+.leaflet-control-scale{margin-left:10px;margin-bottom:10px}
+.leaflet-control-scale-line{background:rgba(255,250,240,.85);border:1.5px solid var(--ink);border-top:none;
+  color:var(--ink);font-family:inherit;font-size:10.5px;font-weight:700;line-height:1.3;padding:1px 5px 0;
+  box-shadow:1.5px 1.5px 0 var(--shadow)}
+.origin-pin{background:none;border:none}
+.origin-pin span{display:block;width:16px;height:16px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+  background:var(--ink);border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.legend-note{font-size:12px;color:#8a7350;text-align:center;margin:12px 0 4px}
+.empty-note{margin-top:22px;border:2px dashed var(--line);border-radius:14px;background:var(--paper);
+  padding:22px 16px;text-align:center;font-size:13px;line-height:1.8;color:#8a7350}
+/* 一覧のタブ（エリア別 / ブックマーク） */
+.tabs{display:flex;gap:6px;margin-top:16px;border-bottom:3px solid var(--ink);padding:0 6px}
+/* 未選択タブは地のクリームより暗い灰色にして、選択中(墨色)との差をはっきりさせる */
+.tab{border:2px solid #cfc8bb;border-bottom:none;background:#dcd6ca;border-radius:12px 12px 0 0;
+  padding:8px 16px;font-size:13.5px;font-weight:800;cursor:pointer;color:#7a6f60;position:relative;top:3px;transition:.12s}
+.tab:hover{background:#cfc8bb;color:var(--ink)}
+.tab[data-on="1"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tab[data-on="1"]:hover{background:var(--ink)}
+.tab .cnt{font-size:11px;background:#bfb8aa;color:#3a2a1c;border-radius:10px;padding:1px 7px;margin-left:5px}
+.tab[data-on="1"] .cnt{background:var(--star)}
+.panel[hidden]{display:none}
+.area-block{margin-top:22px; border:2px solid var(--line); border-radius:14px; background:var(--paper);
+  box-shadow:3px 3px 0 var(--line); overflow:hidden}
+.area-head{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;
+  border-bottom:2px dashed var(--line)}
+.area-head .swatch{width:16px;height:16px;border-radius:50%;border:2px solid #00000022;flex:none}
+.area-head h2{margin:0;font-size:16px;flex:1}
+.area-head .n{font-size:12px;color:#8a7350;background:var(--cream);border:1px solid var(--line);
+  border-radius:12px;padding:2px 9px}
+.spotgrid{display:flex;flex-wrap:wrap;gap:8px;padding:13px 14px}
+.spot{ border:2px solid var(--line); background:var(--cream); border-radius:13px; padding:7px 34px 7px 11px;
+  cursor:pointer; transition:.12s; max-width:100%; position:relative }
+.spot:hover{transform:translate(-1px,-1px); box-shadow:2px 2px 0 var(--shadow); border-color:var(--accent)}
+.spot .nm{font-weight:700;font-size:13.5px}
+.spot .ct{font-size:10.5px;color:#8a7350;margin-left:4px}
+.spot .approx{font-size:10px;color:#b07d2a}
+.spot .yt{font-size:10.5px;color:#e62117;font-weight:700;margin-left:6px}
+.spot .xm{font-size:10.5px;color:#111;font-weight:700;margin-left:6px}
+.spot .dist{font-size:11px;color:#2f7d4f;font-weight:800;margin-left:6px}
+/* ★ボタン（一覧タイル・カルーセル・モーダル共通） */
+.bm{border:none;background:none;cursor:pointer;color:#c8b894;font-size:18px;line-height:1;padding:2px 4px;
+  transition:.12s;border-radius:8px}
+.bm:hover{color:var(--star);transform:scale(1.15)}
+.bm.on{color:var(--star)}
+.spot .bm{position:absolute;right:6px;top:50%;transform:translateY(-50%)}
+.spot .bm:hover{transform:translateY(-50%) scale(1.15)}
+.bmbtn{display:inline-flex;align-items:center;gap:5px;background:var(--paper);color:var(--ink);
+  border:2px solid var(--line);border-radius:15px;padding:6px 12px;font-size:12.5px;font-weight:800;
+  cursor:pointer;font-family:inherit;transition:.12s}
+.bmbtn:hover{border-color:var(--star)}
+.bmbtn.on{background:var(--star);border-color:var(--star)}
+/* モーダル内のグループチップ */
+.bm-groups{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:-4px 0 12px;font-size:12px;color:#8a7350}
+.gchip{border:2px solid var(--line);background:var(--paper);border-radius:14px;padding:3px 10px;font-size:12px;
+  cursor:pointer;color:var(--ink);font-family:inherit;display:inline-flex;align-items:center;gap:5px}
+.gchip .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.gchip[data-on="1"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.gchip.new{border-style:dashed;color:#8a7350}
+/* ブックマークパネル */
+.bm-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:16px;
+  font-size:12.5px;color:#8a7350;line-height:1.6}
+.btn{border:2px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:15px;padding:6px 14px;
+  font-size:12.5px;font-weight:800;cursor:pointer;box-shadow:2px 2px 0 var(--shadow);transition:.12s;white-space:nowrap}
+.btn:hover{background:var(--ink);color:#fff}
+.btn:disabled{opacity:.4;cursor:default;box-shadow:none}
+.btn:disabled:hover{background:var(--paper);color:var(--ink)}
+.grp{margin-top:16px;border:2px solid var(--line);border-radius:14px;background:var(--paper);
+  box-shadow:3px 3px 0 var(--line);overflow:hidden}
+.grp[data-active="1"]{border-color:var(--star);box-shadow:3px 3px 0 var(--star)}
+.grp-head{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:2px dashed var(--line);flex-wrap:wrap;cursor:pointer}
+.grp-head .swatch{width:16px;height:16px;border-radius:50%;border:2px solid #00000022;flex:none}
+.grp-head .gname{margin:0;font-size:15.5px;font-weight:800;flex:1;min-width:120px;word-break:break-all}
+.grp-head input.gname{border:2px solid var(--accent2);border-radius:8px;padding:2px 8px;font:inherit;font-size:15px;background:#fff;
+  color:var(--ink);outline:none}
+.grp-head .n{font-size:12px;color:#8a7350;background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:2px 9px}
+.grp-head .badge{font-size:10.5px;background:var(--star);color:#3a2a1c;border-radius:10px;padding:2px 8px;font-weight:800}
+.gtools{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.gtools button,.rtools button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:3px 8px;font-size:12px;
+  cursor:pointer;color:var(--ink);line-height:1.4;transition:.12s;white-space:nowrap}
+.gtools button:hover,.rtools button:hover{border-color:var(--ink)}
+.gtools button:disabled,.rtools button:disabled{opacity:.3;cursor:default}
+.gtools button:disabled:hover,.rtools button:disabled:hover{border-color:var(--line)}
+.gtools button.line[data-on="1"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.gtools button.danger{color:var(--accent);border-color:rgba(232,84,63,.5)}
+.gtools button.danger.confirm{background:var(--accent);color:#fff;border-color:var(--accent)}
+.grp-body{padding:6px 10px 10px}
+.grp-empty{font-size:12.5px;color:#8a7350;padding:10px 6px;line-height:1.7}
+.bm-row{display:flex;align-items:center;gap:8px;padding:6px 4px;border-bottom:1px dashed var(--line)}
+.bm-row:last-child{border-bottom:none}
+.bm-row .num{flex:none;width:22px;height:22px;border-radius:50%;color:#fff;font-weight:900;font-size:11.5px;
+  display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.bm-row .nm{font-weight:700;font-size:13.5px;cursor:pointer;flex:1;min-width:0}
+.bm-row .nm:hover{color:var(--accent);text-decoration:underline}
+.bm-row .ct{font-size:10.5px;color:#8a7350;white-space:nowrap}
+.rtools{display:flex;gap:3px;flex:none}
+/* ランダムおすすめ（カルーセル）。地図が画面外に押し出されないよう高さは固定 */
+.reco{margin:6px 0 0;position:relative}
+.reco-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 2px 6px}
+.reco-head .ttl{font-weight:800;font-size:14px}
+.reco-head .pg{font-size:11px;color:#8a7350;flex:1;white-space:nowrap}
+#reco{margin-top:12px}
+.reco-head button{border:2px solid var(--line);background:var(--paper);border-radius:14px;padding:3px 10px;font-size:12px;
+  cursor:pointer;color:var(--ink)}
+.reco-head button:hover{border-color:var(--ink)}
+.reco-wrap{position:relative}
+.reco-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 8px;scrollbar-width:thin}
+.reco-card{flex:0 0 300px;max-width:88vw;scroll-snap-align:start;height:168px;display:flex;flex-direction:column;
+  border:2px solid var(--line);background:var(--paper);border-radius:14px;padding:10px 12px;box-shadow:3px 3px 0 var(--line)}
+.rc-top{display:flex;gap:8px;align-items:flex-start}
+.rc-ttl{flex:1;min-width:0}
+.rc-name{font-weight:800;font-size:14px;line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;cursor:pointer}
+.rc-name:hover{color:var(--accent)}
+.rc-sub{font-size:11px;color:#8a7350;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rc-added{display:inline-block;font-size:10px;font-weight:800;color:#2f7d4f;background:rgba(58,170,110,.12);
+  border:1px solid rgba(58,170,110,.45);border-radius:8px;padding:0 6px;margin-left:4px;vertical-align:1px}
+.rc-added.init{color:#8a7350;background:none;border-color:var(--line)}
+.rc-thumb{width:88px;height:50px;object-fit:cover;border-radius:8px;border:1.5px solid var(--line);flex:none;background:#000}
+.rc-desc{font-size:12px;line-height:1.55;color:#5b4631;margin-top:6px;overflow:hidden;display:-webkit-box;
+  -webkit-line-clamp:3;-webkit-box-orient:vertical;flex:1}
+.rc-foot{display:flex;align-items:center;gap:6px;margin-top:6px}
+.rc-src{font-size:10.5px;font-weight:700;color:#8a7350;flex:1}
+.rc-src .yt{color:#e62117}.rc-src .xm{color:#111}
+.rc-btn{border:2px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:13px;padding:4px 10px;
+  font-size:12px;font-weight:800;cursor:pointer;transition:.12s}
+.rc-btn:hover{background:var(--ink);color:#fff}
+.reco-nav{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;
+  border:2px solid var(--ink);background:var(--paper);color:var(--ink);font-size:20px;font-weight:900;line-height:1;
+  cursor:pointer;box-shadow:2px 2px 0 var(--shadow);z-index:2;display:flex;align-items:center;justify-content:center;padding:0 0 2px}
+.reco-nav.prev{left:-6px}.reco-nav.next{right:-6px}
+.reco-nav:hover{background:var(--ink);color:#fff}
+.reco-show{text-align:center;margin:4px 0 0}
+.reco-show button{border:none;background:none;color:#8a7350;font-size:12px;cursor:pointer;text-decoration:underline}
+footer{text-align:center;font-size:11.5px;color:#8a7350;padding:24px 14px}
+.backdrop{position:fixed;inset:0;background:rgba(40,25,10,.5);display:none;z-index:1000;
+  align-items:flex-start;justify-content:center;padding:24px 12px;overflow:auto}
+.backdrop.on{display:flex}
+.modal{background:var(--paper);border:3px solid var(--ink);border-radius:16px;max-width:560px;width:100%;
+  box-shadow:6px 6px 0 var(--shadow);animation:pop .16s ease}
+@keyframes pop{from{transform:scale(.96);opacity:.4}to{transform:scale(1);opacity:1}}
+.modal-head{display:flex;align-items:flex-start;gap:8px;padding:14px 16px 8px;border-bottom:2px dashed var(--line)}
+.modal-head .ttl{flex:1}
+.modal-head h3{margin:0;font-size:18px}
+.modal-head .sub{font-size:12px;color:#8a7350;margin-top:3px}
+.modal-head .x{background:none;border:none;font-size:24px;cursor:pointer;color:var(--ink);line-height:1}
+.modal-body{padding:12px 16px 16px;max-height:70vh;overflow:auto}
+.modal-actions{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 11px}
+.mapjump{display:inline-flex;align-items:center;gap:5px;background:var(--paper);color:var(--ink);
+  border:2px solid var(--ink);border-radius:15px;padding:6px 14px;font-size:12.5px;font-weight:800;
+  cursor:pointer;box-shadow:2px 2px 0 var(--shadow);font-family:inherit;transition:.12s}
+.mapjump:hover{background:var(--ink);color:#fff}
+.modal-desc{font-size:13.5px;line-height:1.7;background:var(--cream);border:1px solid var(--line);
+  border-radius:10px;padding:10px 12px;margin-bottom:12px}
+.modal-note{font-size:11.5px;color:#b07d2a;margin:-6px 0 12px}
+/* mark_emoji 付きスポットの注記（例: 🍃 ぽんぽこちゃんねる出典） */
+.mark-note{font-size:12.5px;font-weight:700;color:#2f7d4f;background:rgba(58,170,110,.10);
+  border:1.5px solid rgba(58,170,110,.45);border-radius:10px;padding:8px 12px;margin-bottom:12px;line-height:1.6}
+.modal-info{font-size:12.5px;line-height:1.8;border:1px dashed var(--line);border-radius:10px;
+  padding:8px 12px;margin-bottom:12px;background:#fff}
+.hours-week{display:grid;grid-template-columns:auto 1fr;gap:0 12px;margin:2px 0 2px 1.5em;
+  font-size:12px;line-height:1.65}
+.hours-week .d{color:#8a7350}
+.hours-week .closed{color:var(--accent);font-weight:700}
+.reply-label{font-size:12px;color:#8a7350;font-weight:700;margin:10px 0 6px}
+.embed-wrap{margin:6px 0 14px}
+.yt-frame{width:100%;aspect-ratio:16/9;border:2px solid var(--line);border-radius:10px;background:#000;display:block}
+.yt-cap{border:2px dashed var(--line);border-top:none;border-radius:0 0 10px 10px;padding:7px 10px;margin:-4px 2px 0;background:#fff}
+.yt-cap .cap-title{font-weight:700;font-size:12.5px;line-height:1.5;color:#5b4631}
+.yt-cap .cap-ch{font-size:11px;color:#8a7350;margin-top:2px}
+.yt-cap .cap-link{font-size:11.5px}
+.x-card{border:2px solid var(--line);border-radius:10px;padding:9px 12px;margin:6px 0 10px;background:#fff}
+.x-card .x-author{font-weight:700;font-size:12.5px}
+.x-card .x-date{color:#8a7350;font-size:11px;margin-left:6px}
+.x-card .x-quote{font-size:12.5px;line-height:1.6;margin-top:4px;color:#5b4631}
+.x-card .x-link{font-size:11.5px}
+.x-card .x-gated{font-size:11px;line-height:1.5;color:#b07d2a;margin-top:6px}
+.loading{font-size:12px;color:#8a7350;padding:6px 2px}
+.load-error{border:2px solid var(--accent);border-radius:14px;background:var(--paper);padding:16px;margin-top:22px;font-size:13.5px;line-height:1.7}
+/* トースト（alert の代わり） */
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;
+  border-radius:14px;padding:9px 16px;font-size:13px;font-weight:700;opacity:0;pointer-events:none;transition:.2s;z-index:2000;
+  max-width:90vw;box-shadow:3px 3px 0 var(--shadow)}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:600px){ #map{height:52vh} .hero h1{text-shadow:1px 1px 0 #fff,2px 2px 0 var(--line)}
+  .cfilter,.clearall{padding:7px 12px; font-size:13px}
+  .leaflet-tooltip.spot-label{font-size:11px; padding:2px 6px}
+  .reco-card{flex-basis:84vw;height:138px;padding:8px 10px}
+  .rc-name{-webkit-line-clamp:1;font-size:13.5px} .rc-desc{-webkit-line-clamp:2;margin-top:4px} .rc-thumb{width:72px;height:41px}
+  .reco-head{margin-bottom:4px} .reco-track{padding-bottom:4px}
+  .reco-nav{display:none}
+  .tab{padding:8px 12px;font-size:13px}
+  .bm-row .ct{display:none} }
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1 id="h-title"></h1>
+  <div class="about-bar"><button class="about-btn" id="about-btn" type="button" aria-expanded="false" aria-controls="about">❓ これはなに？</button></div>
+  <div class="about" id="about" hidden>
+    <p class="lead" id="h-lead"></p>
+    <p class="meta" id="h-meta"></p>
+    <button class="about-close" id="about-close" type="button">▲ たたむ</button>
+  </div>
+  <div class="counts">
+    <div class="pill"><b id="cnt-spot">0</b><span>スポット</span></div>
+    <div class="pill"><b id="cnt-area">0</b><span>エリア</span></div>
+    <div class="pill" id="pill-video" style="display:none"><b id="cnt-video">0</b><span>出典動画</span></div>
+    <div class="pill" id="pill-x" style="display:none"><b id="cnt-x">0</b><span>Xでの言及</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- 新着スポット：追加日の新しい順に5件ずつページ送り -->
+  <section class="reco" id="new" hidden>
+    <div class="reco-head"><span class="ttl">🆕 新着スポット</span><span class="pg" id="new-pg"></span>
+      <button id="new-next" type="button">▶ 次の5件を見る</button>
+      <button id="new-hide" type="button">隠す</button></div>
+    <div class="reco-wrap">
+      <button class="reco-nav prev" id="new-prev" type="button" aria-label="前へ">‹</button>
+      <div class="reco-track" id="new-track"></div>
+      <button class="reco-nav next" id="new-nextc" type="button" aria-label="次へ">›</button>
+    </div>
+  </section>
+  <div class="reco-show" id="new-show" hidden><button type="button">🆕 新着スポットを表示する</button></div>
+
+  <!-- ランダムおすすめ：詳細モーダルの縮約版を5件、横スクロールで -->
+  <section class="reco" id="reco" hidden>
+    <div class="reco-head"><span class="ttl">🎲 ランダムおすすめ</span>
+      <button id="reco-shuffle" type="button">🔀 別の5件を見る</button>
+      <button id="reco-hide" type="button">隠す</button></div>
+    <div class="reco-wrap">
+      <button class="reco-nav prev" id="reco-prev" type="button" aria-label="前へ">‹</button>
+      <div class="reco-track" id="reco-track"></div>
+      <button class="reco-nav next" id="reco-nextc" type="button" aria-label="次へ">›</button>
+    </div>
+  </section>
+  <div class="reco-show" id="reco-show" hidden><button type="button">🎲 ランダムおすすめを表示する</button></div>
+
+  <div class="controls">
+    <input type="search" id="search" placeholder="🔍 スポット名・説明で検索">
+    <div class="chipfilter" id="catfilter"></div>
+    <button class="clearall" id="clear-cat" data-idle="0" title="ジャンルの選択をすべて解除する"><span class="ic">↺</span>ジャンルをすべてクリア</button>
+  </div>
+  <div id="map"></div>
+  <p class="legend-note"><span>📍 マーカーの色＝エリア。密集地はまとめて表示され、拡大すると分かれます。拡大するとスポット名が自動で表示され、マーカーか名前をタップすると詳細が開きます。</span><span id="legend-extra"></span></p>
+
+  <div class="controls sub">
+    <div class="chipfilter" id="srcfilter" title="出典の種類で絞り込む"></div>
+    <select id="author" title="おすすめした人で絞り込む"><option value="">👤 おすすめした人: すべて</option></select>
+    <select id="sort" title="一覧の並び順">
+      <option value="area">↕ 並び順: エリア別（標準）</option>
+      <option value="near">📏 並び順: 指定した場所から近い順</option>
+    </select>
+    <div class="cfilter bmchip" id="bm-only" data-on="0" title="ブックマークしたスポットだけ表示する">⭐ ブックマークのみ <span id="bm-only-n"></span></div>
+  </div>
+  <div class="originbar" id="originbar" hidden>
+    <span>起点:</span><b id="origin-label">未設定</b>
+    <button type="button" id="org-here">📍 現在地</button>
+    <button type="button" id="org-center">🎯 いまの地図の中心</button>
+    <input list="spot-dl" id="org-spot" placeholder="スポット名で起点を指定" autocomplete="off">
+    <datalist id="spot-dl"></datalist>
+  </div>
+  <div class="tabs" role="tablist">
+    <button class="tab" id="tab-areas" data-on="1" type="button">📋 エリア別一覧</button>
+    <button class="tab" id="tab-bm" data-on="0" type="button">⭐ ブックマーク<span class="cnt" id="bm-count">0</span></button>
+  </div>
+  <div class="panel" id="panel-areas">
+    <div class="chipfilter" id="areafilter" style="margin-top:14px"></div>
+    <div id="list"></div>
+  </div>
+  <div class="panel" id="panel-bm" hidden>
+    <div class="bm-toolbar">
+      <span>★ を押すと<b id="bm-active-name">（追加先グループ）</b>に入ります。グループの見出しをタップすると追加先を切り替えられます。<br>
+        グループは最大10個・各100件。データはこのブラウザにだけ保存され、ログインは不要です（ブラウザのデータを消すと消えます）。</span>
+      <button class="btn" id="bm-newgrp" type="button">＋ グループを作成</button>
+    </div>
+    <div id="bmlist"></div>
+  </div>
+</div>
+
+<footer id="h-footer"></footer>
+
+<div class="backdrop" id="backdrop">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <div class="ttl"><h3 id="m-title"></h3><div class="sub" id="m-sub"></div></div>
+      <button class="x" id="m-close" aria-label="閉じる">×</button>
+    </div>
+    <div class="modal-body" id="m-body"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return window.twttr;}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t=window.twttr||{};t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
+<script>
+function esc(s){return (s==null?'':String(s)).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+// href に入れてよい URL は http(s) だけ (javascript: 等は空にしてリンク自体を出さない)
+function safeUrl(u){ u=(u==null?'':String(u)).trim(); return /^https?:\/\/[^\s]+$/i.test(u)?u:''; }
+// Places の weekdayDescriptions（月曜始まりの7行）を曜日と時間の2列に割る
+function hoursWeek(list){
+  return '<div class="hours-week">'+list.map(line=>{
+    const m=String(line).match(/^\s*([^:：]{1,4})[:：]\s*(.*)$/);
+    const day=m?m[1]:'', val=m?m[2]:String(line);
+    const closed=/定休日|休業/.test(val);
+    return `<span class="d">${esc(day)}</span>`+
+           `<span class="${closed?'closed':''}">${esc(val)}</span>`;
+  }).join('')+'</div>';
+}
+function ytOf(s){return s.sources.filter(x=>x.type==='youtube').map(x=>x.id);}
+function xOf(s){return s.sources.filter(x=>x.type==='x');}
+function distM(a,b){ // 2点間の距離(m)
+  const r=6371000, p1=a.lat*Math.PI/180, p2=b.lat*Math.PI/180, dp=(b.lat-a.lat)*Math.PI/180, dl=(b.lng-a.lng)*Math.PI/180;
+  const h=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2;
+  return 2*r*Math.asin(Math.sqrt(h));
+}
+function fmtDist(m){ return m<950 ? Math.round(m/10)*10+'m' : (m/1000).toFixed(m<9950?1:0)+'km'; }
+let toastTimer=null;
+function toast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('on');
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('on'),2200);
+}
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
+
+async function loadJSON(p){
+  const r=await fetch(p+'?v='+Date.now());
+  if(!r.ok) throw new Error(p+' → HTTP '+r.status);
+  return r.json();
+}
+(async()=>{
+  try{
+    const [cfg,spotsData,videos]=await Promise.all([
+      loadJSON('data/config.json'), loadJSON('data/spots.json'), loadJSON('data/videos.json')]);
+    boot(cfg, spotsData.areas, spotsData.spots, videos);
+  }catch(e){
+    document.getElementById('list').innerHTML =
+      '<div class="load-error">データの読み込みに失敗しました（'+esc(e.message)+'）。<br>'+
+      'ローカルで file:// のまま開いている場合は、リポジトリ直下で <code>python -m http.server</code> を実行し '+
+      '<code>http://localhost:8000/</code> から開いてください。</div>';
+  }
+})();
+
+function boot(CFG, AREAS, SPOTS, VIDEOS){
+  document.title = CFG.title || document.title;
+  document.querySelector('meta[name=description]').content = CFG.description||'';
+  document.querySelector('meta[property="og:title"]').content = CFG.title||'';
+  document.querySelector('meta[property="og:description"]').content = CFG.description||'';
+  const fav=document.createElement('link'); fav.rel='icon';
+  fav.href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E"+encodeURIComponent(CFG.favicon||'📍')+"%3C/text%3E%3C/svg%3E";
+  document.head.appendChild(fav);
+  document.getElementById('h-title').innerHTML = CFG.h1||CFG.title||'';
+  document.getElementById('h-lead').innerHTML = CFG.lead||'';
+  document.getElementById('h-meta').innerHTML = CFG.meta||'';
+  document.getElementById('h-footer').innerHTML = CFG.footer||'';
+  const aboutBtn=document.getElementById('about-btn'), about=document.getElementById('about');
+  function setAbout(open){ about.hidden=!open; aboutBtn.setAttribute('aria-expanded',open?'true':'false'); aboutBtn.textContent=open?'❓ これはなに？ ▲':'❓ これはなに？'; }
+  aboutBtn.onclick=()=>setAbout(about.hidden);
+  document.getElementById('about-close').onclick=()=>setAbout(false);
+  // 特別ハイライト（mark）。config に mark_emoji がある時だけ有効
+  const markOf = s => (s.mark && CFG.mark_emoji) ? ' '+CFG.mark_emoji : '';
+  if(CFG.legend_extra) document.getElementById('legend-extra').innerHTML = CFG.legend_extra;
+
+  const areaById={}; AREAS.forEach(a=>areaById[a.id]=a);
+  const bySlug={}; SPOTS.forEach(s=>bySlug[s.slug]=s);
+  const CATS=[...new Set(SPOTS.filter(s=>s.cat!=='会場').map(s=>s.cat))];
+  const CAT_COLOR={"グルメ":"#e8543f","温泉":"#e0489a","カフェ・喫茶":"#b07d2a","観光":"#3f7fd6","レトロ":"#7b5cd6","雑貨・土産":"#2f9e7d","自然":"#2a8f6f","動物":"#d88c2a","体験":"#8a5cd6","宿":"#4a7fb5","会場":"#000"};
+  const areaName = s => areaById[s.area] ? areaById[s.area].name : '';
+  const nameOf = s => (s.cat==='会場'?'🎤 ':'')+s.name+markOf(s);
+
+  document.getElementById('cnt-spot').textContent = SPOTS.length;
+  document.getElementById('cnt-area').textContent = AREAS.filter(a=>SPOTS.some(s=>s.area===a.id)).length;
+  const ytTotal = new Set(SPOTS.flatMap(ytOf)).size;
+  if(ytTotal){ document.getElementById('cnt-video').textContent=ytTotal; document.getElementById('pill-video').style.display=''; }
+  const xTotal = new Set(SPOTS.flatMap(s=>xOf(s).map(x=>x.url||('anon:'+(x.date||'')+':'+(x.quote||'').slice(0,16))))).size;
+  if(xTotal){ document.getElementById('cnt-x').textContent=xTotal; document.getElementById('pill-x').style.display=''; }
+
+  const center=CFG.map_center||[36.55,136.60];
+  const map=L.map('map',{scrollWheelZoom:true}).setView(center, CFG.map_zoom||10);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18, attribution:'© OpenStreetMap contributors'}).addTo(map);
+  // 縮尺バー（左下・メートルのみ）。棒の幅に収まるキリのよい距離を自動で選ぶ
+  L.control.scale({position:'bottomleft', metric:true, imperial:false, maxWidth:120}).addTo(map);
+  const cluster=L.markerClusterGroup({maxClusterRadius:38, spiderfyOnMaxZoom:true});
+  const markerBySlug={};
+  // 指でのタップは狙いがずれやすいので、粗いポインタ（タッチ）では点を大きくし、
+  // さらに半透明の白いハロー（太いストローク）で当たり判定そのものを広げる。
+  const COARSE=window.matchMedia&&window.matchMedia('(pointer:coarse)').matches;
+  const R=COARSE?9:7, RV=COARSE?12:10, HALO=COARSE?13:7;
+  SPOTS.forEach(s=>{
+    const col=areaById[s.area]?areaById[s.area].color:'#888';
+    const isVenue=s.cat==='会場';
+    const m=L.circleMarker([s.lat,s.lng],{ radius:isVenue?RV:R, color:'#fff', opacity:.5, weight:HALO,
+      fillColor:isVenue?'#111':col, fillOpacity:.95 });
+    // 中間のフキダシは挟まず、タップで直接詳細モーダルを開く
+    m.on('click',()=>openModal(s.slug));
+    m.spotSlug=s.slug; m.spot=s; markerBySlug[s.slug]=m; cluster.addLayer(m);
+  });
+  map.addLayer(cluster);
+  // 動線（ブックマークグループ）と起点ピンは、クラスタとは別レイヤーに描く
+  const routeLayer=L.layerGroup().addTo(map);
+  const originLayer=L.layerGroup().addTo(map);
+
+  // ある程度ズームしたら、クリックしなくてもスポット名のフキダシを出す。
+  // permanent ツールチップは「地図に載った瞬間」に自動で開くので、
+  // クラスタから解けたマーカーにもそのまま追随する。
+  const LABEL_ZOOM=14;
+  let labelsOn=false;
+  function bindLabel(m){
+    if(m.getTooltip()) return;
+    const s=m.spot;
+    const col=s.cat==='会場'?'#111':(areaById[s.area]?areaById[s.area].color:'#888');
+    m.bindTooltip(`<span class="ldot" style="background:${col}"></span>${s.cat==='会場'?'🎤 ':''}${esc(s.name)}${markOf(s)}`,
+      {permanent:true, direction:'top', offset:[0,-((s.cat==='会場'?RV:R)+3)],
+       className:'spot-label', opacity:1, interactive:true});
+    m.getTooltip().on('click',()=>openModal(s.slug));  // ラベル自体もタップ判定に使う
+  }
+  function syncLabels(){
+    const on=map.getZoom()>=LABEL_ZOOM;
+    if(on===labelsOn) return;
+    labelsOn=on;
+    Object.values(markerBySlug).forEach(m=>{ on?bindLabel(m):m.unbindTooltip(); });
+  }
+  map.on('zoomend', syncLabels);
+
+  // ===== ブックマーク（localStorage・ログイン不要） =====
+  // ブックマーク＝いずれかのグループに入っていること。★は「追加先グループ」に入れる／全グループから外す。
+  const BM_KEY='spotmap:bm:'+location.pathname;
+  const BM_MAX_GROUPS=10, BM_MAX_SPOTS=100, NAME_MAX=30;
+  const GROUP_COLORS=['#e8543f','#3f7fd6','#2f9e7d','#e0489a','#b07d2a','#7b5cd6','#d88c2a','#1f8f8f','#4a7fb5','#3a2a1c'];
+  let BM={groups:[],active:null};
+  function bmLoad(){
+    try{ const j=JSON.parse(lsGet(BM_KEY)||'null'); if(j&&Array.isArray(j.groups)) BM=j; }catch(e){}
+    BM.groups=(BM.groups||[]).filter(g=>g&&g.id).slice(0,BM_MAX_GROUPS).map(g=>({
+      id:String(g.id), name:String(g.name||'').slice(0,NAME_MAX), color:g.color||GROUP_COLORS[0], line:!!g.line,
+      slugs:[...new Set((g.slugs||[]).filter(sl=>bySlug[sl]))].slice(0,BM_MAX_SPOTS)}));
+    if(!BM.groups.some(g=>g.id===BM.active)) BM.active=BM.groups[0]?BM.groups[0].id:null;
+  }
+  function bmSave(){ if(!lsSet(BM_KEY,JSON.stringify(BM))) toast('保存できませんでした（ブラウザのストレージが使えないようです）'); }
+  const uid=()=>'g'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  const groupById=id=>BM.groups.find(g=>g.id===id);
+  const activeGroup=()=>groupById(BM.active)||BM.groups[0]||null;
+  const groupsOf=slug=>BM.groups.filter(g=>g.slugs.includes(slug));
+  const isBm=slug=>BM.groups.some(g=>g.slugs.includes(slug));
+  const bmAll=()=>[...new Set(BM.groups.flatMap(g=>g.slugs))];
+  function newGroupName(){ let n=BM.groups.length+1; while(BM.groups.some(g=>g.name==='グループ'+n)) n++; return 'グループ'+n; }
+  function groupCreate(name){
+    if(BM.groups.length>=BM_MAX_GROUPS){ toast(`グループは最大${BM_MAX_GROUPS}個までです`); return null; }
+    const used=new Set(BM.groups.map(g=>g.color));
+    const color=GROUP_COLORS.find(c=>!used.has(c))||GROUP_COLORS[BM.groups.length%GROUP_COLORS.length];
+    const g={id:uid(), name:(name||newGroupName()).slice(0,NAME_MAX), color, line:false, slugs:[]};
+    BM.groups.push(g); BM.active=g.id; return g;
+  }
+  function groupAdd(g, slug){
+    if(g.slugs.includes(slug)) return true;
+    if(g.slugs.length>=BM_MAX_SPOTS){ toast(`「${g.name}」は${BM_MAX_SPOTS}件でいっぱいです`); return false; }
+    g.slugs.push(slug); return true;
+  }
+  function bmToggle(slug){
+    const s=bySlug[slug]; if(!s) return;
+    if(isBm(slug)){
+      BM.groups.forEach(g=>{ g.slugs=g.slugs.filter(x=>x!==slug); });
+      toast(`「${s.name}」のブックマークを解除しました`);
+    }else{
+      let g=activeGroup(); if(!g) g=groupCreate('ブックマーク'); if(!g) return;
+      if(!groupAdd(g,slug)) return;
+      toast(`「${g.name}」に追加しました`);
+    }
+    bmChanged();
+  }
+  function bmChanged(){
+    bmSave(); refreshStars(); renderBookmarks(); syncRoutes(); updateModalGroups();
+    if(bmOnly || sortMode==='near') render();
+  }
+  function refreshStars(){
+    const n=bmAll().length;
+    document.getElementById('bm-count').textContent=n;
+    document.getElementById('bm-only-n').textContent=n?`(${n})`:'';
+    const ag=activeGroup();
+    document.getElementById('bm-active-name').textContent=ag?`「${ag.name}」`:'（★を押すと自動でグループが作られます）';
+    document.querySelectorAll('[data-bm]').forEach(b=>{
+      const on=isBm(b.dataset.bm); b.classList.toggle('on',on);
+      if(b.classList.contains('bmbtn')) b.textContent=on?'★ ブックマーク済み':'☆ ブックマーク';
+      else b.textContent=on?'★':'☆';
+      b.title=on?'ブックマークを解除':'ブックマークに追加';
+    });
+  }
+  // ★ボタンはどこにあっても同じ挙動（タイルのクリックより先に捕まえて、詳細を開かせない）
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('[data-bm]'); if(!b) return;
+    e.stopPropagation(); e.preventDefault(); bmToggle(b.dataset.bm);
+  },true);
+
+  // --- 動線：グループごとに色の違う線を「表示順」で結び、順番の数字を打つ ---
+  function syncRoutes(){
+    routeLayer.clearLayers();
+    BM.groups.filter(g=>g.line&&g.slugs.length).forEach(g=>{
+      const pts=g.slugs.map(sl=>bySlug[sl]).filter(Boolean);
+      if(pts.length>=2){
+        L.polyline(pts.map(s=>[s.lat,s.lng]),{color:'#fff',weight:7,opacity:.7,lineJoin:'round'}).addTo(routeLayer);
+        L.polyline(pts.map(s=>[s.lat,s.lng]),{color:g.color,weight:4,opacity:.9,lineJoin:'round'}).addTo(routeLayer);
+      }
+      pts.forEach((s,i)=>{
+        L.marker([s.lat,s.lng],{icon:L.divIcon({className:'rt-num',html:`<span style="background:${g.color}" title="${esc(g.name)} ${i+1}: ${esc(s.name)}">${i+1}</span>`,
+          iconSize:[22,22],iconAnchor:[11,11]}), zIndexOffset:1000, keyboard:false})
+          .on('click',()=>openModal(s.slug)).addTo(routeLayer);
+      });
+    });
+  }
+  function fitGroup(g){
+    const pts=g.slugs.map(sl=>bySlug[sl]).filter(Boolean); if(!pts.length) return;
+    document.getElementById('map').scrollIntoView({behavior:'smooth', block:'center'});
+    if(pts.length===1) map.setView([pts[0].lat,pts[0].lng], Math.max(map.getZoom(),14));
+    else map.fitBounds(L.latLngBounds(pts.map(s=>[s.lat,s.lng])),{padding:[40,40],maxZoom:15});
+  }
+
+  // --- ブックマークパネル ---
+  const bmListEl=document.getElementById('bmlist');
+  function renderBookmarks(){
+    bmListEl.innerHTML='';
+    document.getElementById('bm-newgrp').disabled = BM.groups.length>=BM_MAX_GROUPS;
+    if(!BM.groups.length){
+      bmListEl.innerHTML='<div class="empty-note">まだブックマークがありません。<br>一覧やスポット詳細の ☆ を押すと、ここに集まります。<br>「＋ グループを作成」で day1 / day2 のように行程を分けることもできます。</div>';
+      return;
+    }
+    BM.groups.forEach((g,gi)=>{
+      const block=document.createElement('div'); block.className='grp'; block.dataset.active=g.id===BM.active?'1':'0';
+      const head=document.createElement('div'); head.className='grp-head';
+      head.innerHTML=`<span class="swatch" style="background:${g.color}"></span>`+
+        `<span class="gname">${esc(g.name)}</span>`+
+        (g.id===BM.active?'<span class="badge">★の追加先</span>':'')+
+        `<span class="n">${g.slugs.length}/${BM_MAX_SPOTS}</span>`+
+        `<span class="gtools">`+
+          `<button type="button" class="line" data-on="${g.line?'1':'0'}" title="このグループのスポットを表示順に線で結んで地図に描く">🧭 動線</button>`+
+          `<button type="button" class="fit" title="地図でこのグループを見る" ${g.slugs.length?'':'disabled'}>🗺️</button>`+
+          `<button type="button" class="up" title="上へ" ${gi===0?'disabled':''}>▲</button>`+
+          `<button type="button" class="down" title="下へ" ${gi===BM.groups.length-1?'disabled':''}>▼</button>`+
+          `<button type="button" class="ren" title="名前を変更">✎</button>`+
+          `<button type="button" class="danger del" title="グループを削除">🗑</button>`+
+        `</span>`;
+      // 見出しタップ＝★の追加先にする（ツールボタンは除く）
+      head.addEventListener('click',e=>{ if(e.target.closest('button,input')) return; if(BM.active!==g.id){ BM.active=g.id; bmSave(); refreshStars(); renderBookmarks(); } });
+      const tools=head.querySelector('.gtools');
+      tools.querySelector('.line').onclick=()=>{ g.line=!g.line; bmSave(); syncRoutes(); renderBookmarks(); if(g.line){ if(g.slugs.length<2) toast('スポットが2件以上あると線で結ばれます'); fitGroup(g); } };
+      tools.querySelector('.fit').onclick=()=>fitGroup(g);
+      tools.querySelector('.up').onclick=()=>{ BM.groups.splice(gi,1); BM.groups.splice(gi-1,0,g); bmSave(); renderBookmarks(); };
+      tools.querySelector('.down').onclick=()=>{ BM.groups.splice(gi,1); BM.groups.splice(gi+1,0,g); bmSave(); renderBookmarks(); };
+      tools.querySelector('.ren').onclick=()=>startRename(head,g);
+      const del=tools.querySelector('.del');
+      del.onclick=()=>{
+        if(!del.classList.contains('confirm')){
+          del.classList.add('confirm'); del.textContent=`🗑 「${g.name}」を削除する（もう一度押す）`;
+          setTimeout(()=>{ del.classList.remove('confirm'); del.textContent='🗑'; },4000);
+          return;
+        }
+        BM.groups=BM.groups.filter(x=>x.id!==g.id);
+        if(BM.active===g.id) BM.active=BM.groups[0]?BM.groups[0].id:null;
+        toast(`「${g.name}」を削除しました`); bmChanged();
+      };
+      const body=document.createElement('div'); body.className='grp-body';
+      if(!g.slugs.length){
+        body.innerHTML='<div class="grp-empty">このグループは空です。見出しをタップして「★の追加先」にしてから、一覧の ☆ を押すとここに入ります。</div>';
+      }else{
+        g.slugs.forEach((sl,i)=>{
+          const s=bySlug[sl]; if(!s) return;
+          const row=document.createElement('div'); row.className='bm-row';
+          row.innerHTML=`<span class="num" style="background:${g.color}">${i+1}</span>`+
+            `<span class="nm">${esc(nameOf(s))}</span>`+
+            `<span class="ct">${esc(areaName(s))} ・ ${esc(s.cat)}</span>`+
+            `<span class="rtools">`+
+              `<button type="button" class="up" title="上へ" ${i===0?'disabled':''}>▲</button>`+
+              `<button type="button" class="down" title="下へ" ${i===g.slugs.length-1?'disabled':''}>▼</button>`+
+              `<button type="button" class="rm" title="このグループから外す">✕</button></span>`;
+          row.querySelector('.nm').onclick=()=>openModal(s.slug);
+          row.querySelector('.up').onclick=()=>{ g.slugs.splice(i,1); g.slugs.splice(i-1,0,sl); bmSave(); renderBookmarks(); syncRoutes(); };
+          row.querySelector('.down').onclick=()=>{ g.slugs.splice(i,1); g.slugs.splice(i+1,0,sl); bmSave(); renderBookmarks(); syncRoutes(); };
+          row.querySelector('.rm').onclick=()=>{ g.slugs=g.slugs.filter(x=>x!==sl); bmChanged(); };
+          body.appendChild(row);
+        });
+      }
+      block.appendChild(head); block.appendChild(body); bmListEl.appendChild(block);
+    });
+  }
+  function startRename(head,g){
+    const span=head.querySelector('.gname'); if(!span||span.tagName==='INPUT') return;
+    const inp=document.createElement('input'); inp.className='gname'; inp.value=g.name; inp.maxLength=NAME_MAX;
+    span.replaceWith(inp); inp.focus(); inp.select();
+    let done=false;
+    const commit=()=>{ if(done) return; done=true; const v=inp.value.trim().slice(0,NAME_MAX); if(v) g.name=v; bmSave(); refreshStars(); renderBookmarks(); syncRoutes(); };
+    inp.addEventListener('keydown',e=>{ if(e.key==='Enter') commit(); if(e.key==='Escape'){ done=true; renderBookmarks(); } });
+    inp.addEventListener('blur',commit);
+  }
+  document.getElementById('bm-newgrp').onclick=()=>{ const g=groupCreate(); if(g){ bmSave(); refreshStars(); renderBookmarks(); toast(`「${g.name}」を作成しました（✎ で名前を変えられます）`); } };
+
+  // --- タブ ---
+  const tabAreas=document.getElementById('tab-areas'), tabBm=document.getElementById('tab-bm');
+  function showTab(which){
+    const bm=which==='bm';
+    tabAreas.dataset.on=bm?'0':'1'; tabBm.dataset.on=bm?'1':'0';
+    document.getElementById('panel-areas').hidden=bm; document.getElementById('panel-bm').hidden=!bm;
+  }
+  tabAreas.onclick=()=>showTab('areas'); tabBm.onclick=()=>showTab('bm');
+
+  // ===== フィルタ =====
+  let activeCats=new Set(CATS), activeAreas=new Set(AREAS.map(a=>a.id)), q='';
+  let srcYt=true, srcX=true, author='', bmOnly=false, sortMode='area', origin=null;
+  const catWrap=document.getElementById('catfilter');
+  CATS.forEach(c=>{
+    const el=document.createElement('div'); el.className='cfilter'; el.dataset.on='1'; el.dataset.cat=c;
+    el.innerHTML=`<span class="dot" style="background:${CAT_COLOR[c]||'#888'}"></span>${esc(c)}`;
+    el.onclick=()=>{ if(activeCats.has(c)){activeCats.delete(c);el.dataset.on='0';}else{activeCats.add(c);el.dataset.on='1';} render(); };
+    catWrap.appendChild(el);
+  });
+  const areaWrap=document.getElementById('areafilter');
+  AREAS.filter(a=>SPOTS.some(s=>s.area===a.id)).forEach(a=>{
+    const el=document.createElement('div'); el.className='cfilter'; el.dataset.on='1';
+    el.innerHTML=`<span class="dot" style="background:${a.color}"></span>${esc(a.name)}`;
+    el.onclick=()=>{ if(activeAreas.has(a.id)){activeAreas.delete(a.id);el.dataset.on='0';}else{activeAreas.add(a.id);el.dataset.on='1';} render(); };
+    areaWrap.appendChild(el);
+  });
+  const searchEl=document.getElementById('search');
+  searchEl.addEventListener('input',e=>{q=e.target.value.trim().toLowerCase(); render();});
+
+  // 出典の種類（YouTube / X）。両方ONが標準、片方だけにすると限定になる
+  const srcWrap=document.getElementById('srcfilter');
+  const srcDefs=[['yt','▶ YouTubeのおすすめ','#e62117'],['x','𝕏 Xのおすすめ','#111']];
+  if(!ytTotal) srcDefs.splice(0,1); if(!xTotal) srcDefs.splice(srcDefs.findIndex(d=>d[0]==='x'),1);
+  srcDefs.forEach(([k,label,col])=>{
+    const el=document.createElement('div'); el.className='cfilter srcchip'; el.dataset.on='1';
+    el.innerHTML=`<span class="dot" style="background:${col}"></span>${label}`;
+    el.onclick=()=>{ if(k==='yt') srcYt=!srcYt; else srcX=!srcX; el.dataset.on=(k==='yt'?srcYt:srcX)?'1':'0'; render(); };
+    srcWrap.appendChild(el);
+  });
+  // おすすめした人（Xの投稿者・YouTubeチャンネル）。件数順
+  const authorSel=document.getElementById('author');
+  const authorCount={};
+  SPOTS.forEach(s=>{ const seen=new Set(); s.sources.forEach(x=>{
+    let k=null;
+    if(x.type==='x' && x.author && x.anon!==true) k='x:'+x.author;
+    if(x.type==='youtube'){ const ch=(VIDEOS[x.id]||{}).channel; if(ch) k='yt:'+ch; }
+    if(k && !seen.has(k)){ seen.add(k); authorCount[k]=(authorCount[k]||0)+1; }
+  }); });
+  Object.entries(authorCount).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).forEach(([k,n])=>{
+    const o=document.createElement('option'); o.value=k;
+    o.textContent=(k.startsWith('x:')?'𝕏 @'+k.slice(2):'▶ '+k.slice(3))+`（${n}）`;
+    authorSel.appendChild(o);
+  });
+  authorSel.onchange=()=>{ author=authorSel.value; render(); };
+  function byAuthor(s){
+    if(!author) return true;
+    if(author.startsWith('x:')) return xOf(s).some(x=>x.author===author.slice(2) && x.anon!==true);
+    return ytOf(s).some(id=>(VIDEOS[id]||{}).channel===author.slice(3));
+  }
+  // ブックマークのみ
+  const bmOnlyEl=document.getElementById('bm-only');
+  bmOnlyEl.onclick=()=>{ bmOnly=!bmOnly; bmOnlyEl.dataset.on=bmOnly?'1':'0'; render(); };
+  // 並び順（近い順は起点が要る）
+  const sortSel=document.getElementById('sort'), originBar=document.getElementById('originbar');
+  const dl=document.getElementById('spot-dl');
+  SPOTS.forEach(s=>{ const o=document.createElement('option'); o.value=s.name; dl.appendChild(o); });
+  function setOrigin(o){
+    origin=o; document.getElementById('origin-label').textContent=o?o.label:'未設定';
+    originLayer.clearLayers();
+    if(o) L.marker([o.lat,o.lng],{icon:L.divIcon({className:'origin-pin',html:'<span></span>',iconSize:[16,16],iconAnchor:[8,16]}),
+      zIndexOffset:2000, keyboard:false, interactive:false}).bindTooltip('起点: '+esc(o.label),{direction:'top',offset:[0,-14]}).addTo(originLayer);
+    render();
+  }
+  sortSel.onchange=()=>{
+    sortMode=sortSel.value; originBar.hidden = sortMode!=='near';
+    if(sortMode==='near' && !origin){ const c=map.getCenter(); setOrigin({lat:c.lat,lng:c.lng,label:'地図の中心'}); }
+    else render();
+  };
+  document.getElementById('org-center').onclick=()=>{ const c=map.getCenter(); setOrigin({lat:c.lat,lng:c.lng,label:'地図の中心'}); toast('いまの地図の中心を起点にしました'); };
+  document.getElementById('org-here').onclick=()=>{
+    if(!navigator.geolocation){ toast('この端末では現在地を取得できません'); return; }
+    toast('現在地を取得しています…');
+    navigator.geolocation.getCurrentPosition(p=>{ setOrigin({lat:p.coords.latitude,lng:p.coords.longitude,label:'現在地'}); toast('現在地を起点にしました'); },
+      ()=>toast('現在地を取得できませんでした（位置情報の許可をご確認ください）'),{timeout:10000,maximumAge:60000});
+  };
+  const orgSpot=document.getElementById('org-spot');
+  orgSpot.addEventListener('change',()=>{
+    const v=orgSpot.value.trim(); const s=SPOTS.find(x=>x.name===v)||SPOTS.find(x=>x.name.toLowerCase().includes(v.toLowerCase()));
+    if(!s){ if(v) toast('該当するスポットがありません'); return; }
+    orgSpot.value=s.name; setOrigin({lat:s.lat,lng:s.lng,label:s.name});
+  });
+
+  // 各クリアボタンは自分の列だけを解除する（ジャンル側はエリアに触らない、逆も同じ）。
+  // エリアのチップ列は地図の下にあるので、そちらにもボタンを置く。
+  const areaClear=document.createElement('button');
+  areaClear.className='clearall'; areaClear.id='clear-area'; areaClear.dataset.idle='0';
+  areaClear.title='エリアの選択をすべて解除する';
+  areaClear.innerHTML='<span class="ic">↺</span>エリアをすべてクリア';
+  areaWrap.appendChild(areaClear);
+  const catClear=document.getElementById('clear-cat');
+  function clearGroup(wrap, reset){
+    reset();
+    wrap.querySelectorAll('.cfilter').forEach(el=>el.dataset.on='0');
+    render();
+  }
+  catClear.addEventListener('click',()=>clearGroup(catWrap,()=>{activeCats=new Set();}));
+  areaClear.addEventListener('click',()=>clearGroup(areaWrap,()=>{activeAreas=new Set();}));
+  function updateClearState(){
+    // 自分の列に解除するものが無いときだけ非アクティブ表示
+    catClear.dataset.idle  = activeCats.size  ? '0' : '1';
+    areaClear.dataset.idle = activeAreas.size ? '0' : '1';
+  }
+
+  function visible(s){
+    if(!activeAreas.has(s.area)) return false;
+    if(q && !(s.name.toLowerCase().includes(q)||s.desc.toLowerCase().includes(q))) return false;
+    if(s.cat==='会場') return true;   // 会場は目印なのでジャンル・出典・ブックマークの絞り込みには掛けない
+    if(!activeCats.has(s.cat)) return false;
+    if(!(srcYt && srcX)){ const y=ytOf(s).length>0, x=xOf(s).length>0; if(!((srcYt&&y)||(srcX&&x))) return false; }
+    if(!byAuthor(s)) return false;
+    if(bmOnly && !isBm(s.slug)) return false;
+    return true;
+  }
+  function spotTile(s, extra){
+    const yn=ytOf(s).length, xn=xOf(s).length;
+    const sp=document.createElement('div'); sp.className='spot';
+    sp.innerHTML=`<span class="nm">${esc(nameOf(s))}</span>`+
+      `<span class="ct">${esc(s.cat)}</span>`+
+      (yn?`<span class="yt">▶${yn}</span>`:'')+
+      (xn?`<span class="xm">𝕏${xn}</span>`:'')+
+      (s.approx?'<span class="approx"> ・およその位置</span>':'')+
+      (extra||'')+
+      `<button type="button" class="bm" data-bm="${esc(s.slug)}">☆</button>`;
+    sp.addEventListener('click',()=>openModal(s.slug));
+    return sp;
+  }
+  const listEl=document.getElementById('list');
+  function render(){
+    Object.entries(markerBySlug).forEach(([slug,m])=>{
+      const s=bySlug[slug];
+      if(visible(s)){ if(labelsOn) bindLabel(m); if(!cluster.hasLayer(m)) cluster.addLayer(m);} else { if(cluster.hasLayer(m)) cluster.removeLayer(m);}
+    });
+    updateClearState();
+    listEl.innerHTML='';
+    if(sortMode==='near' && origin){
+      // 起点からの距離順：エリアをまたいで1本のリストにする
+      const items=SPOTS.filter(visible).map(s=>({s,d:distM(origin,s)})).sort((a,b)=>a.d-b.d);
+      if(items.length){
+        const block=document.createElement('div'); block.className='area-block';
+        const head=document.createElement('div'); head.className='area-head';
+        head.innerHTML=`<span class="swatch" style="background:var(--ink)"></span><h2>📏 「${esc(origin.label)}」から近い順</h2><span class="n">${items.length}</span>`;
+        const grid=document.createElement('div'); grid.className='spotgrid';
+        head.onclick=()=>{ grid.style.display = grid.style.display==='none'?'flex':'none'; };
+        items.forEach(({s,d})=>grid.appendChild(spotTile(s,`<span class="dist">${fmtDist(d)}</span>`)));
+        block.appendChild(head); block.appendChild(grid); listEl.appendChild(block);
+      }
+    }else{
+      AREAS.forEach(a=>{
+        const items=SPOTS.filter(s=>s.area===a.id && visible(s));
+        if(!items.length) return;
+        const block=document.createElement('div'); block.className='area-block';
+        const head=document.createElement('div'); head.className='area-head';
+        head.innerHTML=`<span class="swatch" style="background:${a.color}"></span><h2>${esc(a.name)}</h2><span class="n">${items.length}</span>`;
+        const grid=document.createElement('div'); grid.className='spotgrid';
+        head.onclick=()=>{ grid.style.display = grid.style.display==='none'?'flex':'none'; };
+        items.forEach(s=>grid.appendChild(spotTile(s)));
+        block.appendChild(head); block.appendChild(grid); listEl.appendChild(block);
+      });
+    }
+    // 全解除は1タップで到達できるので、空のままだと壊れて見える。何をすればいいか出す
+    if(!listEl.children.length){
+      const empty=[];
+      if(!activeCats.size)  empty.push('ジャンル');
+      if(!activeAreas.size) empty.push('エリア');
+      let msg;
+      if(empty.length) msg=`表示する${empty.join('・')}が選ばれていません。<br>チップをタップして選んでください。`;
+      else if(bmOnly && !bmAll().length) msg='まだブックマークがありません。<br>スポットの ☆ を押してから「⭐ ブックマークのみ」をお使いください。';
+      else if(bmOnly) msg='ブックマークしたスポットの中に、条件に合うものがありません。<br>「⭐ ブックマークのみ」を外すか、他の条件をゆるめてください。';
+      else msg='条件に合うスポットがありません。<br>出典（YouTube / X）・おすすめした人・検索語をゆるめてみてください。';
+      listEl.innerHTML=`<div class="empty-note">${msg}</div>`;
+    }
+    refreshStars();
+  }
+
+  // ===== カルーセル（新着 / ランダムおすすめ）。カードは詳細モーダルの縮約版 =====
+  const RECO_N=CFG.reco_count||5;
+  const POOL=SPOTS.filter(s=>s.cat!=='会場');
+  // 追加日 "2026-09-12" → "9/12"。初期収録（added なし）は日付なし
+  const fmtAdded=d=>{ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||''); return m?`${+m[2]}/${+m[3]}`:''; };
+  function recoCard(s){
+    const yts=ytOf(s), xn=xOf(s).length, ad=fmtAdded(s.added);
+    const card=document.createElement('div'); card.className='reco-card';
+    card.innerHTML=`<div class="rc-top"><div class="rc-ttl"><div class="rc-name">${esc(nameOf(s))}</div>`+
+        `<div class="rc-sub">${esc(areaName(s))} ・ ${esc(s.cat)}${s.approx?' ・ およその位置':''}`+
+        (ad?`<span class="rc-added" title="${esc(s.added)} に追加">📅 ${ad} 追加</span>`:`<span class="rc-added init">初期収録</span>`)+`</div></div>`+
+        (yts.length?`<img class="rc-thumb" loading="lazy" alt="" src="https://i.ytimg.com/vi/${esc(yts[0])}/mqdefault.jpg">`:'')+`</div>`+
+      `<div class="rc-desc">${esc(s.desc)}</div>`+
+      `<div class="rc-foot"><span class="rc-src">${yts.length?`<span class="yt">▶${yts.length}</span> `:''}${xn?`<span class="xm">𝕏${xn}</span>`:''}</span>`+
+        `<button type="button" class="bm" data-bm="${esc(s.slug)}">☆</button>`+
+        `<button type="button" class="rc-btn detail">詳細</button>`+
+        `<button type="button" class="rc-btn go">🗺️ 地図</button></div>`;
+    card.querySelector('.rc-name').onclick=()=>openModal(s.slug);
+    card.querySelector('.detail').onclick=()=>openModal(s.slug);
+    card.querySelector('.go').onclick=()=>gotoMap(s.slug);
+    return card;
+  }
+  // id: 要素 id の接頭辞（<id>, <id>-track, <id>-show, <id>-hide, <id>-prev, <id>-nextc）。
+  // pick(): 表示する n 件を返す。「隠す」の状態は localStorage に記憶
+  function carousel(id, pick){
+    const key='spotmap:'+id+'-hidden:'+location.pathname;
+    const el=document.getElementById(id), show=document.getElementById(id+'-show'), track=document.getElementById(id+'-track');
+    function render(){ track.innerHTML=''; pick().forEach(s=>track.appendChild(recoCard(s))); track.scrollLeft=0; refreshStars(); }
+    function setHidden(h){ el.hidden=h; show.hidden=!h; lsSet(key,h?'1':''); if(!h && !track.children.length) render(); }
+    document.getElementById(id+'-hide').onclick=()=>setHidden(true);
+    show.querySelector('button').onclick=()=>setHidden(false);
+    const step=()=>{ const c=track.firstElementChild; return c?c.getBoundingClientRect().width+10:300; };
+    document.getElementById(id+'-prev').onclick=()=>track.scrollBy({left:-step(),behavior:'smooth'});
+    document.getElementById(id+'-nextc').onclick=()=>track.scrollBy({left:step(),behavior:'smooth'});
+    if(POOL.length) setHidden(lsGet(key)==='1');
+    return {render};
+  }
+
+  // 新着：追加日の新しい順（同日は後ろに追加された順）。added なしの初期収録分は末尾
+  const NEWEST=POOL.map((s,i)=>[s,i]).sort((a,b)=>((b[0].added||'').localeCompare(a[0].added||''))||(b[1]-a[1])).map(x=>x[0]);
+  let newPage=0; const newPages=Math.max(1,Math.ceil(NEWEST.length/RECO_N));
+  const newCar=carousel('new',()=>{
+    const from=newPage*RECO_N, items=NEWEST.slice(from,from+RECO_N);
+    document.getElementById('new-pg').textContent=`${from+1}〜${from+items.length}件目 / 全${NEWEST.length}件`;
+    document.getElementById('new-next').textContent=newPage+1<newPages?`▶ 次の${RECO_N}件を見る`:'↺ 最初に戻る';
+    return items;
+  });
+  document.getElementById('new-next').onclick=()=>{ newPage=(newPage+1)%newPages; newCar.render(); };
+
+  // ランダムおすすめ
+  function pickRandom(n){
+    const pool=POOL.slice(); const out=[];
+    while(pool.length && out.length<n){ out.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0]); }
+    return out;
+  }
+  const recoCar=carousel('reco',()=>pickRandom(RECO_N));
+  document.getElementById('reco-shuffle').onclick=recoCar.render;
+
+  // 起動：保存済みブックマークを読み、一覧・パネル・動線を描く
+  bmLoad(); render(); renderBookmarks(); syncRoutes();
+
+  const backdrop=document.getElementById('backdrop');
+  let lastSlug=null;
+  function updateModalGroups(){
+    const wrap=document.getElementById('m-groups'); if(!wrap || !lastSlug) return;
+    const slug=lastSlug;
+    let html='<span>グループ:</span>';
+    BM.groups.forEach(g=>{
+      const on=g.slugs.includes(slug);
+      html+=`<button type="button" class="gchip" data-gid="${esc(g.id)}" data-on="${on?'1':'0'}"><span class="dot" style="background:${g.color}"></span>${esc(g.name)}${on?' ✓':''}</button>`;
+    });
+    if(BM.groups.length<BM_MAX_GROUPS) html+=`<button type="button" class="gchip new">＋ 新しいグループに入れる</button>`;
+    wrap.innerHTML=html;
+    wrap.querySelectorAll('.gchip[data-gid]').forEach(b=>{ b.onclick=()=>{
+      const g=groupById(b.dataset.gid); if(!g) return;
+      if(g.slugs.includes(slug)){ g.slugs=g.slugs.filter(x=>x!==slug); toast(`「${g.name}」から外しました`); }
+      else { if(!groupAdd(g,slug)) return; BM.active=g.id; toast(`「${g.name}」に追加しました`); }
+      bmChanged();
+    }; });
+    const nb=wrap.querySelector('.gchip.new');
+    if(nb) nb.onclick=()=>{ const g=groupCreate(); if(!g) return; groupAdd(g,slug); toast(`「${g.name}」を作成して追加しました（ブックマークタブの ✎ で名前を変えられます）`); bmChanged(); };
+  }
+  function openModal(slug){
+    const s=bySlug[slug]; if(!s) return;
+    if(backdrop.classList.contains('on') && lastSlug===slug) return;
+    lastSlug=slug;
+    document.getElementById('m-title').textContent=nameOf(s);
+    document.getElementById('m-sub').textContent=`${areaName(s)} ・ ${s.cat}`;
+    const body=document.getElementById('m-body');
+    let html=`<div class="modal-actions"><button class="bmbtn" type="button" data-bm="${esc(s.slug)}">☆ ブックマーク</button>`+
+      `<button class="mapjump" type="button">🗺️ 地図でこの場所を見る</button></div>`+
+      `<div class="bm-groups" id="m-groups"></div>`;
+    if(s.mark && CFG.mark_note) html+=`<div class="mark-note">${CFG.mark_note}</div>`;
+    html+=`<div class="modal-desc">${esc(s.desc)}</div>`;
+    if(s.approx) html+=`<div class="modal-note">※ 番地が確定できなかったため、エリア内のおよその位置に配置しています。</div>`;
+    const info=[];
+    if(s.local) info.push('🏷️ '+esc(s.local));
+    if(s.address) info.push('📮 '+esc(s.address));
+    if(s.hours)   info.push(Array.isArray(s.hours) ? '🕐 営業時間'+hoursWeek(s.hours)
+                                                  : '🕐 '+esc(s.hours));
+    if(safeUrl(s.url)) info.push(`🔗 <a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">公式サイト ↗</a>`);
+    if(info.length) html+=`<div class="modal-info">${info.join('<br>')}</div>`;
+    const yts=ytOf(s), xs=xOf(s);
+    if(xs.length){
+      html+=`<div class="reply-label">Xでのおすすめ言及（${xs.length}件）</div>`;
+      xs.forEach(x=>{
+        // embed:false は投稿者のアカウント設定(年齢制限)で埋め込み・未ログイン閲覧が
+        // できない出典。埋め込みを試みても失敗するので最初から引用カードで見せる。
+        // anon:true は投稿者保護のためユーザー名・リンクを伏せる出典（引用文のみ表示）。
+        const anon=x.anon===true;
+        const gated=x.embed===false;
+        const idm=(x.url||'').match(/status(?:es)?\/(\d+)/); const tid=(gated||anon)?null:(idm?idm[1]:null);
+        html+=`<div class="embed-wrap">`+
+          `<div class="x-card fallback">`+
+            `<span class="x-author">${anon?'ファンの旅行報告':esc(x.author||'')}</span>`+
+            (x.date?`<span class="x-date">${esc(x.date)}</span>`:'')+
+            (x.quote?`<div class="x-quote">${esc(x.quote)}</div>`:'')+
+            (anon?`<div class="x-gated">※ 非公開アカウントの投稿のため、ユーザー名とリンクは伏せています。</div>`
+                 :(safeUrl(x.url)?`<div><a class="x-link" href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener">𝕏 ポストを開く ↗</a></div>`:'')+
+                  (gated?`<div class="x-gated">※ 投稿者のアカウント設定により、X にログインしていないとこのポストは表示できません。</div>`:''))+
+          `</div>`+
+          (tid?`<div class="tweet-slot" id="tw-${tid}"></div>`:'')+
+          `</div>`;
+      });
+    }
+    if(yts.length){
+      html+=`<div class="reply-label">この場所が登場するYouTube動画（${yts.length}本）</div>`;
+      yts.forEach(id=>{
+        const v=VIDEOS[id]||{};
+        html+=`<div class="embed-wrap">`+
+          `<iframe class="yt-frame" loading="lazy" src="https://www.youtube-nocookie.com/embed/${esc(id)}" `+
+          `title="${esc(v.title||'YouTube video')}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`+
+          `<div class="yt-cap"><div class="cap-title">${(v.mark&&CFG.mark_emoji)?CFG.mark_emoji+' ':''}${esc(v.title||'')}</div>`+
+            `<div class="cap-ch">${esc(v.channel||'')}</div>`+
+            `<a class="cap-link" href="https://www.youtube.com/watch?v=${esc(id)}" target="_blank" rel="noopener">▶ YouTubeで開く ↗</a></div>`+
+          `</div>`;
+      });
+    }
+    if(!yts.length && !xs.length) html+=`<div class="loading">このスポットに紐づく出典はありません。</div>`;
+    body.innerHTML=html; body.scrollTop=0; backdrop.classList.add('on');
+    body.querySelector('.mapjump').addEventListener('click',()=>gotoMap(s.slug));
+    updateModalGroups(); refreshStars();
+    if(xs.length && window.twttr && window.twttr.ready){
+      window.twttr.ready(tw=>{
+        xs.forEach(x=>{
+          if(x.embed===false || x.anon===true) return;  // 埋め込み不可・匿名化した出典は試さない
+          const idm=(x.url||'').match(/status(?:es)?\/(\d+)/); if(!idm) return;
+          const slot=document.getElementById('tw-'+idm[1]); if(!slot||slot.childNodes.length) return;
+          tw.widgets.createTweet(idm[1], slot, {conversation:'none', theme:'light', align:'center', dnt:true})
+            .then(el=>{ if(el){ const fb=slot.parentElement.querySelector('.fallback'); if(fb) fb.style.display='none'; } })
+            .catch(()=>{});
+        });
+      });
+    }
+  }
+  function closeModal(){ backdrop.classList.remove('on'); lastSlug=null; document.getElementById('m-body').innerHTML=''; }
+
+  // モーダル → 地図。閉じてから地図までスクロールし、その地点をラベルが出るまで拡大する。
+  // 地図に載った時点でラベル（小さめのフキダシ）は自動で開くので、ここでは開く操作をしない。
+  function gotoMap(slug){
+    const s=bySlug[slug]; if(!s) return;
+    closeModal();
+    document.getElementById('map').scrollIntoView({behavior:'smooth', block:'center'});
+    const m=markerBySlug[slug];
+    // クラスタに埋もれている間は1段ずつ寄る（対象を常に画面中央に保ったまま解けさせる）
+    function reveal(tries){
+      if(!m || map.hasLayer(m)) return;
+      if(tries>0 && cluster.hasLayer(m) && map.getZoom()<18){
+        zoomTo(Math.min(map.getZoom()+1,18), tries-1); return;
+      }
+      // 最大ズームでもほぼ同じ座標に重なっている場合だけ、クラスタを展開して見せる
+      const parent=m.__parent;
+      if(parent && typeof parent.spiderfy==='function') parent.spiderfy();
+    }
+    function zoomTo(z, tries){
+      // クラスタの分裂アニメーション（約200ms）が終わってから判定する
+      map.once('moveend',()=>setTimeout(()=>reveal(tries),260));
+      map.setView([s.lat,s.lng], z, {animate:true});
+    }
+    zoomTo(Math.max(map.getZoom(), 16), 2);   // ラベル表示のしきい値(14)より必ず上
+  }
+  document.getElementById('m-close').onclick=closeModal;
+  backdrop.addEventListener('click',e=>{ if(e.target===backdrop) closeModal(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+  window.openModal=openModal;
+}
+</script>
+</body>
+</html>
