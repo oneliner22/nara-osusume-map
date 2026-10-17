@@ -1,3 +1,6 @@
 .playwright-mcp/
 __pycache__/
 work/
+url_check.json
+url_check.txt
+places_log.json

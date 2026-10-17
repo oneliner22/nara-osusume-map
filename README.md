@@ -96,10 +96,10 @@ Cloud Scheduler → Cloud Run Job (GCP: salmon-chan)
  7. 不合格は pending.json へ。合格分を commit & push（GitHub Pages が自動配信）
 ```
 
-公式サイトURL（Places の websiteUri）は `daily_job.safe_url()` で実際に取得して確かめてから付ける:
+公式サイトURL（Places の websiteUri）は `pipeline/safe_url.py`（スキル共通、`tools/safe_url.py` と同一）で実際に取得して確かめてから付ける:
 取得失敗・4xx/5xx（失効ドメインは第三者に再取得されフィッシングに転用され得る）、別サイトへのリダイレクト、
 パスワード入力欄、パーキング/ギャンブル/ログイン系の title のいずれかに当たれば URL を付けない（スポット自体は掲載）。
-除外ドメインは `pipeline.json` の `url_blocked_domains`。初期データ分は 2026-10-17 に同等のチェック + 目視で確認済み。
+除外ドメインは `pipeline.json` の `url_blocked_domains`。初期データ分は 2026-10-17 に `python tools/url_check.py` + 目視で確認済み。
 
 公式 (@ponpokoka) の「おすすめ教えて」投稿を検知するとシード登録し、そのリプ・引用RTも収穫する。
 
