@@ -29,6 +29,9 @@ AREAS = [
 ]
 CATS = {"グルメ", "カフェ・喫茶", "観光", "レトロ", "雑貨・土産", "自然", "動物", "体験", "宿", "温泉"}
 # 全国チェーン (動画内で立ち寄っただけで「おすすめ」ではない) は載せない
+# 手動で削除したスポット (2026-10-17: 天下一品 上朝宮店は閉業、山田川は駅前の川で京都府)。
+# 天下一品の動画 F2sNswWhgCo は他に出典スポットがないため videos.json からも外している
+DROP_NAMES = {"天下一品 上朝宮店", "山田川"}
 DROP_PREFIX = ("すき家", "松屋 ", "プロント", "スターバックス", "マクドナルド", "セブン", "ローソン", "ファミリーマート")
 PREF = (33.85, 34.79, 135.53, 136.24)      # 奈良県本体のおよその範囲
 BBOX = (33.75, 34.88, 135.5, 136.35)       # マージン付き (pipeline.json と同じ)
@@ -119,6 +122,8 @@ def build(merged_dir, videos_json, out_dir):
             continue
         merged = json.load(io.open(p, encoding="utf-8"))
         for m in merged["spots"]:
+            if m["name_ja"] in DROP_NAMES:
+                continue
             if m["name_ja"].startswith(DROP_PREFIX):
                 print("DROP chain:", m["name_ja"])
                 continue

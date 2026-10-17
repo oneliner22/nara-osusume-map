@@ -34,11 +34,6 @@
    "id": "yoshino",
    "name": "吉野・奈良南部",
    "color": "#7b5cd6"
-  },
-  {
-   "id": "other",
-   "name": "県外（大阪・京都・三重寄り）",
-   "color": "#8a7350"
   }
  ],
  "spots": [
@@ -2498,24 +2493,6 @@
    "url": "https://www.kintetsu-re.co.jp/coconimo-saidaiji/"
   },
   {
-   "slug": "yamadagawa",
-   "name": "山田川",
-   "area": "other",
-   "cat": "自然",
-   "lat": 34.7375,
-   "lng": 135.7822,
-   "approx": true,
-   "desc": "山田川駅近くを流れるのどかな一級河川。電車の待ち時間に川を眺めながらゆったりとしたひとときを過ごせる場所として動画で紹介されている。",
-   "sources": [
-    {
-     "type": "youtube",
-     "id": "TDY4tE3Vsdg"
-    }
-   ],
-   "mark": true,
-   "out_of_pref": true
-  },
-  {
    "slug": "shigisan-kaiunbashi-bungee",
    "name": "信貴山 開運橋（バンジージャンプ）",
    "area": "west",
@@ -3737,24 +3714,6 @@
     "土曜日: 9時30分～16時00分",
     "日曜日: 9時30分～17時00分"
    ]
-  },
-  {
-   "slug": "tenkaippin-kamiasamiya",
-   "name": "天下一品 上朝宮店",
-   "area": "other",
-   "cat": "グルメ",
-   "lat": 34.8488,
-   "lng": 135.9866,
-   "approx": true,
-   "desc": "古民家をリノベーションした料亭のような佇まいの店舗。限定の「スタミナ中華そば」や惣菜付きの「旬菜セット」など独自メニューが揃う。滋賀県甲賀市信楽町にあり、奈良市中心部から車で約1時間。",
-   "sources": [
-    {
-     "type": "youtube",
-     "id": "F2sNswWhgCo"
-    }
-   ],
-   "out_of_pref": true,
-   "mark": true
   },
   {
    "slug": "steakhouse-enishi",
