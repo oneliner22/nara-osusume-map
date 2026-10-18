@@ -21,6 +21,11 @@
     "hitosara.com"
   ],
   "url_blocked_domains_note": "Places の websiteUri がこのドメイン (サブドメイン含む) なら公式サイトとみなさず spot.url を付けない (第三者のディレクトリ系サイト)",
+  "self_site_urls": [
+    "oneliner22.github.io/nara-osusume-map",
+    "github.com/oneliner22/nara-osusume-map"
+  ],
+  "self_site_urls_note": "このマップ自体へのリンクを含む投稿 (サイトの周知) は抽出せず not_recommendation 扱いにする。リンクなしの画面スクショだけの周知は抽出プロンプト側で除外",
   "xdev_dataset": "pocopea-nara",
   "schedule": "daily",
   "models": {

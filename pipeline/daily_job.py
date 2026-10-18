@@ -280,7 +280,7 @@ def _dataset_rows(mcp, dataset, ref_cond):
         # media_urls は ingest 時期によって NULL の区画があるため、同一IDの別区画から補完する
         rows = mcp.call("run_sql", {"max_rows": page, "query":
             "SELECT t.id, t.created_at, t.conversation_id, t.author_id, t.author_name, t.author_followers, "
-            "t.text, COALESCE(t.media_urls, mm.mu) media_urls, t.like_count, t.reply_count "
+            "t.text, COALESCE(t.media_urls, mm.mu) media_urls, t.urls, t.like_count, t.reply_count "
             "FROM tweets t LEFT JOIN (SELECT id, arg_max(media_urls, ingested_at) mu "
             "FROM tweets WHERE media_urls IS NOT NULL GROUP BY id) mm ON mm.id = t.id "
             f"WHERE t.dataset='{dataset}' {ref_cond}"
@@ -575,6 +575,9 @@ def extract_spots(post, images):
         "特定の手がかり。quote は投稿者の実際の記述の抜粋(30字程度)。実際の記述が"
         "なければ空文字にする。創作・脚色は厳禁。\n"
         "- 一般名詞(「海鮮丼」「温泉」等)や県外が明らかなスポットは含めない。\n"
+        "- おすすめスポットをまとめた地図サイト・マップ自体の告知や宣伝(サイト画面の"
+        "スクリーンショットに既存スポット名が並んでいるもの等)は投稿者自身のおすすめではない。"
+        "is_recommendation=false・candidates は空にする。\n"
         f"本文: {post.get('text', '')}"]
     parts += images
     return gen_json(MODEL_EXTRACT, EXTRACT_SCHEMA, parts)
@@ -800,7 +803,15 @@ def main():
 
     # 前処理 (画像DL→抽出→実記載チェック) と著者判定はポスト間で独立なので並列に流し、
     # ledger・spots への反映は順序を保って逐次で行う
+    # このマップ自体へのリンクを含む投稿 (サイトの周知・宣伝) はおすすめではないので抽出しない
+    self_urls = pipeline_cfg.get("self_site_urls", [])
+
+    def links_self_site(post):
+        return any(su in u for u in as_url_list(post.get("urls")) for su in self_urls)
+
     def prep(post):
+        if links_self_site(post):
+            return []
         images = download_images(post.get("media_urls"))
         p = post
         if post.get("_continuation"):  # 二段階目: 取得文脈を1行添えて抽出する
