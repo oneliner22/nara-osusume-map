@@ -5091,6 +5091,107 @@
   "2112040467173113880": {
    "date": "2026-10-19",
    "result": "not_recommendation"
+  },
+  "2112622743988654510": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112619754481717590": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112596523821486575": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112596424148066527": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112595856365109506": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112595769857626518": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112594730072899614": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112577371098476850": {
+   "date": "2026-10-20",
+   "result": "processed",
+   "author": "kogahigh"
+  },
+  "2112566637035753584": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112551456054390853": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112541927866532238": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112540756439392566": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112533751607779793": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112521817185239092": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112521283519004962": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112448273093108195": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112394351867564140": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112379847494537258": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112362754057064890": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112362425555231084": {
+   "date": "2026-10-20",
+   "result": "not_recommendation"
+  },
+  "2112586845884461329": {
+   "date": "2026-10-20",
+   "result": "processed",
+   "author": "kogahigh"
+  },
+  "2112584984578167068": {
+   "date": "2026-10-20",
+   "result": "processed",
+   "author": "kogahigh"
+  },
+  "2112581780822007898": {
+   "date": "2026-10-20",
+   "result": "processed",
+   "author": "kogahigh"
+  },
+  "2112579956266176658": {
+   "date": "2026-10-20",
+   "result": "processed",
+   "author": "kogahigh"
   }
  },
  "authors": {
@@ -5218,6 +5319,11 @@
    "verdict": "fan",
    "name": "kazu77_s_y",
    "date": "2026-10-17"
+  },
+  "1198499779241598979": {
+   "verdict": "fan",
+   "name": "kogahigh",
+   "date": "2026-10-20"
   }
  },
  "seeds": {}
