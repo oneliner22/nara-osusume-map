@@ -37,7 +37,8 @@ from datetime import date, datetime, timedelta, timezone
 import requests
 from google import genai
 from mcp_client import McpClient
-import safe_url as safe_url_mod
+import fetch_client
+from urls_util import as_url_list
 
 REPO = os.environ["GITHUB_REPO"]
 TOKEN = os.environ["GITHUB_TOKEN"]
@@ -202,8 +203,9 @@ def official_url(place):
         return None   # javascript: 等のスキームは href に入れない
     if any(host == d or host.endswith("." + d) for d in URL_BLOCKED_DOMAINS):
         return None
-    # 実取得して確かめる (失効・別サイト・404・パスワード欄等は載せない)。実装はスキル共通の safe_url.py
-    return safe_url_mod.safe_url(u, URL_BLOCKED_DOMAINS, log=log)
+    # 実取得して確かめる (失効・別サイト・404・パスワード欄等は載せない)。実取得は
+    # 資格情報ゼロの fetcher Service に委譲する (fetch_client → safe_url.py)
+    return fetch_client.safe_url(u, URL_BLOCKED_DOMAINS, log=log)
 
 
 def clean_area_name(name):
@@ -435,19 +437,7 @@ CONTINUATION_NOTE = ("(注: この投稿は、#ぽこピーの回覧板 向け�
                      " (リプライまたは自己引用RT))\n")
 
 
-def as_url_list(v):
-    """run_sql の VARCHAR[] は list でも文字列表現でも返り得るため正規化する。"""
-    if isinstance(v, list):
-        return [u for u in v if isinstance(u, str) and u.startswith("http")]
-    if isinstance(v, str):
-        try:
-            parsed = json.loads(v)
-            if isinstance(parsed, list):
-                return [u for u in parsed if isinstance(u, str) and u.startswith("http")]
-        except ValueError:
-            pass
-        return re.findall(r"https?://[^\s'\"\],]+", v)
-    return []
+# as_url_list は urls_util へ移設 (fetch_client と共用)。import 済み。
 
 
 # ---------------- X 出典URL ----------------
@@ -482,20 +472,9 @@ def has_source(sources, url):
 def check_embeddable(url):
     """X の oEmbed で埋め込み可否を判定する。年齢制限付きアカウントのポストは
     403 を返し、埋め込みも未ログイン閲覧もできない。可=True / 不可=False /
-    判定できなかった場合 (通信エラー・想定外ステータス) は None。"""
-    try:
-        r = requests.get("https://publish.twitter.com/oembed",
-                         params={"url": url, "omit_script": 1, "dnt": "true"},
-                         timeout=20)
-    except requests.RequestException as e:
-        log("oembed check skip:", repr(e))
-        return None
-    if r.status_code == 200:
-        return True
-    if r.status_code in (403, 404):
-        return False
-    log(f"oembed check: 想定外のステータス {r.status_code} ({url})")
-    return None
+    判定できなかった場合 (通信エラー・想定外ステータス) は None。
+    実取得は資格情報ゼロの fetcher Service に委譲する。"""
+    return fetch_client.check_embeddable(url)
 
 
 def set_embed_flag(src):
@@ -519,30 +498,10 @@ def refresh_embed_flags(spots):
     log(f"embed check: {len(srcs)} sources ({n} 件は未ログイン閲覧不可)")
 
 
-IMAGE_MAX_BYTES = 10_000_000
-
-
 def download_images(media_urls, limit=8):
-    images = []
-    for u in as_url_list(media_urls)[:limit]:
-        try:
-            # stream=True + content-length で、サイズ超過を全量DLせずに弾く
-            with requests.get(u, timeout=30, stream=True) as r:
-                mime = r.headers.get("content-type", "")
-                clen = int(r.headers.get("content-length") or 0)
-                if not (r.ok and mime.startswith("image/")) or clen > IMAGE_MAX_BYTES:
-                    continue
-                buf = bytearray()
-                for chunk in r.iter_content(65536):
-                    buf += chunk
-                    if len(buf) > IMAGE_MAX_BYTES:
-                        buf = None
-                        break
-                if buf:
-                    images.append((bytes(buf), mime.split(";")[0]))
-        except requests.RequestException as e:
-            log("image skip:", u, e)
-    return images
+    """X media を取得して [(bytes, mime)] を返す。実取得は資格情報ゼロの fetcher Service
+    に委譲する (fetch_client)。URL 正規化と件数制限は非取得・低リスクなので client 側で行う。"""
+    return fetch_client.download_images(media_urls, limit=limit)
 
 
 # ---------------- 抽出・判定 ----------------

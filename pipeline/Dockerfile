@@ -13,5 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # brotli / brotlicffi が入ると requests・httpx が br レスポンスを自動展開し、
 # safe_url や画像DLで第三者サイトの応答が展開経路になる。依存の推移で入ったらビルドを止める
 RUN python -c "import importlib.util as u, sys; m = [n for n in ('brotli', 'brotlicffi') if u.find_spec(n)]; sys.exit(f'brotli decoder installed: {m}' if m else 0)"
-COPY mcp_client.py daily_job.py pending_resolver.py refresh_hours.py models.json safe_url.py ./
+# safe_url.py / fetchers_core.py は載せない: 敵対的サイトへの実取得は fetcher Service 側のみ。
+# 本番は FETCHER_URL が必ず設定され fetch_client が remote 経路を使う (未設定だと fail-closed)。
+COPY mcp_client.py daily_job.py pending_resolver.py refresh_hours.py models.json fetch_client.py urls_util.py ./
 CMD ["python", "daily_job.py"]

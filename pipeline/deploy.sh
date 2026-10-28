@@ -12,6 +12,11 @@ JOB=nara-spots-daily
 SA_NAME=nara-spots-crj
 SA="${SA_NAME}@${PROJECT}.iam.gserviceaccount.com"
 IMAGE="${REGION}-docker.pkg.dev/${PROJECT}/nara-spots/daily:latest"
+# 取得専用 fetcher (資格情報ゼロ Service)
+FETCHER_SA_NAME=nara-spots-fetcher
+FETCHER_SA="${FETCHER_SA_NAME}@${PROJECT}.iam.gserviceaccount.com"
+FETCHER_IMAGE="${REGION}-docker.pkg.dev/${PROJECT}/nara-spots/fetcher:latest"
+FETCHER_SVC=nara-spots-fetcher
 
 gcloud config set project "$PROJECT"
 
@@ -50,9 +55,33 @@ fi
 
 gcloud builds submit pipeline --tag "$IMAGE"
 
+# ---- 取得専用 fetcher Service (敵対的サイトへの実HTTPはここだけ。orchestrator は鍵束を持つが
+#      第三者サイトには一切接続しない。fetcher は鍵束を持たず第三者サイトに接続する) ----
+# 別 Dockerfile なので config 経由でビルド
+gcloud builds submit pipeline --config pipeline/cloudbuild.fetcher.yaml \
+  --substitutions "_IMAGE=${FETCHER_IMAGE}"
+
+# fetcher 用 SA: IAM ロールを一切付けない (メタデータでトークンは出るが無権限で無意味)
+gcloud iam service-accounts describe "$FETCHER_SA" >/dev/null 2>&1 || \
+  gcloud iam service-accounts create "$FETCHER_SA_NAME" --display-name="nara-spots untrusted fetch (no roles)"
+
+# 非公開・秘密マウントなし・アイドルで0スケール (常駐しない)。認証は IAM(run.invoker)+IDトークン。
+# さらに絞るなら --ingress internal + orchestrator 側に VPC egress を付ける
+gcloud run deploy "$FETCHER_SVC" --image "$FETCHER_IMAGE" --region "$REGION" \
+  --service-account "$FETCHER_SA" \
+  --no-allow-unauthenticated --ingress all \
+  --min-instances 0 --max-instances 2 --concurrency 10 --timeout 120
+
+FETCHER_URL=$(gcloud run services describe "$FETCHER_SVC" --region "$REGION" \
+  --format 'value(status.url)')
+
+# orchestrator SA だけが fetcher を呼べるようにする
+gcloud run services add-iam-policy-binding "$FETCHER_SVC" --region "$REGION" \
+  --member="serviceAccount:$SA" --role=roles/run.invoker >/dev/null
+
 gcloud run jobs deploy "$JOB" --image "$IMAGE" --region "$REGION" \
   --service-account "$SA" --max-retries 1 --task-timeout 30m \
-  --set-env-vars "GCP_PROJECT=${PROJECT},VERTEX_LOCATION=global,GITHUB_REPO=oneliner22/nara-osusume-map" \
+  --set-env-vars "GCP_PROJECT=${PROJECT},VERTEX_LOCATION=global,GITHUB_REPO=oneliner22/nara-osusume-map,FETCHER_URL=${FETCHER_URL}" \
   --set-secrets "GITHUB_TOKEN=github-token:latest,XDEV_MCP_URL=xdev-mcp-url:latest,PLACES_API_KEY=places-api-key:latest"
 
 gcloud run jobs add-iam-policy-binding "$JOB" --region "$REGION" \
@@ -77,7 +106,7 @@ PJOB=nara-spots-pending
 gcloud run jobs deploy "$PJOB" --image "$IMAGE" --region "$REGION" \
   --service-account "$SA" --max-retries 1 --task-timeout 30m \
   --command python --args pending_resolver.py \
-  --set-env-vars "GCP_PROJECT=${PROJECT},VERTEX_LOCATION=global,GITHUB_REPO=oneliner22/nara-osusume-map" \
+  --set-env-vars "GCP_PROJECT=${PROJECT},VERTEX_LOCATION=global,GITHUB_REPO=oneliner22/nara-osusume-map,FETCHER_URL=${FETCHER_URL}" \
   --set-secrets "GITHUB_TOKEN=github-token:latest,XDEV_MCP_URL=xdev-mcp-url:latest,PLACES_API_KEY=places-api-key:latest"
 
 # Scheduler は SA の OAuth トークンでジョブを起動するので、日次ジョブと同じく

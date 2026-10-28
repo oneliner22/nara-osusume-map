@@ -1,0 +1,9 @@
+# fetcher.Dockerfile でビルドするための Cloud Build 設定。
+# `gcloud builds submit pipeline --tag` は pipeline/Dockerfile (orchestrator) 固定なので、
+# 別 Dockerfile を使う fetcher はこの config 経由でビルドする。
+# 使い方: gcloud builds submit pipeline --config pipeline/cloudbuild.fetcher.yaml \
+#           --substitutions _IMAGE=<fetcher image tag>
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ['build', '-t', '${_IMAGE}', '-f', 'fetcher.Dockerfile', '.']
+images: ['${_IMAGE}']
