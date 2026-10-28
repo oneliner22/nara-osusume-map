@@ -8,6 +8,7 @@
   safe_url → None (載せない) / 画像 → 空 / embeddable → None (既存値を維持)。
 """
 import base64
+import json
 import os
 import sys
 import threading
@@ -19,6 +20,9 @@ from urls_util import as_url_list
 
 FETCHER_URL = os.environ.get("FETCHER_URL", "").rstrip("/")
 _TIMEOUT = float(os.environ.get("FETCHER_TIMEOUT", "60"))
+# fetcher 応答のゆるい上限。万一 fetcher が暴走・汚染されても orchestrator を OOM させない。
+# 画像1枚=最大10MB → base64 で ~13MB なので 32MB は十分ゆるい (Cloud Run の応答上限も 32MB)
+_MAX_RESP = 32 * 1024 * 1024
 
 
 def _log(*a):
@@ -42,17 +46,23 @@ def _id_token(force=False):
 
 
 def _post(path, payload):
-    """fetcher へ POST。成功で (json, None)、失敗で (None, error)。"""
+    """fetcher へ POST。成功で (json, None)、失敗で (None, error)。
+    応答は _MAX_RESP でストリーム打ち切り (ゆるい OOM 保険)。"""
     url = FETCHER_URL + path
     for attempt in (1, 2):
         try:
-            r = requests.post(url, json=payload, timeout=_TIMEOUT,
-                              headers={"Authorization": f"Bearer {_id_token(force=attempt == 2)}"})
-            if r.status_code == 401 and attempt == 1:
-                continue  # トークン失効 → 強制再取得して1回だけ再試行
-            r.raise_for_status()
-            return r.json(), None
-        except requests.RequestException as e:
+            with requests.post(url, json=payload, timeout=_TIMEOUT, stream=True,
+                               headers={"Authorization": f"Bearer {_id_token(force=attempt == 2)}"}) as r:
+                if r.status_code == 401 and attempt == 1:
+                    continue  # トークン失効 → 強制再取得して1回だけ再試行
+                r.raise_for_status()
+                buf = bytearray()
+                for chunk in r.iter_content(65536):
+                    buf += chunk
+                    if len(buf) > _MAX_RESP:
+                        return None, RuntimeError(f"fetcher response > {_MAX_RESP}B")
+                return json.loads(buf.decode("utf-8")), None
+        except (requests.RequestException, ValueError) as e:  # ValueError = JSON decode
             if attempt == 2:
                 return None, e
     return None, RuntimeError("unreachable")
