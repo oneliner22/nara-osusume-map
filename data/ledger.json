@@ -5532,6 +5532,51 @@
   "2117063289889018064": {
    "date": "2026-11-02",
    "result": "not_recommendation"
+  },
+  "2117611183989772504": {
+   "date": "2026-11-03",
+   "result": "not_recommendation"
+  },
+  "2117532922286846186": {
+   "date": "2026-11-03",
+   "result": "not_recommendation"
+  },
+  "2117459475556880573": {
+   "date": "2026-11-03",
+   "result": "not_recommendation"
+  },
+  "2117634787372585373": {
+   "date": "2026-11-03",
+   "result": "processed",
+   "author": "tokojapan0326"
+  },
+  "2117571293214331186": {
+   "date": "2026-11-03",
+   "result": "not_recommendation"
+  },
+  "2117562847207309569": {
+   "date": "2026-11-03",
+   "result": "not_recommendation"
+  },
+  "2117562483812766151": {
+   "date": "2026-11-03",
+   "result": "not_recommendation"
+  },
+  "2117540657111941289": {
+   "date": "2026-11-03",
+   "result": "not_recommendation"
+  },
+  "2117521588447023551": {
+   "date": "2026-11-03",
+   "result": "not_recommendation"
+  },
+  "2117481621205188609": {
+   "date": "2026-11-03",
+   "result": "not_recommendation"
+  },
+  "2117437679210295542": {
+   "date": "2026-11-03",
+   "result": "not_recommendation"
   }
  },
  "authors": {
@@ -5664,6 +5709,11 @@
    "verdict": "fan",
    "name": "kogahigh",
    "date": "2026-10-20"
+  },
+  "1391798821512826884": {
+   "verdict": "fan",
+   "name": "tokojapan0326",
+   "date": "2026-11-03"
   }
  },
  "seeds": {}
